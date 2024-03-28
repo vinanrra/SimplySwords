@@ -5,6 +5,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Tameable;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -34,9 +36,7 @@ import net.sweenus.simplyswords.entity.BattleStandardEntity;
 import net.sweenus.simplyswords.registry.ItemsRegistry;
 import net.sweenus.simplyswords.registry.SoundRegistry;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class HelperMethods {
 
@@ -489,6 +489,44 @@ public class HelperMethods {
                 return SimplySwordsExpectPlatform.getSpellPowerDamage(damageModifier, player, magicSchool);
 
         return 0f;
+    }
+
+    public static Optional<LivingEntity> findClosestTarget(LivingEntity livingEntity, double maxDistance, double width) {
+        World world = livingEntity.getEntityWorld();
+        Vec3d eyePosition = livingEntity.getEyePos();
+        Vec3d lookVec = livingEntity.getRotationVec(1.0F);
+        Vec3d targetVec = eyePosition.add(lookVec.x * maxDistance, lookVec.y * maxDistance, lookVec.z * maxDistance);
+
+        // Calculate the perpendicular vector to the lookVec for the width
+        Vec3d perpVec = new Vec3d(-lookVec.z, 0, lookVec.x).normalize().multiply(width / 2.0);
+
+        // Create a search box that extends along the look vector with the specified width
+        Box searchBox = new Box(
+                eyePosition.subtract(perpVec.x, 1.0, perpVec.z),
+                targetVec.add(perpVec.x, 1.0, perpVec.z)
+        );
+
+        // Find living entities within the search box, excluding the player
+        List<LivingEntity> entities = world.getEntitiesByClass(LivingEntity.class, searchBox, e -> e != livingEntity);
+
+        // Find the closest living entity to the player
+        return entities.stream()
+                .min(Comparator.comparingDouble(e -> e.squaredDistanceTo(livingEntity)));
+    }
+
+    public static List<LivingEntity> getNearbyLivingEntities(World world, Vec3d position, double radius) {
+        Box searchBox = new Box(position.x - radius, position.y - radius, position.z - radius,
+                position.x + radius, position.y + radius, position.z + radius);
+        return world.getEntitiesByClass(LivingEntity.class, searchBox, entity -> true);
+    }
+
+    //Get Item attack damage
+    public static double getAttackDamage(ItemStack stack){
+        return stack.getItem().getAttributeModifiers(EquipmentSlot.MAINHAND)
+                .get(EntityAttributes.GENERIC_ATTACK_DAMAGE)
+                .stream()
+                .mapToDouble(EntityAttributeModifier::getValue)
+                .sum();
     }
 
 }

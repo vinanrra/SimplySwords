@@ -3,6 +3,7 @@ package net.sweenus.simplyswords.item.custom;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
@@ -10,7 +11,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
@@ -34,18 +34,24 @@ public class FireSwordItem extends UniqueSwordItem {
             int fhitchance = (int) Config.getFloat("brimstoneChance", "UniqueEffects", ConfigDefaultValues.brimstoneChance);
             HelperMethods.playHitSounds(attacker, target);
 
-            if (attacker.getRandom().nextInt(100) <= fhitchance && attacker instanceof PlayerEntity) {
+            if (attacker.getRandom().nextInt(100) <= fhitchance && attacker instanceof PlayerEntity player) {
                 int choose_sound = (int) (Math.random() * 3);
+                List<LivingEntity> nearbyEntities = HelperMethods.getNearbyLivingEntities(world, target.getPos(), 3);
+                DamageSource damageSource = player.getDamageSources().indirectMagic(player, player);
 
-                BlockPos position = target.getBlockPos();
-                for (int i = 0; i < 5 * choose_sound; i++) {
-                    HelperMethods.spawnParticle(world, ParticleTypes.LAVA, position.getX(), position.getY() + 0.5, position.getZ(),
-                            choose_sound, 0.5 + choose_sound, choose_sound);
-                    HelperMethods.spawnParticle(world, ParticleTypes.SMOKE, position.getX(), position.getY() + 0.5, position.getZ(),
-                            0, 0, 0);
+                for (LivingEntity livingEntity : nearbyEntities) {
+                    HelperMethods.spawnWaistHeightParticles(world, ParticleTypes.LAVA, attacker, target, 3);
+                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.LAVA, 1, 3);
+                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, 2, 6);
+                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.POOF, 1, 10);
+                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.EXPLOSION, 0.5, 2);
+                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.WARPED_SPORE, 1, 10);
+                    livingEntity.setOnFireFor(3);
+                    livingEntity.takeKnockback(1, 0.1, 0.1);
+                    livingEntity.timeUntilRegen = 0;
+                    livingEntity.damage(damageSource, (float) HelperMethods.getAttackDamage(stack));
+                    livingEntity.timeUntilRegen = 0;
                 }
-                world.createExplosion(attacker, target.getX(), target.getY(), target.getZ(), choose_sound, World.ExplosionSourceType.NONE);
-                target.setOnFireFor(3);
 
                 if (choose_sound <= 1) {
                     world.playSoundFromEntity(null, target, SoundRegistry.ELEMENTAL_BOW_FIRE_SHOOT_IMPACT_01.get(),

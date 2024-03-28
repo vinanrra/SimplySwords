@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
@@ -84,7 +85,6 @@ public class FlameSeedEffect extends OrbitingEffect {
                             }
                         }
                     }
-
                 }
 
                 if (sourceEntity != null) {
@@ -93,6 +93,10 @@ public class FlameSeedEffect extends OrbitingEffect {
                     if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, sourceEntity, "fire") > abilityDamage)
                         abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, sourceEntity, "fire");
                 }
+
+                if (livingEntity instanceof PlayerEntity && sourceEntity !=null && sourceEntity instanceof  PlayerEntity playerSourceEntity)
+                    damageSource = livingEntity.getDamageSources().playerAttack(playerSourceEntity);
+
                 livingEntity.damage(damageSource, (additionalData + ((float) amplifier / 4) + abilityDamage));
                 serverWorld.playSound(null, livingEntity.getBlockPos(), soundEvent,
                         livingEntity.getSoundCategory(), volume, pitch);
