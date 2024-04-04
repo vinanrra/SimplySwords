@@ -685,10 +685,10 @@ public class ItemsRegistry {
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC)));
 
     public static final RegistrySupplier<BrambleSwordItem> BRAMBLETHORN = ITEM.register( "bramblethorn", () ->
-            new BrambleSwordItem(ToolMaterials.WOOD,
+            new BrambleSwordItem(ModToolMaterial.UNIQUE,
                     (int) (bramblethorn_damage_modifier),
                     bramblethorn_attackspeed,
-                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC)));
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
 
     public static final RegistrySupplier<WatcherSwordItem> WATCHING_WARGLAIVE = ITEM.register( "watching_warglaive", () ->
             new WatcherSwordItem(ModToolMaterial.UNIQUE,

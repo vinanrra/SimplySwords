@@ -98,4 +98,10 @@ public class EffectRegistry {
     public static final RegistrySupplier<StatusEffect> RESILIENCE = EFFECT.register("resilience", () ->
             new ResilienceEffect(StatusEffectCategory.BENEFICIAL, 1124687));
 
+    public static final RegistrySupplier<StatusEffect> SPORE_SWARM = EFFECT.register("spore_swarm", () ->
+            new SporeSwarmEffect(StatusEffectCategory.BENEFICIAL, 1124687));
+
+    public static final RegistrySupplier<StatusEffect> PAIN = EFFECT.register("pain", () ->
+            new PainEffect(StatusEffectCategory.HARMFUL, 1124687));
+
 }

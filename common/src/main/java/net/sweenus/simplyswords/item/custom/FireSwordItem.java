@@ -40,17 +40,19 @@ public class FireSwordItem extends UniqueSwordItem {
                 DamageSource damageSource = player.getDamageSources().indirectMagic(player, player);
 
                 for (LivingEntity livingEntity : nearbyEntities) {
-                    HelperMethods.spawnWaistHeightParticles(world, ParticleTypes.LAVA, attacker, target, 3);
-                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.LAVA, 1, 3);
-                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, 2, 6);
-                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.POOF, 1, 10);
-                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.EXPLOSION, 0.5, 2);
-                    HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.WARPED_SPORE, 1, 10);
-                    livingEntity.setOnFireFor(3);
-                    livingEntity.takeKnockback(1, 0.1, 0.1);
-                    livingEntity.timeUntilRegen = 0;
-                    livingEntity.damage(damageSource, (float) HelperMethods.getAttackDamage(stack));
-                    livingEntity.timeUntilRegen = 0;
+                    if (HelperMethods.checkFriendlyFire(livingEntity, attacker)) {
+                        HelperMethods.spawnWaistHeightParticles(world, ParticleTypes.LAVA, attacker, target, 3);
+                        HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.LAVA, 1, 3);
+                        HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, 2, 6);
+                        HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.POOF, 1, 10);
+                        HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.EXPLOSION, 0.5, 2);
+                        HelperMethods.spawnOrbitParticles(world, livingEntity.getPos(), ParticleTypes.WARPED_SPORE, 1, 10);
+                        livingEntity.setOnFireFor(3);
+                        livingEntity.takeKnockback(1, 0.1, 0.1);
+                        livingEntity.timeUntilRegen = 0;
+                        livingEntity.damage(damageSource, (float) HelperMethods.getAttackDamage(stack));
+                        livingEntity.timeUntilRegen = 0;
+                    }
                 }
 
                 if (choose_sound <= 1) {

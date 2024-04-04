@@ -524,6 +524,8 @@
   "effect.simplyswords.ribboncleave":                                                                                   "Ribboncleave",
   "effect.simplyswords.resilience":                                                                                     "Resilience",
   "effect.simplyswords.battle_fatigue":                                                                                 "Battle Fatigue",
+  "effect.simplyswords.pain":                                                                                                 "Pain",
+  "effect.simplyswords.spore_swarm":                                                                                   "Spore Swarm",
 
   "item.simplyswords.onrightclick":                                                                                     "On Right Click:",
   "item.simplyswords.onrightclickheld":                                                                                 "Hold Right Click:",
@@ -531,8 +533,13 @@
   "item.simplyswords.firesworditem.tooltip2":                                                                           "Chance on hit to spew forth explosive brimstone.",
 
   "item.simplyswords.bramblesworditem.tooltip1":                                                                        "Unique Effect: Bramblethorn",
-  "item.simplyswords.bramblesworditem.tooltip2":                                                                        "Chance on hit to release a blanket of toxic",
-  "item.simplyswords.bramblesworditem.tooltip3":                                                                        "spores, slowing and poisoning anything nearby.",
+  "item.simplyswords.bramblesworditem.tooltip2":                                                                        "Chance on hit to release a swarm of toxic",
+  "item.simplyswords.bramblesworditem.tooltip3":                                                                        "spores that orbit you and inflict increasingly",
+  "item.simplyswords.bramblesworditem.tooltip4":                                                                        "devastating effects on nearby enemies.",
+  "item.simplyswords.bramblesworditem.tooltip5":                                                                        "The spores will remain active as long as they",
+  "item.simplyswords.bramblesworditem.tooltip6":                                                                        "have a target within range, and can remain",
+  "item.simplyswords.bramblesworditem.tooltip7":                                                                        "active at reduced effectiveness even",
+  "item.simplyswords.bramblesworditem.tooltip8":                                                                        "when swapping weapons.",
 
   "item.simplyswords.stormsworditem.tooltip1":                                                                          "Unique Effect: Storm",
   "item.simplyswords.stormsworditem.tooltip2":                                                                          "When raining/wet: Chance on hit to bring",
