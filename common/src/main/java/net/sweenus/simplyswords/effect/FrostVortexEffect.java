@@ -3,6 +3,7 @@ package net.sweenus.simplyswords.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.sweenus.simplyswords.config.Config;
@@ -12,8 +13,8 @@ import net.sweenus.simplyswords.registry.EffectRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
 
 public class FrostVortexEffect extends OrbitingEffect {
-    public LivingEntity sourceEntity; // The player who applied the effect
-    public int additionalData; // Additional integer data
+    public LivingEntity sourceEntity;
+    public int additionalData;
     public FrostVortexEffect(StatusEffectCategory statusEffectCategory, int color) {
         super (statusEffectCategory, color);
         setParticleType(ParticleTypes.SNOWFLAKE);
@@ -43,6 +44,8 @@ public class FrostVortexEffect extends OrbitingEffect {
                     float spellScalingModifier = Config.getFloat("vortexSpellScaling", "UniqueEffects", ConfigDefaultValues.vortexSpellScaling);
                     if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, sourceEntity, "frost") > 1)
                         abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, sourceEntity, "frost");
+                    if (livingEntity instanceof PlayerEntity && sourceEntity instanceof PlayerEntity sourcePlayer)
+                        damageSource = livingEntity.getDamageSources().playerAttack(sourcePlayer);
                 }
                 livingEntity.damage(damageSource, (additionalData + ((float) amplifier / 4) + abilityDamage));
             }

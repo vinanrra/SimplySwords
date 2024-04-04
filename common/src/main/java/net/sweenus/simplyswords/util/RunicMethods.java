@@ -320,7 +320,7 @@ public class RunicMethods {
     // Nether Power - RADIANCE
     public static void postHitNetherRadiance(LivingEntity target, LivingEntity attacker) {
         if (target.hasStatusEffect(StatusEffects.WEAKNESS)) {
-            attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.IMMOLATION.get(), 100, 0), attacker);
+            attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.IMMOLATION.get(), 200, 4), attacker);
         }
     }
 

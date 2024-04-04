@@ -13,6 +13,7 @@ public class WideOrbitingEffect extends StatusEffect {
     protected ParticleEffect particleType3 = null;
     protected ParticleEffect particleType4 = null;
     protected ParticleEffect particleType5 = null;
+    protected float yOffset = 2;
     public WideOrbitingEffect(StatusEffectCategory statusEffectCategory, int color) {
         super (statusEffectCategory, color);
     }
@@ -23,7 +24,7 @@ public class WideOrbitingEffect extends StatusEffect {
     public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient) {
             ServerWorld serverWorld = (ServerWorld) livingEntity.getWorld();
-            Vec3d center = livingEntity.getPos().add(0, livingEntity.getHeight() / 2.0, 0); // Center around the entity's waist
+            Vec3d center = livingEntity.getPos().add(0, (livingEntity.getHeight() / yOffset), 0); // Center around the entity's waist
             double baseRadius = 1.0; // base radius for the orbit
             double speed = Math.PI / 8; // Control the speed of the orbit
 
@@ -80,6 +81,9 @@ public class WideOrbitingEffect extends StatusEffect {
     }
     protected void setParticleType5(ParticleEffect particleType) {
         this.particleType5 = particleType;
+    }
+    protected void setyOffset(float yOffset) {
+        this.yOffset = yOffset;
     }
 
     @Override
