@@ -117,12 +117,17 @@
   "item.simplyswords.tempest":                                                                                          "Tempest",
   "item.simplyswords.flamewind":                                                                                        "Flamewind",
   "item.simplyswords.ribboncleaver":                                                                                    "Ribboncleaver",
+  "item.simplyswords.decaying_relic":                                                                                              "Decaying relic",
+  "item.simplyswords.magiscythe":                                                                                              "Magiscythe",
+  "item.simplyswords.enigma":                                                                                              "Enigma",
 
 
   "item.simplyswords.runic_tablet":                                                                                     "Runic Tablet",
   "item.simplyswords.runefused_gem":                                                                                    "Runefused Gem",
   "item.simplyswords.netherfused_gem":                                                                                  "Netherfused Gem",
   "item.simplyswords.empowered_remnant":                                                                                "Empowered Remnant",
+  "item.simplyswords.contained_remnant":                                                                                "Contained Remnant",
+  "item.simplyswords.tampered_remnant":                                                                                "Tampered Remnant",
 
 
   "item.simplyswords.mythicmetals_compat.adamantite.adamantite_claymore":                                               "Adamantite Claymore",
@@ -499,6 +504,19 @@
   "item.simplyswords.empty_runic_slot":                                                                                 "[ empty rune socket ]",
   "item.simplyswords.empty_nether_slot":                                                                                "[ empty nether socket ]",
   "item.simplyswords.filled_runic_slot":                                                                                "[ runefused gem ]",
+  "item.simplyswords.contained_remnant_description":                                                           "Stabilised and contained energy",
+  "item.simplyswords.contained_remnant_description2":                                                         "sourced from remnants.",
+  "item.simplyswords.contained_remnant_description3":                                                         "Its form appears to be changing",
+  "item.simplyswords.contained_remnant_description4":                                                         "when in close proximity to you.",
+  "item.simplyswords.contained_remnant_description5":                                                         "Keeping this item in your inventory",
+  "item.simplyswords.contained_remnant_description6":                                                         "may yield further insights.",
+  "item.simplyswords.contained_remnant.event":                                                                    "A Remnant in your inventory seems to have changed form",
+  "item.simplyswords.contained_remnant.event2":                                                                  "A Remnant in your inventory is acting strangely",
+  "item.simplyswords.tampered_remnant_description3":                                                         "It appears to have been tampered",
+  "item.simplyswords.tampered_remnant_description4":                                                         "with somehow...",
+  "item.simplyswords.magicythe.event":                                                                                 "Your Decaying Relic has begun making sounds",
+  "item.simplyswords.magicythe.event2":                                                                               "Your Decaying Relic seems to be reacting to this area",
+
 
 
 
@@ -819,6 +837,28 @@
   "item.simplyswords.ribboncleaversworditem.tooltip8":                                                                  "and causing your next attack",
   "item.simplyswords.ribboncleaversworditem.tooltip9":                                                                  "to deal 200% damage to a",
   "item.simplyswords.ribboncleaversworditem.tooltip10":                                                                 "single target.",
+
+  "item.simplyswords.magiscythesworditem.tooltip1":                                                                                       "Unique Effect: Magistorm",
+  "item.simplyswords.magiscythesworditem.tooltip2":                                                                                       "Attacking enemies while",
+  "item.simplyswords.magiscythesworditem.tooltip3":                                                                                       "Magistorm is active grants a",
+  "item.simplyswords.magiscythesworditem.tooltip4":                                                                                       "chance to repair an equipped",
+  "item.simplyswords.magiscythesworditem.tooltip5":                                                                                       "item.",
+  "item.simplyswords.magiscythesworditem.tooltip6":                                                                                       "A localised magical storm",
+  "item.simplyswords.magiscythesworditem.tooltip7":                                                                                       "manifests above you, dealing",
+  "item.simplyswords.magiscythesworditem.tooltip8":                                                                                       "damage to nearby enemies.",
+  "item.simplyswords.magiscythesworditem.tooltip9":                                                                                       "Each time the storm strikes,",
+  "item.simplyswords.magiscythesworditem.tooltip10":                                                                                      "it has a chance to refresh its",
+  "item.simplyswords.magiscythesworditem.tooltip11":                                                                                      "duration and increases its",
+  "item.simplyswords.magiscythesworditem.tooltip12":                                                                                      "severity.",
+
+  "item.simplyswords.enigmasworditem.tooltip1":                                                                                       "Unique Effect: Galeforce",
+  "item.simplyswords.enigmasworditem.tooltip2":                                                                                       "While you are near to your",
+  "item.simplyswords.enigmasworditem.tooltip3":                                                                                       "twister, gain Haste.",
+  "item.simplyswords.enigmasworditem.tooltip4":                                                                                       "Summon a twister that chases",
+  "item.simplyswords.enigmasworditem.tooltip5":                                                                                       "down nearby enemies, dealing",
+  "item.simplyswords.enigmasworditem.tooltip6":                                                                                       "increased damage the longer",
+  "item.simplyswords.enigmasworditem.tooltip7":                                                                                       "an enemy remains trapped",
+  "item.simplyswords.enigmasworditem.tooltip8":                                                                                       "within.",
 
 
   "item.simplyswords.dormantrelicsworditem.tooltip2":                                                                   "A faint power seems to emanate from within.",
@@ -1224,6 +1264,8 @@
   "text.autoconfig.simplyswords_main.option.loot.runicLootTableWeight":                                                 "Runic loot chance",
   "text.autoconfig.simplyswords_main.option.loot.uniqueLootTableWeight.@Tooltip":                                       "Chance for Unique weapons to appear in chests. 1.00 = 100%.",
   "text.autoconfig.simplyswords_main.option.loot.uniqueLootTableWeight":                                                "Unique loot chance",
+  "text.autoconfig.simplyswords_main.option.loot.enableContainedRemnants.@Tooltip":                                       "Whether contained remnants change form or not. Disable this if you disable unique weapon drops.",
+  "text.autoconfig.simplyswords_main.option.loot.enableContainedRemnants":                                                "Enable Contained Remnants",
   "text.autoconfig.simplyswords_main.option.loot.enableBrimstone":                                                      "Brimstone can be looted",
   "text.autoconfig.simplyswords_main.option.loot.enableTheWatcher":                                                     "The Watcher can be looted",
   "text.autoconfig.simplyswords_main.option.loot.enableStormsEdge":                                                     "Storm's Edge can be looted",
@@ -1484,6 +1526,19 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.ribbonwrathCooldown.@PrefixText" :                           "§6[Ribboncleaver]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.ribbonwrathCooldown":                                        "Ribbonwrath cooldown",
   "text.autoconfig.simplyswords_main.option.unique_effects.ribbonwrathResilienceAmplifier":                             "Ribbonwrath resilience amplifier",
+  "text.autoconfig.simplyswords_main.option.unique_effects.ribbonwrathDamageBonusPercent":                             "Ribbonwrath damage bonus percent",
+
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormCooldown.@PrefixText" :                           "§6[Magiscythe]§7",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormCooldown":                                                "Magiscythe cooldown",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormDuration":                                                  "Magistorm duration",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormRadius":                                                     "Magistorm radius",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormDamage":                                                   "Magistorm damage",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormRepairChance":                                          "Magistorm repair chance",
+
+  "text.autoconfig.simplyswords_main.option.unique_effects.enigmaCooldown.@PrefixText" :                           "§6[Enigma]§7",
+  "text.autoconfig.simplyswords_main.option.unique_effects.enigmaCooldown":                                                "Enigma cooldown",
+  "text.autoconfig.simplyswords_main.option.unique_effects.enigmaDecayRate":                                                  "Enigma decay rate",
+  "text.autoconfig.simplyswords_main.option.unique_effects.enigmaChaseRadius":                                                     "Enigma chase radius",
 
 
   "text.autoconfig.simplyswords_main.option.runic_effects.swiftnessChance.@PrefixText" :                                "§b[Swiftness]§7",

@@ -116,6 +116,9 @@
     "simplyswords:tempest",
     "simplyswords:flamewind",
     "simplyswords:ribboncleaver",
+    "simplyswords:decaying_relic",
+    "simplyswords:magiscythe",
+    "simplyswords:enigma",
     {
       "id": "simplyswords:dreadtide",
       "required": false

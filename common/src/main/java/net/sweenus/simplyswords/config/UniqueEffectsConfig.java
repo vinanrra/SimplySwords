@@ -223,5 +223,18 @@ public class UniqueEffectsConfig implements ConfigData {
     @ConfigEntry.Gui.PrefixText
     public float ribbonwrathCooldown = 40f;
     public float ribbonwrathResilienceAmplifier = 1f;
+    public float ribbonwrathDamageBonusPercent = 0.95f;
+
+    @ConfigEntry.Gui.PrefixText
+    public float magistormCooldown = 980f;
+    public float magistormDuration = 400f;
+    public float magistormRadius = 4f;
+    public float magistormDamage = 3f;
+    public float magistormRepairChance = 0.25f;
+
+    @ConfigEntry.Gui.PrefixText
+    public float enigmaCooldown = 800f;
+    public float enigmaDecayRate = 2f;
+    public float enigmaChaseRadius = 16f;
 
 }

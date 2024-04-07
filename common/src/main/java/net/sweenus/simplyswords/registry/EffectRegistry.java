@@ -8,6 +8,8 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.RegistryKeys;
 import net.sweenus.simplyswords.SimplySwords;
+import net.sweenus.simplyswords.config.Config;
+import net.sweenus.simplyswords.config.ConfigDefaultValues;
 import net.sweenus.simplyswords.effect.*;
 
 public class EffectRegistry {
@@ -89,7 +91,7 @@ public class EffectRegistry {
             new RibboncleaveEffect(StatusEffectCategory.BENEFICIAL, 1124687)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                             "c8fb5e9f-c446-4475-b73f-a2290196210f",
-                            0.95,
+                            Config.getFloat("ribbonwrathDamageBonusPercent", "UniqueEffects", ConfigDefaultValues.ribbonwrathDamageBonusPercent),
                             EntityAttributeModifier.Operation.MULTIPLY_TOTAL)
                     .addAttributeModifier(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE,
                             "1b147b80-6598-48d4-917f-7da3032c070f",
@@ -103,5 +105,8 @@ public class EffectRegistry {
 
     public static final RegistrySupplier<StatusEffect> PAIN = EFFECT.register("pain", () ->
             new PainEffect(StatusEffectCategory.HARMFUL, 1124687));
+
+    public static final RegistrySupplier<StatusEffect> MAGISTORM = EFFECT.register("magistorm", () ->
+            new MagistormEffect(StatusEffectCategory.BENEFICIAL, 1124687));
 
 }

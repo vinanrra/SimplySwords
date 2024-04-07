@@ -94,7 +94,7 @@ public class WeaponAttributesConfig implements ConfigData {
     public float stormsedge_damageModifier = 3.0f;
     public float stormbringer_damageModifier = 3.0f;
     public float swordonastick_damageModifier = 5.0f;
-    public float bramblethorn_damageModifier = 6.0f;
+    public float bramblethorn_damageModifier = 3.0f;
     public float watchingwarglaive_damageModifier = 3.0f;
     public float longswordofplague_damageModifier = 3.0f;
     public float emberblade_damageModifier = 3.0f;
@@ -125,6 +125,8 @@ public class WeaponAttributesConfig implements ConfigData {
     public float tempest_damageModifier = 0.0f;
     public float flamewind_damageModifier = 3.0f;
     public float ribboncleaver_damageModifier = 7.0f;
+    public float magiscythe_damageModifier = 4.0f;
+    public float enigma_damageModifier = 7.0f;
 
     @ConfigEntry.Gui.PrefixText
     public float brimstone_attackSpeed = -2.8f;
@@ -163,5 +165,7 @@ public class WeaponAttributesConfig implements ConfigData {
     public float tempest_attackSpeed = -2.5f;
     public float flamewind_attackSpeed = -2.6f;
     public float ribboncleaver_attackSpeed = -3.2f;
+    public float magiscythe_attackSpeed = -2.4f;
+    public float enigma_attackSpeed = -3.2f;
 
 }

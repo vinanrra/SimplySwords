@@ -23,14 +23,7 @@
     "simplyswords:soulstealer",
     "simplyswords:mjolnir",
     "simplyswords:slumbering_lichblade",
-    "simplyswords:waking_lichblade",
-    "simplyswords:awakened_lichblade",
     "simplyswords:shadowsting",
-    "simplyswords:dormant_relic",
-    "simplyswords:tainted_relic",
-    "simplyswords:righteous_relic",
-    "simplyswords:sunfire",
-    "simplyswords:harbinger",
     "simplyswords:whisperwind",
     "simplyswords:emberlash",
     "simplyswords:waxweaver",
@@ -39,13 +32,6 @@
     "simplyswords:wickpiercer",
     "simplyswords:tempest",
     "simplyswords:flamewind",
-    "simplyswords:ribboncleaver",
-    "simplyswords:decaying_relic",
-    "simplyswords:magiscythe",
-    "simplyswords:enigma",
-    {
-      "id": "simplyswords:dreadtide",
-      "required": false
-    }
+    "simplyswords:ribboncleaver"
   ]
 }

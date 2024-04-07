@@ -21,6 +21,8 @@ public class LootConfig implements ConfigData {
     public float runicLootTableWeight = 0.007f;
     @ConfigEntry.Gui.Tooltip
     public float uniqueLootTableWeight = 0.001f;
+    @ConfigEntry.Gui.Tooltip
+    public boolean enableContainedRemnants = true;
     public boolean enableWatchingWarglaive = true;
     public boolean enableLongswordOfThePlague = true;
     public boolean enableSwordOnAStick = true;

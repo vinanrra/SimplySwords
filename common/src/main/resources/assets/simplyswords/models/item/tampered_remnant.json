@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "simplyswords:item/tampered_remnant_inner",
+		"layer1": "simplyswords:item/tampered_remnant_outer"
+	}
+}

@@ -480,6 +480,24 @@ public class HelperMethods {
         }
     }
 
+    public static void spawnRainingParticles(ServerWorld world, ParticleEffect particle, Entity entity2, int count, double blocksAbove) {
+        Vec3d endPos = entity2.getPos().add(0, entity2.getHeight() / 2.0, 0);
+        Vec3d startPos = endPos.add(0, blocksAbove, 0);
+        Vec3d direction = endPos.subtract(startPos);
+        double distance = direction.length();
+        Vec3d normalizedDirection = direction.normalize();
+
+        for (int i = 0; i < count; i++) {
+            double lerpFactor = (double) i / (count - 1);
+            Vec3d currentPos = startPos.add(normalizedDirection.multiply(distance * lerpFactor));
+            world.spawnParticles(particle,
+                    currentPos.x, currentPos.y, currentPos.z,
+                    1,
+                    0, 0, 0,
+                    0.0);
+        }
+    }
+
 
     public static float commonSpellAttributeScaling(float damageModifier, Entity entity, String magicSchool) {
         if (Platform.isModLoaded("spell_power") && Platform.isFabric())

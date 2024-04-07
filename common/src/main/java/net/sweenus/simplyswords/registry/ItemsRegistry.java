@@ -105,6 +105,8 @@ public class ItemsRegistry {
     static float tempest_attackspeed = Config.getFloat("tempest_attackSpeed", "WeaponAttributes", ConfigDefaultValues.tempest_attackSpeed);
     static float flamewind_attackspeed = Config.getFloat("flamewind_attackSpeed", "WeaponAttributes", ConfigDefaultValues.flamewind_attackSpeed);
     static float ribboncleaver_attackspeed = Config.getFloat("ribboncleaver_attackSpeed", "WeaponAttributes", ConfigDefaultValues.ribboncleaver_attackSpeed);
+    static float magiscythe_attackspeed = Config.getFloat("magiscythe_attackSpeed", "WeaponAttributes", ConfigDefaultValues.magiscythe_attackSpeed);
+    static float enigma_attackspeed = Config.getFloat("enigma_attackSpeed", "WeaponAttributes", ConfigDefaultValues.enigma_attackSpeed);
 
 
 
@@ -143,6 +145,8 @@ public class ItemsRegistry {
     static float tempest_damage_modifier = Config.getFloat("tempest_damageModifier", "WeaponAttributes", ConfigDefaultValues.tempest_damageModifier);
     static float flamewind_damage_modifier = Config.getFloat("flamewind_damageModifier", "WeaponAttributes", ConfigDefaultValues.flamewind_damageModifier);
     static float ribboncleaver_damage_modifier = Config.getFloat("ribboncleaver_damageModifier", "WeaponAttributes", ConfigDefaultValues.ribboncleaver_damageModifier);
+    static float magiscythe_damage_modifier = Config.getFloat("magiscythe_damageModifier", "WeaponAttributes", ConfigDefaultValues.magiscythe_damageModifier);
+    static float enigma_damage_modifier = Config.getFloat("enigma_damageModifier", "WeaponAttributes", ConfigDefaultValues.enigma_damageModifier);
 
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(SimplySwords.MOD_ID, RegistryKeys.ITEM);
@@ -152,6 +156,8 @@ public class ItemsRegistry {
     public static final RegistrySupplier<RunefusedGemItem> RUNEFUSED_GEM = ITEM.register("runefused_gem", RunefusedGemItem::new);
     public static final RegistrySupplier<NetherfusedGemItem> NETHERFUSED_GEM = ITEM.register("netherfused_gem", NetherfusedGemItem::new);
     public static final RegistrySupplier<EmpoweredRemnantItem> EMPOWERED_REMNANT = ITEM.register("empowered_remnant", EmpoweredRemnantItem::new);
+    public static final RegistrySupplier<ContainedRemnantItem> CONTAINED_REMNANT = ITEM.register("contained_remnant", ContainedRemnantItem::new);
+    public static final RegistrySupplier<ContainedRemnantItem> TAMPERED_REMNANT = ITEM.register("tampered_remnant", ContainedRemnantItem::new);
 
     public static final RegistrySupplier<SimplySwordsSwordItem> IRON_LONGSWORD = ITEM.register("iron_longsword", () ->
             new SimplySwordsSwordItem(
@@ -908,6 +914,24 @@ public class ItemsRegistry {
             new RibboncleaverSwordItem(ModToolMaterial.UNIQUE,
                     (int) (ribboncleaver_damage_modifier),
                     ribboncleaver_attackspeed,
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
+
+    public static final RegistrySupplier<DormantRelicSwordItem> DECAYING_RELIC = ITEM.register( "decaying_relic", () ->
+            new DormantRelicSwordItem(ModToolMaterial.UNIQUE,
+                    (int) (magiscythe_damage_modifier),
+                    magiscythe_attackspeed,
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
+
+    public static final RegistrySupplier<MagiscytheSwordItem> MAGISCYTHE = ITEM.register( "magiscythe", () ->
+            new MagiscytheSwordItem(ModToolMaterial.UNIQUE,
+                    (int) (magiscythe_damage_modifier),
+                    magiscythe_attackspeed,
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
+
+    public static final RegistrySupplier<EnigmaSwordItem> ENIGMA = ITEM.register( "enigma", () ->
+            new EnigmaSwordItem(ModToolMaterial.UNIQUE,
+                    (int) (enigma_damage_modifier),
+                    enigma_attackspeed,
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
 
 
