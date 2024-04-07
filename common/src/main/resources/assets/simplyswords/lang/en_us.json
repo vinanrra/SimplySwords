@@ -1364,6 +1364,9 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.stormChance.@PrefixText" :                                   "§6[Mjolnir]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.stormChance":                                                "Storm chance",
   "text.autoconfig.simplyswords_main.option.unique_effects.stormRadius":                                                "Storm radius",
+  "text.autoconfig.simplyswords_main.option.unique_effects.stormCooldown":                                                "Storm cooldown",
+  "text.autoconfig.simplyswords_main.option.unique_effects.stormFrequency":                                                "Storm frequency",
+  "text.autoconfig.simplyswords_main.option.unique_effects.stormDuration":                                                "Storm duration",
 
   "text.autoconfig.simplyswords_main.option.unique_effects.plagueChance.@PrefixText" :                                  "§6[Longsword of The Plague]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.plagueChance":                                               "Plague chance",
@@ -1373,7 +1376,6 @@
 
   "text.autoconfig.simplyswords_main.option.unique_effects.brambleChance.@PrefixText" :                                 "§6[Bramblethorn]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.brambleChance":                                              "Bramble chance",
-  "text.autoconfig.simplyswords_main.option.unique_effects.brambleRadius":                                              "Bramble radius",
 
   "text.autoconfig.simplyswords_main.option.unique_effects.soultetherRange.@PrefixText" :                               "§6[Soulpyre]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.soultetherRange":                                            "Soultether range",
@@ -1534,6 +1536,7 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.magistormRadius":                                                     "Magistorm radius",
   "text.autoconfig.simplyswords_main.option.unique_effects.magistormDamage":                                                   "Magistorm damage",
   "text.autoconfig.simplyswords_main.option.unique_effects.magistormRepairChance":                                          "Magistorm repair chance",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magistormSpellScaling":                                          "Magistorm Spell Power DMG multi",
 
   "text.autoconfig.simplyswords_main.option.unique_effects.enigmaCooldown.@PrefixText" :                           "§6[Enigma]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.enigmaCooldown":                                                "Enigma cooldown",

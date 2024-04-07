@@ -60,6 +60,9 @@ public class UniqueEffectsConfig implements ConfigData {
     @ConfigEntry.Gui.PrefixText
     public float stormChance = 15f;
     public float stormRadius = 10f;
+    public float stormCooldown = 700f;
+    public float stormFrequency = 10f;
+    public float stormDuration = 200f;
 
     @ConfigEntry.Gui.PrefixText
     public float plagueChance = 55f;
@@ -69,7 +72,6 @@ public class UniqueEffectsConfig implements ConfigData {
 
     @ConfigEntry.Gui.PrefixText
     public float brambleChance = 45f;
-    public float brambleRadius = 10f;
 
     @ConfigEntry.Gui.PrefixText
     public float soultetherRange = 32f;
@@ -231,6 +233,7 @@ public class UniqueEffectsConfig implements ConfigData {
     public float magistormRadius = 4f;
     public float magistormDamage = 3f;
     public float magistormRepairChance = 0.25f;
+    public float magistormSpellScaling = 0.5f;
 
     @ConfigEntry.Gui.PrefixText
     public float enigmaCooldown = 800f;

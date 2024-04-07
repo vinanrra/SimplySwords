@@ -10,6 +10,8 @@ import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
+import net.sweenus.simplyswords.config.Config;
+import net.sweenus.simplyswords.config.ConfigDefaultValues;
 import net.sweenus.simplyswords.item.custom.LichbladeSwordItem;
 import net.sweenus.simplyswords.registry.EffectRegistry;
 import net.sweenus.simplyswords.registry.SoundRegistry;
@@ -68,11 +70,12 @@ public class AbilityMethods {
     public static void tickAbilityStorm(ItemStack stack, World world, LivingEntity user,
                                         int ability_timer, int skillCooldown, int radius) {
         if (!user.getWorld().isClient()) {
-            if (user.age % 10 == 0) {
+            int frequency = (int) Config.getFloat("stormFrequency", "UniqueEffects", ConfigDefaultValues.stormFrequency);
+            if (user.age % frequency == 0) {
                 double x = user.getX();
                 double y = user.getY();
                 double z = user.getZ();
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 15, 5), user);
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, frequency+5, 5), user);
                 Box box = new Box(x + radius, y + radius, z + radius, x - radius, y - radius, z - radius);
                 ServerWorld sworld = (ServerWorld) user.getWorld();
 
@@ -81,7 +84,7 @@ public class AbilityMethods {
                     if ((entity instanceof LivingEntity ee)) {
                         if (HelperMethods.checkFriendlyFire(ee, user) && choose > 0.7) {
                             var stormtarget = ee.getBlockPos();
-                            ee.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), 10, 0), user);
+                            ee.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), frequency+5, 0), user);
                             LightningEntity storm = EntityType.LIGHTNING_BOLT.spawn(sworld, stormtarget, SpawnReason.TRIGGERED);
                             if (storm != null) {
                                 storm.setCosmetic(true);

@@ -57,6 +57,9 @@ public class ConfigDefaultValues {
     
     public static float stormChance = 15f;
     public static float stormRadius = 10f;
+    public static float stormCooldown = 700f;
+    public static float stormFrequency = 10f;
+    public static float stormDuration = 200f;
 
     
     public static float plagueChance = 55f;
@@ -66,7 +69,6 @@ public class ConfigDefaultValues {
 
     
     public static float brambleChance = 45f;
-    public static float brambleRadius = 10f;
 
     
     public static float soultetherRange = 32f;
@@ -220,6 +222,7 @@ public class ConfigDefaultValues {
     public static float magistormRadius = 4f;
     public static float magistormDamage = 3f;
     public static float magistormRepairChance = 0.25f;
+    public static float magistormSpellScaling = 0.5f;
 
     public static float enigmaCooldown = 800f;
     public static float enigmaDecayRate = 2f;

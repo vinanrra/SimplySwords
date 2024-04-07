@@ -53,7 +53,8 @@ public class StormSwordItem extends UniqueSwordItem {
         }
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 5), user);
         user.setCurrentHand(hand);
-        user.getItemCooldownManager().set(this, 700);
+        int cooldown = (int) Config.getFloat("stormCooldown", "UniqueEffects", ConfigDefaultValues.stormCooldown);
+        user.getItemCooldownManager().set(this, cooldown);
         return TypedActionResult.consume(itemStack);
     }
 
@@ -61,13 +62,14 @@ public class StormSwordItem extends UniqueSwordItem {
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         if (!world.isClient) {
             int radius = (int) Config.getFloat("stormRadius", "UniqueEffects", ConfigDefaultValues.stormRadius);
-            AbilityMethods.tickAbilityStorm(stack, world, user, remainingUseTicks, 700, radius);
+            int cooldown = (int) Config.getFloat("stormCooldown", "UniqueEffects", ConfigDefaultValues.stormCooldown);
+            AbilityMethods.tickAbilityStorm(stack, world, user, remainingUseTicks, cooldown, radius);
         }
     }
 
     @Override
     public int getMaxUseTime(ItemStack stack) {
-        return 200;
+        return (int) Config.getFloat("stormDuration", "UniqueEffects", ConfigDefaultValues.stormDuration);
     }
 
     @Override
