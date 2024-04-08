@@ -227,6 +227,18 @@ public class ConfigDefaultValues {
     public static float enigmaCooldown = 800f;
     public static float enigmaDecayRate = 2f;
     public static float enigmaChaseRadius = 16f;
+
+    public static float magibladeCooldown = 35;
+    public static float magibladeSonicDistance = 16f;
+    public static float magibladeDamageModifier = 0.7f;
+    public static float magibladeRepelChance = 0.55f;
+    public static float magibladeRepelRadius = 4f;
+
+    public static float magislamCooldown = 140;
+    public static float magislamRadius = 4f;
+    public static float magislamDamageModifier = 2.0f;
+    public static float magislamMagicChance = 35f;
+    public static float magislamMagicModifier = 0.5f;
     
     // -- WEAPON ATTRIBUTES -- //
 

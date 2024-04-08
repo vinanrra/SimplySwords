@@ -240,4 +240,18 @@ public class UniqueEffectsConfig implements ConfigData {
     public float enigmaDecayRate = 2f;
     public float enigmaChaseRadius = 16f;
 
+    @ConfigEntry.Gui.PrefixText
+    public float magibladeCooldown = 35;
+    public float magibladeSonicDistance = 16f;
+    public float magibladeDamageModifier = 0.7f;
+    public float magibladeRepelChance = 55f;
+    public float magibladeRepelRadius = 4f;
+
+    @ConfigEntry.Gui.PrefixText
+    public float magislamCooldown = 140;
+    public float magislamRadius = 4f;
+    public float magislamDamageModifier = 2.0f;
+    public float magislamMagicChance = 35f;
+    public float magislamMagicModifier = 0.5f;
+
 }

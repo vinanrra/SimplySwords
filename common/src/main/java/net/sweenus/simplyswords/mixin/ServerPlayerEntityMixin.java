@@ -50,7 +50,8 @@ public abstract class ServerPlayerEntityMixin {
             if (serverPlayer.hasStatusEffect(EffectRegistry.RESILIENCE.get())) {
                 HelperMethods.decrementStatusEffect(serverPlayer, EffectRegistry.RESILIENCE.get());
                 cir.setReturnValue(false);
-                serverPlayer.getWorld().playSoundFromEntity(null, serverPlayer, SoundRegistry.MAGIC_SWORD_PARRY_03.get(),
+                if (!player.hasStatusEffect(EffectRegistry.MAGISLAM.get()))
+                    serverPlayer.getWorld().playSoundFromEntity(null, serverPlayer, SoundRegistry.MAGIC_SWORD_PARRY_03.get(),
                         SoundCategory.PLAYERS, 0.7f, 0.5f + (serverPlayer.getRandom().nextBetween(1, 5) * 0.1f));
             }
 
@@ -96,8 +97,8 @@ public abstract class ServerPlayerEntityMixin {
             //Magiblade repellent
             if (serverPlayer.getMainHandStack().isOf(ItemsRegistry.MAGIBLADE.get())) {
                 int frequency = 8;
-                int radius = 4;
-                int chance = 55;
+                int radius = (int) Config.getFloat("magibladeRepelRadius", "UniqueEffects", ConfigDefaultValues.magibladeRepelRadius);
+                int chance = (int) Config.getFloat("magibladeRepelChance", "UniqueEffects", ConfigDefaultValues.magibladeRepelChance);
                 int totalChance = new Random().nextInt(100);
                 if (serverPlayer.age % frequency == 0 && totalChance < chance) {
                     Box box = HelperMethods.createBox(player, radius);

@@ -109,4 +109,7 @@ public class EffectRegistry {
     public static final RegistrySupplier<StatusEffect> MAGISTORM = EFFECT.register("magistorm", () ->
             new MagistormEffect(StatusEffectCategory.BENEFICIAL, 1124687));
 
+    public static final RegistrySupplier<StatusEffect> MAGISLAM = EFFECT.register("magislam", () ->
+            new MagislamEffect(StatusEffectCategory.BENEFICIAL, 1124687));
+
 }

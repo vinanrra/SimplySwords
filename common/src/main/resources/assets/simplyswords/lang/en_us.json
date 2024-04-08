@@ -552,6 +552,7 @@
   "effect.simplyswords.pain":                                                                                                 "Pain",
   "effect.simplyswords.spore_swarm":                                                                                   "Spore Swarm",
   "effect.simplyswords.magistorm":                                                                                   "Magistorm",
+  "effect.simplyswords.magislam":                                                                                   "Magislam",
 
   "item.simplyswords.onrightclick":                                                                                     "On Right Click:",
   "item.simplyswords.onrightclickheld":                                                                                 "Hold Right Click:",
@@ -867,6 +868,26 @@
   "item.simplyswords.enigmasworditem.tooltip6":                                                                                       "increased damage the longer",
   "item.simplyswords.enigmasworditem.tooltip7":                                                                                       "an enemy remains trapped",
   "item.simplyswords.enigmasworditem.tooltip8":                                                                                       "within.",
+
+  "item.simplyswords.magibladesworditem.tooltip1":                                                                                       "Unique Effect: Magisonic",
+  "item.simplyswords.magibladesworditem.tooltip2":                                                                                       "The Magiblade occasionally",
+  "item.simplyswords.magibladesworditem.tooltip3":                                                                                       "detects and repels approaching",
+  "item.simplyswords.magibladesworditem.tooltip4":                                                                                       "enemies.",
+  "item.simplyswords.magibladesworditem.tooltip5":                                                                                       "After a short delay, your",
+  "item.simplyswords.magibladesworditem.tooltip6":                                                                                       "Magiblade releases a sonic",
+  "item.simplyswords.magibladesworditem.tooltip7":                                                                                       "boom in front of you, dealing",
+  "item.simplyswords.magibladesworditem.tooltip8":                                                                                       "damage to enemies caught in",
+  "item.simplyswords.magibladesworditem.tooltip9":                                                                                       "its path.",
+
+  "item.simplyswords.magispearsworditem.tooltip1":                                                                                       "Unique Effect: Magislam",
+  "item.simplyswords.magispearsworditem.tooltip2":                                                                                       "When attacking enemies,",
+  "item.simplyswords.magispearsworditem.tooltip3":                                                                                       "you have a chance to deal",
+  "item.simplyswords.magispearsworditem.tooltip4":                                                                                       "additional magic damage.",
+  "item.simplyswords.magispearsworditem.tooltip5":                                                                                       "Powered by the Magispear,",
+  "item.simplyswords.magispearsworditem.tooltip6":                                                                                       "you perform a forward leap,",
+  "item.simplyswords.magispearsworditem.tooltip7":                                                                                       "followed by a slam attack,",
+  "item.simplyswords.magispearsworditem.tooltip8":                                                                                       "damaging nearby enemies.",
+  "item.simplyswords.magispearsworditem.tooltip9":                                                                                       "You are immune while leaping.",
 
 
   "item.simplyswords.dormantrelicsworditem.tooltip2":                                                                   "A faint power seems to emanate from within.",
@@ -1559,6 +1580,20 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.enigmaCooldown":                                                "Enigma cooldown",
   "text.autoconfig.simplyswords_main.option.unique_effects.enigmaDecayRate":                                                  "Enigma decay rate",
   "text.autoconfig.simplyswords_main.option.unique_effects.enigmaChaseRadius":                                                     "Enigma chase radius",
+
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeCooldown.@PrefixText" :                           "§6[Magiblade]§7",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeCooldown":                                                "Magisonic cooldown",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeSonicDistance":                                                  "Magisonic sonic distance",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeDamageModifier":                                                     "Magisonic damage modifier",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeRepelChance":                                                   "Magisonic repel chance",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeRepelRadius":                                          "Magisonic repel radius",
+
+  "text.autoconfig.simplyswords_main.option.unique_effects.magislamCooldown.@PrefixText" :                           "§6[Magispear]§7",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magislamCooldown":                                                "Magislam cooldown",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magislamRadius":                                                  "Magislam radius",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magislamDamageModifier":                                                     "Magislam damage modifier",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magislamMagicChance":                                                   "Magislam magic chance",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magislamMagicModifier":                                          "Magislam magic modifier",
 
 
   "text.autoconfig.simplyswords_main.option.runic_effects.swiftnessChance.@PrefixText" :                                "§b[Swiftness]§7",

@@ -938,8 +938,8 @@ public class ItemsRegistry {
                     enigma_attackspeed,
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
 
-    public static final RegistrySupplier<MagiscytheSwordItem> MAGISPEAR = ITEM.register( "magispear", () ->
-            new MagiscytheSwordItem(ModToolMaterial.UNIQUE,
+    public static final RegistrySupplier<MagispearSwordItem> MAGISPEAR = ITEM.register( "magispear", () ->
+            new MagispearSwordItem(ModToolMaterial.UNIQUE,
                     (int) (magispear_damage_modifier),
                     magispear_attackspeed,
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));

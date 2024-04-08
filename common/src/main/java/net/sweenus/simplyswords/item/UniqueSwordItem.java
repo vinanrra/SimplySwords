@@ -60,6 +60,8 @@ public class UniqueSwordItem extends SwordItem {
         if (this.getDefaultStack().isOf(ItemsRegistry.AWAKENED_LICHBLADE.get())
                 || this.getDefaultStack().isOf(ItemsRegistry.HARBINGER.get())
                 || this.getDefaultStack().isOf(ItemsRegistry.SUNFIRE.get())
+                || this.getDefaultStack().isOf(ItemsRegistry.MAGISPEAR.get())
+                || this.getDefaultStack().isOf(ItemsRegistry.MAGIBLADE.get())
                 || this.getDefaultStack().isOf(ItemsRegistry.MAGISCYTHE.get())) {
             this.iRarity = "LEGENDARY";
             return Text.translatable(this.getTranslationKey(stack)).setStyle(LEGENDARY);
