@@ -36,6 +36,7 @@ public class TempestSwordItem extends UniqueSwordItem {
     }
 
     private static int stepMod = 0;
+    public static boolean scalesWithSpellPower;
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -133,6 +134,10 @@ public class TempestSwordItem extends UniqueSwordItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (HelperMethods.commonSpellAttributeScaling(0.5f, entity, "frost") > 0
+                || HelperMethods.commonSpellAttributeScaling(0.5f, entity, "fire") > 0) {
+            scalesWithSpellPower = true;
+        }
         if (stepMod > 0) stepMod--;
         if (stepMod <= 0) stepMod = 7;
         HelperMethods.createFootfalls(entity, stack, world, stepMod, ParticleTypes.BUBBLE,
@@ -162,6 +167,11 @@ public class TempestSwordItem extends UniqueSwordItem {
         tooltip.add(Text.translatable("item.simplyswords.tempestsworditem.tooltip9").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.tempestsworditem.tooltip10").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.tempestsworditem.tooltip11").setStyle(TEXT));
+        if (scalesWithSpellPower) {
+            tooltip.add(Text.literal(""));
+            tooltip.add(Text.translatable("item.simplyswords.compat.scaleFrost"));
+            tooltip.add(Text.translatable("item.simplyswords.compat.scaleFire"));
+        }
 
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
     }

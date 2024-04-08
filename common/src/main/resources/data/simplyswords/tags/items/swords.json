@@ -119,6 +119,8 @@
     "simplyswords:decaying_relic",
     "simplyswords:magiscythe",
     "simplyswords:enigma",
+    "simplyswords:magispear",
+    "simplyswords:magiblade",
     {
       "id": "simplyswords:dreadtide",
       "required": false

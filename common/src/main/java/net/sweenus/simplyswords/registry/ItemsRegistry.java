@@ -107,6 +107,8 @@ public class ItemsRegistry {
     static float ribboncleaver_attackspeed = Config.getFloat("ribboncleaver_attackSpeed", "WeaponAttributes", ConfigDefaultValues.ribboncleaver_attackSpeed);
     static float magiscythe_attackspeed = Config.getFloat("magiscythe_attackSpeed", "WeaponAttributes", ConfigDefaultValues.magiscythe_attackSpeed);
     static float enigma_attackspeed = Config.getFloat("enigma_attackSpeed", "WeaponAttributes", ConfigDefaultValues.enigma_attackSpeed);
+    static float magispear_attackspeed = Config.getFloat("magispear_attackSpeed", "WeaponAttributes", ConfigDefaultValues.magispear_attackSpeed);
+    static float magiblade_attackspeed = Config.getFloat("magiblade_attackSpeed", "WeaponAttributes", ConfigDefaultValues.magiblade_attackSpeed);
 
 
 
@@ -147,6 +149,8 @@ public class ItemsRegistry {
     static float ribboncleaver_damage_modifier = Config.getFloat("ribboncleaver_damageModifier", "WeaponAttributes", ConfigDefaultValues.ribboncleaver_damageModifier);
     static float magiscythe_damage_modifier = Config.getFloat("magiscythe_damageModifier", "WeaponAttributes", ConfigDefaultValues.magiscythe_damageModifier);
     static float enigma_damage_modifier = Config.getFloat("enigma_damageModifier", "WeaponAttributes", ConfigDefaultValues.enigma_damageModifier);
+    static float magispear_damage_modifier = Config.getFloat("magispear_damageModifier", "WeaponAttributes", ConfigDefaultValues.magispear_damageModifier);
+    static float magiblade_damage_modifier = Config.getFloat("magiblade_damageModifier", "WeaponAttributes", ConfigDefaultValues.magiblade_damageModifier);
 
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(SimplySwords.MOD_ID, RegistryKeys.ITEM);
@@ -932,6 +936,18 @@ public class ItemsRegistry {
             new EnigmaSwordItem(ModToolMaterial.UNIQUE,
                     (int) (enigma_damage_modifier),
                     enigma_attackspeed,
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
+
+    public static final RegistrySupplier<MagiscytheSwordItem> MAGISPEAR = ITEM.register( "magispear", () ->
+            new MagiscytheSwordItem(ModToolMaterial.UNIQUE,
+                    (int) (magispear_damage_modifier),
+                    magispear_attackspeed,
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
+
+    public static final RegistrySupplier<MagibladeSwordItem> MAGIBLADE = ITEM.register( "magiblade", () ->
+            new MagibladeSwordItem(ModToolMaterial.UNIQUE,
+                    (int) (magiblade_damage_modifier),
+                    magiblade_attackspeed,
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
 
 

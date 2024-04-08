@@ -33,6 +33,7 @@ public class FlamewindSwordItem extends UniqueSwordItem {
     }
 
     private static int stepMod = 0;
+    public static boolean scalesWithSpellPower;
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -83,6 +84,9 @@ public class FlamewindSwordItem extends UniqueSwordItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (HelperMethods.commonSpellAttributeScaling(0.5f, entity, "fire") > 0) {
+            scalesWithSpellPower = true;
+        }
         if (stepMod > 0) stepMod--;
         if (stepMod <= 0) stepMod = 7;
         HelperMethods.createFootfalls(entity, stack, world, stepMod, ParticleTypes.FLAME,
@@ -113,6 +117,10 @@ public class FlamewindSwordItem extends UniqueSwordItem {
         tooltip.add(Text.translatable("item.simplyswords.flamewindsworditem.tooltip10").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.flamewindsworditem.tooltip11",
                 (int) Config.getFloat("emberstormSpreadCap", "UniqueEffects", ConfigDefaultValues.emberstormSpreadCap)).setStyle(TEXT));
+        if (scalesWithSpellPower) {
+            tooltip.add(Text.literal(""));
+            tooltip.add(Text.translatable("item.simplyswords.compat.scaleFire"));
+        }
 
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
     }

@@ -4,16 +4,18 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
@@ -25,8 +27,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 import java.util.Random;
 
-public class MagiscytheSwordItem extends UniqueSwordItem {
-    public MagiscytheSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+public class MagibladeSwordItem extends UniqueSwordItem {
+    public MagibladeSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
@@ -61,15 +63,60 @@ public class MagiscytheSwordItem extends UniqueSwordItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        int skillCooldown = (int) Config.getFloat("magistormCooldown", "UniqueEffects", ConfigDefaultValues.magistormCooldown);
-        int baseEffectDuration = (int) Config.getFloat("magistormDuration", "UniqueEffects", ConfigDefaultValues.magistormDuration);
+        ItemStack itemStack = user.getStackInHand(hand);
+        if (itemStack.getDamage() >= itemStack.getMaxDamage() - 1) {
+            return TypedActionResult.fail(itemStack);
+        }
+        user.setCurrentHand(hand);
+        return TypedActionResult.consume(itemStack);
+    }
 
-        world.playSound(null, user.getBlockPos(), SoundRegistry.MAGIC_SHAMANIC_NORDIC_22.get(),
-                user.getSoundCategory(), 0.2f, 1.1f);
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.MAGISTORM.get(), baseEffectDuration, 1));
-        user.getItemCooldownManager().set(this, skillCooldown);
+    @Override
+    public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
+        if (!world.isClient) {
+            if ((remainingUseTicks %5 == 0 && remainingUseTicks < getMaxUseTime(stack) - 5)) {
+                if (remainingUseTicks < 10) {
+                    onStoppedUsing(stack, world, user, remainingUseTicks);
+                }
 
-        return super.use(world, user, hand);
+            }
+            if (remainingUseTicks == getMaxUseTime(stack)-1) {
+                world.playSoundFromEntity(null, user,  SoundEvents.ENTITY_WARDEN_SONIC_CHARGE,
+                        user.getSoundCategory(), 0.6f, 1.4f);
+            }
+        }
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 40;
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.SPEAR;
+    }
+
+    @Override
+    public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        if (!user.getWorld().isClient() && user instanceof  PlayerEntity player) {
+            int skillCooldown = 35;//(int) Config.getFloat("magistormCooldown", "UniqueEffects", ConfigDefaultValues.magistormCooldown);
+            float damageModifier = 0.7f;
+            float damage = (float) (HelperMethods.getAttackDamage(stack) * damageModifier);
+            float distance = 16f;
+            DamageSource damageSource = player.getDamageSources().playerAttack(player);
+
+            if (remainingUseTicks < 11) {
+                world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_WARDEN_SONIC_BOOM,
+                        user.getSoundCategory(), 0.8f, 1.1f);
+                HelperMethods.spawnDirectionalParticles((ServerWorld) world, ParticleTypes.SONIC_BOOM, player, 10, distance);
+                HelperMethods.damageEntitiesInTrajectory((ServerWorld) world, player, distance, damage, damageSource);
+                user.setVelocity(user.getRotationVector().negate().multiply(+1.1));
+                user.setVelocity(user.getVelocity().x, 0, user.getVelocity().z);
+            }
+        player.getItemCooldownManager().set(this, skillCooldown);
+
+        }
     }
 
     @Override

@@ -561,4 +561,59 @@ public class HelperMethods {
         }
     }
 
+    public static void spawnDirectionalParticles(ServerWorld world, ParticleEffect particle, Entity entity, int count, double distance) {
+        Vec3d startPos = entity.getPos().add(0, entity.getHeight() / 2.0, 0);
+
+        float pitch = entity.getPitch(1.0F);
+        float yaw = entity.getYaw(1.0F);
+
+        double pitchRadians = Math.toRadians(pitch);
+        double yawRadians = Math.toRadians(yaw);
+
+        double xDirection = -Math.sin(yawRadians) * Math.cos(pitchRadians);
+        double yDirection = -Math.sin(pitchRadians);
+        double zDirection = Math.cos(yawRadians) * Math.cos(pitchRadians);
+        Vec3d direction = new Vec3d(xDirection, yDirection, zDirection).normalize();
+
+        for (int i = 0; i < count; i++) {
+            double lerpFactor = (double) i / (count - 1);
+            Vec3d currentPos = startPos.add(direction.multiply(distance * lerpFactor));
+            world.spawnParticles(particle,
+                    currentPos.x, currentPos.y, currentPos.z,
+                    1,
+                    0, 0, 0,
+                    0.0);
+        }
+    }
+
+    public static void damageEntitiesInTrajectory(ServerWorld world, Entity sourceEntity, double distance, float damage, DamageSource damageSource) {
+        Vec3d startPos = sourceEntity.getPos().add(0, sourceEntity.getHeight() / 2.0, 0);
+        float pitch = sourceEntity.getPitch(1.0F);
+        float yaw = sourceEntity.getYaw(1.0F);
+
+        double pitchRadians = Math.toRadians(pitch);
+        double yawRadians = Math.toRadians(yaw);
+
+        double xDirection = -Math.sin(yawRadians) * Math.cos(pitchRadians);
+        double yDirection = -Math.sin(pitchRadians);
+        double zDirection = Math.cos(yawRadians) * Math.cos(pitchRadians);
+        Vec3d direction = new Vec3d(xDirection, yDirection, zDirection).normalize();
+
+        Vec3d endPos = startPos.add(direction.multiply(distance));
+
+        double boxSize = 0.5;
+        Box searchBox = new Box(startPos, endPos).expand(boxSize);
+
+        for (Entity entity : world.getOtherEntities(sourceEntity, searchBox)) {
+            Box entityBox = entity.getBoundingBox().expand(entity.getTargetingMargin());
+            if (entityBox.intersects(searchBox)) {
+                if ((sourceEntity instanceof LivingEntity livingEntity)
+                        && (entity instanceof LivingEntity livingTarget)
+                        && HelperMethods.checkFriendlyFire(livingTarget, livingEntity)) {
+                    livingTarget.damage(damageSource, damage);
+                }
+            }
+        }
+    }
+
 }

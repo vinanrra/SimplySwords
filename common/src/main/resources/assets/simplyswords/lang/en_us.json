@@ -120,6 +120,8 @@
   "item.simplyswords.decaying_relic":                                                                                              "Decaying relic",
   "item.simplyswords.magiscythe":                                                                                              "Magiscythe",
   "item.simplyswords.enigma":                                                                                              "Enigma",
+  "item.simplyswords.magispear":                                                                                              "Magispear",
+  "item.simplyswords.magiblade":                                                                                              "Magiblade",
 
 
   "item.simplyswords.runic_tablet":                                                                                     "Runic Tablet",
@@ -516,6 +518,11 @@
   "item.simplyswords.tampered_remnant_description4":                                                         "with somehow...",
   "item.simplyswords.magicythe.event":                                                                                 "Your Decaying Relic has begun making sounds",
   "item.simplyswords.magicythe.event2":                                                                               "Your Decaying Relic seems to be reacting to this area",
+  "item.simplyswords.magiblade.event":                                                                                 "Your Decaying Relic seems to be quivering",
+  "item.simplyswords.magiblade.event2":                                                                               "Your Decaying Relic seems gravitated to the block beneath you",
+  "item.simplyswords.magispear.event":                                                                                 "Your Decaying Relic seems to have been influenced by something",
+  "item.simplyswords.magispear.event2":                                                                               "Your Decaying Relic seems to be reacting to the darkness",
+
 
 
 
@@ -1181,6 +1188,10 @@
   "text.autoconfig.simplyswords_main.option.weapon_attributes.tempest_damageModifier":                                  "§6Tempest§7 damage modifier",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.flamewind_damageModifier":                                "§6Flamewind§7 damage modifier",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.ribboncleaver_damageModifier":                            "§6Ribboncleaver§7 damage modifier",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.magiscythe_damageModifier":                            "§6Magiscythe§7 damage modifier",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.enigma_damageModifier":                                   "§6Enigma§7 damage modifier",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.magispear_damageModifier":                            "§6Magispear§7 damage modifier",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.magiblade_damageModifier":                            "§6Magiblade§7 damage modifier",
 
   "text.autoconfig.simplyswords_main.option.weapon_attributes.brimstone_attackSpeed.@PrefixText" :                      "§6[Attack Speed Modifiers]§7\nRecommended range: -1.0 to -3.7, with -1.0 being fast and -3.7 being slow.",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.brimstone_attackSpeed":                                   "§6Brimstone§7 attack speed",
@@ -1219,6 +1230,11 @@
   "text.autoconfig.simplyswords_main.option.weapon_attributes.tempest_attackSpeed":                                     "§6Tempest§7 attack speed",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.flamewind_attackSpeed":                                   "§6Flamewind§7 attack speed",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.ribboncleaver_attackSpeed":                               "§6Ribboncleaver§7 attack speed",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.magiscythe_attackSpeed":                               "§6Magiscythe§7 attack speed",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.enigma_attackSpeed":                                      "§6Enigma§7 attack speed",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.magispear_attackSpeed":                               "§6Magispear§7 attack speed",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.magiblade_attackSpeed":                               "§6Magiblade§7 attack speed",
+
 
 
   "text.autoconfig.simplyswords_main.option.runic_effects.enableActiveDefence.@PrefixText" :                            "§a[Runic Power Blacklisting]§7\nSetting any of the below values to false will prevent that runic power from being obtainable.",

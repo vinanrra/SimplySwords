@@ -349,6 +349,8 @@ public class ConfigDefaultValues {
     public static float ribboncleaver_damageModifier = 7.0f;
     public static float magiscythe_damageModifier = 4.0f;
     public static float enigma_damageModifier = 7.0f;
+    public static float magispear_damageModifier = 4.0f;
+    public static float magiblade_damageModifier = 3.0f;
 
     
     public static float brimstone_attackSpeed = -2.8f;
@@ -389,6 +391,8 @@ public class ConfigDefaultValues {
     public static float ribboncleaver_attackSpeed = -3.2f;
     public static float magiscythe_attackSpeed = -2.4f;
     public static float enigma_attackSpeed = -3.2f;
+    public static float magispear_attackSpeed = -2.5f;
+    public static float magiblade_attackSpeed = -2.0f;
     
     // -- STATUS EFFECTS --
 
