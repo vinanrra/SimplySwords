@@ -2,10 +2,8 @@ package net.sweenus.simplyswords.fabric;
 
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerEntity;
-import net.spell_power.api.MagicSchool;
-import net.spell_power.api.attributes.SpellAttributes;
-
-import java.util.Random;
+import net.spell_power.api.SpellPower;
+import net.spell_power.api.SpellSchools;
 
 public class FabricHelperMethods {
 
@@ -18,15 +16,13 @@ public class FabricHelperMethods {
                 double attributePower = 0;
                 double damageOutput = 0.1;
 
-                // Fetch attributes
-                double lightningPower = player.getAttributeValue(SpellAttributes.POWER.get(MagicSchool.LIGHTNING).attribute);
-                double firePower =      player.getAttributeValue(SpellAttributes.POWER.get(MagicSchool.FIRE).attribute);
-                double frostPower =     player.getAttributeValue(SpellAttributes.POWER.get(MagicSchool.FROST).attribute);
-                double arcanePower =    player.getAttributeValue(SpellAttributes.POWER.get(MagicSchool.ARCANE).attribute);
-                double soulPower =      player.getAttributeValue(SpellAttributes.POWER.get(MagicSchool.SOUL).attribute);
-                double healingPower =   player.getAttributeValue(SpellAttributes.POWER.get(MagicSchool.HEALING).attribute);
-                double critChance =     player.getAttributeValue(SpellAttributes.CRITICAL_CHANCE.attribute) - 100;
-                double critDamage =     player.getAttributeValue(SpellAttributes.CRITICAL_DAMAGE.attribute) / 100;
+                // Fetch attributes (crit damage/chance is now handled internally in API via randomValue)
+                double lightningPower = SpellPower.getSpellPower(SpellSchools.LIGHTNING, player).randomValue();
+                double firePower =      SpellPower.getSpellPower(SpellSchools.FIRE, player).randomValue();
+                double frostPower =     SpellPower.getSpellPower(SpellSchools.FROST, player).randomValue();
+                double arcanePower =    SpellPower.getSpellPower(SpellSchools.ARCANE, player).randomValue();
+                double soulPower =      SpellPower.getSpellPower(SpellSchools.SOUL, player).randomValue();
+                double healingPower =   SpellPower.getSpellPower(SpellSchools.HEALING, player).randomValue();
 
                 if (magicSchool.contains("lightning"))
                     attributePower = lightningPower;
@@ -41,13 +37,8 @@ public class FabricHelperMethods {
                 else if (magicSchool.contains("healing"))
                     attributePower = healingPower;
 
-                int random = new Random().nextInt(100);
 
-                // Do math things
-                if (random < critChance)
-                    damageOutput = ((damageModifier * attributePower) * critDamage);
-                else
-                    damageOutput = (damageModifier * attributePower);
+                damageOutput = (damageModifier * attributePower);
 
                 return (float) damageOutput;
             }

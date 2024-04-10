@@ -105,7 +105,7 @@ public class EmberIreSwordItem extends UniqueSwordItem {
                 HelperMethods.spawnOrbitParticles((ServerWorld) world, targetEntity.getPos(), ParticleTypes.EXPLOSION, 1, 1 );
                 HelperMethods.spawnOrbitParticles((ServerWorld) world, targetEntity.getPos(), ParticleTypes.POOF, 1, 20 );
                 user.setVelocity(user.getRotationVector().negate().multiply(+1.1));
-                user.setVelocity(user.getVelocity().x, 0, user.getVelocity().z); // Prevent user flying to the heavens
+                user.setVelocity(user.getVelocity().x, 0, user.getVelocity().z);
                 user.velocityModified = true;
 
                 int fhitchance = (int) Config.getFloat("emberIreChance", "UniqueEffects", ConfigDefaultValues.emberIreChance);
