@@ -71,6 +71,7 @@ public class SimplySwords {
     public static WeaponAttributesConfig weaponAttributesConfig;
 
     public static String minimumEldritchEndVersion = "0.2.40";
+    public static String minimumSpellPowerVersion = "0.10.0+1.20.1";
 
     public static void init() {
 
