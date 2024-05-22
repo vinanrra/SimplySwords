@@ -869,7 +869,7 @@
   "item.simplyswords.enigmasworditem.tooltip7": "旋风造成的伤害随",
   "item.simplyswords.enigmasworditem.tooltip8": "敌人受困时间提升。",
 
-  "item.simplyswords.magibladesworditem.tooltip1": "独特效果：秘法冲击",
+  "item.simplyswords.magibladesworditem.tooltip1": "独特效果：秘法音爆",
   "item.simplyswords.magibladesworditem.tooltip2": "",
   "item.simplyswords.magibladesworditem.tooltip3": "秘法双头刀会不定时地",
   "item.simplyswords.magibladesworditem.tooltip4": "检测并击退靠近的生物。",
@@ -1582,11 +1582,11 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.enigmaChaseRadius":                                          "谜风 追踪范围",
 
   "text.autoconfig.simplyswords_main.option.unique_effects.magibladeCooldown.@PrefixText" :                             "§6[秘法双头刀]§7",
-  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeCooldown":                                          "秘法冲击 冷却时间",
-  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeSonicDistance":                                     "秘法冲击 射程",
-  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeDamageModifier":                                    "秘法冲击 伤害",
-  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeRepelChance":                                       "秘法冲击 检测概率",
-  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeRepelRadius":                                       "秘法冲击 检测范围",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeCooldown":                                          "秘法音爆 冷却时间",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeSonicDistance":                                     "秘法音爆 射程",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeDamageModifier":                                    "秘法音爆 伤害",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeRepelChance":                                       "秘法音爆 检测概率",
+  "text.autoconfig.simplyswords_main.option.unique_effects.magibladeRepelRadius":                                       "秘法音爆 检测范围",
 
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamCooldown.@PrefixText" :                              "§6[秘法之矛]§7",
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamCooldown":                                           "秘法跃击 冷却时间",
