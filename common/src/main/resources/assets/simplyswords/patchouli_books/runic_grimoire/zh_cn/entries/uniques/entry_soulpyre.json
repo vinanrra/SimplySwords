@@ -1,5 +1,5 @@
 {
-  "name": "燃魂战斧",
+  "name": "葬魂",
   "icon": "simplyswords:soulpyre",
   "advancement": "simplyswords:soulpyre",
   "category": "simplyswords:category_unique_weapons",
@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "simplyswords:soulpyre",
-      "text": "燃魂战斧是一把强大的上古战斧，据说它包含着灵魂、火焰、移形换位的多重力量。这把战斧据说是由一种神秘的稀有金属锻造的，注入了无数个灵魂。"
+      "text": "葬魂是一把强大的上古战斧，据说它包含着灵魂、火焰、移形换位的多重力量。这把战斧据说是由一种神秘的稀有金属锻造的，注入了无数个灵魂。"
 
     },
     {
