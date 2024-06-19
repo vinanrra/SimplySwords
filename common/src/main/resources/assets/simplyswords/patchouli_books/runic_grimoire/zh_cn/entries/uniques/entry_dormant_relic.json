@@ -1,5 +1,5 @@
 {
-  "name": "古遗物长剑",
+  "name": "沉眠遗剑",
   "icon": "simplyswords:dormant_relic",
   "advancement": "simplyswords:dormant_relic",
   "category": "simplyswords:category_unique_weapons",
@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "simplyswords:dormant_relic",
-      "text": "沉睡的古遗物长剑是一把特殊的神秘的武器。它初看是一把普通的不起眼的剑，但它可以通过合成，逐渐解封隐藏的力量。"
+      "text": "沉睡遗剑是一把特殊的神秘的武器。它初看是一把普通的不起眼的剑，但它可以通过合成，逐渐解封隐藏的力量。"
     },
     {
       "type": "patchouli:crafting",
