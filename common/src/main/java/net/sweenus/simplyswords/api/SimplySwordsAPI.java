@@ -354,7 +354,7 @@ public class SimplySwordsAPI {
 
         NbtCompound nbt = stack.getOrCreateNbt();
 
-        if (nbt.getString("runic_power").isEmpty() && nbt.getString("nether_power").isEmpty()) {
+        if (nbt.getString("runic_power").isEmpty() && nbt.getString("nether_power").isEmpty() && Config.getBoolean("enableUniqueGemSockets", "General", ConfigDefaultValues.enableUniqueGemSockets)) {
             float socketChance = (float) (Math.random() * 100);
             float socketChance2 = (float) (Math.random() * 100);
 

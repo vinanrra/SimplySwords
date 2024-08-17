@@ -798,5 +798,30 @@
     "sounds": [
       "simplyswords:object_impact_thud_repeat"
     ]
+  },
+  "activate_plinth_03": {
+    "sounds": [
+      "simplyswords:activate_plinth_03"
+    ]
+  },
+  "dark_activation_distorted": {
+    "sounds": [
+      "simplyswords:dark_activation_distorted"
+    ]
+  },
+  "distortion_arc_01": {
+    "sounds": [
+      "simplyswords:distortion_arc_01"
+    ]
+  },
+  "distortion_arc_02": {
+    "sounds": [
+      "simplyswords:distortion_arc_02"
+    ]
+  },
+  "distortion_arc_03": {
+    "sounds": [
+      "simplyswords:distortion_arc_03"
+    ]
   }
 }

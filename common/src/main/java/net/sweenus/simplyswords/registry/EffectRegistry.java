@@ -112,4 +112,7 @@ public class EffectRegistry {
     public static final RegistrySupplier<StatusEffect> MAGISLAM = EFFECT.register("magislam", () ->
             new MagislamEffect(StatusEffectCategory.BENEFICIAL, 1124687));
 
+    public static final RegistrySupplier<StatusEffect> ASTRAL_SHIFT = EFFECT.register("astral_shift", () ->
+            new AstralShiftEffect(StatusEffectCategory.BENEFICIAL, 1124687));
+
 }

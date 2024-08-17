@@ -6,6 +6,7 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
@@ -28,8 +29,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 
 import java.util.List;
 
-public class RibboncleaverSwordItem extends UniqueSwordItem {
-    public RibboncleaverSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
+public class CaelestisSwordItem extends UniqueSwordItem {
+    public CaelestisSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
@@ -48,21 +49,17 @@ public class RibboncleaverSwordItem extends UniqueSwordItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         int skillCooldown = (int) Config.getFloat("ribbonwrathCooldown", "UniqueEffects", ConfigDefaultValues.ribbonwrathCooldown);
-        int resilienceAmplifier = (int) Config.getFloat("ribbonwrathResilienceAmplifier", "UniqueEffects", ConfigDefaultValues.ribbonwrathResilienceAmplifier);
 
 
-        world.playSound(null, user.getBlockPos(), SoundRegistry.ELEMENTAL_BOW_EARTH_SHOOT_IMPACT_03.get(),
+        world.playSound(null, user.getBlockPos(), SoundRegistry.ACTIVATE_PLINTH_03.get(),
                 user.getSoundCategory(), 0.4f, 1.3f);
-        if (user.isOnGround())
-            world.playSound(null, user.getBlockPos(), SoundRegistry.OBJECT_IMPACT_THUD_REPEAT.get(),
-                    user.getSoundCategory(), 0.5f, 1.2f);
-        user.setVelocity(user.getRotationVector().multiply(+1.7));
-        user.setVelocity(user.getVelocity().x, 0, user.getVelocity().z); // Prevent user flying to the heavens
-        user.velocityModified = true;
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RIBBONCLEAVE.get(),
-                15, 0, false, false, true));
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RESILIENCE.get(),
-                60, resilienceAmplifier, false, false, true));
+
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.ASTRAL_SHIFT.get(),
+                180, 0, false, false, true));
+        user.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS,
+                180, 0, false, false, true));
+        user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,
+                180, 0, false, false, true));
         user.getItemCooldownManager().set(this, skillCooldown);
 
         return super.use(world, user, hand);

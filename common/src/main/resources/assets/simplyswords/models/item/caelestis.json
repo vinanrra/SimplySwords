@@ -1,0 +1,7 @@
+{
+	"parent": "simplyswords:item/template_claymore_flipped",
+	"textures": {
+		"layer0": "simplyswords:item/caelestis_hilt_strip",
+		"layer1": "simplyswords:item/caelestis_blade_strip"
+	}
+}

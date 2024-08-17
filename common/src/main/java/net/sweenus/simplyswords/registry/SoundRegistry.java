@@ -333,5 +333,15 @@ public class SoundRegistry {
             SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "object_impact_thud")));
     public static final RegistrySupplier<SoundEvent> OBJECT_IMPACT_THUD_REPEAT = SOUND.register("object_impact_thud_repeat", () ->
             SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "object_impact_thud_repeat")));
+    public static final RegistrySupplier<SoundEvent> ACTIVATE_PLINTH_03 = SOUND.register("activate_plinth_03", () ->
+            SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "activate_plinth_03")));
+    public static final RegistrySupplier<SoundEvent> DARK_ACTIVATION_DISTORTED = SOUND.register("dark_activation_distorted", () ->
+            SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "dark_activation_distorted")));
+    public static final RegistrySupplier<SoundEvent> DISTORTION_ARC_01 = SOUND.register("distortion_arc_01", () ->
+            SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "distortion_arc_01")));
+    public static final RegistrySupplier<SoundEvent> DISTORTION_ARC_02 = SOUND.register("distortion_arc_02", () ->
+            SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "distortion_arc_02")));
+    public static final RegistrySupplier<SoundEvent> DISTORTION_ARC_03 = SOUND.register("distortion_arc_03", () ->
+            SoundEvent.of(new Identifier(SimplySwords.MOD_ID, "distortion_arc_03")));
 
 }

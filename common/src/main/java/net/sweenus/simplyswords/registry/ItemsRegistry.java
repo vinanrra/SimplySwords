@@ -950,5 +950,11 @@ public class ItemsRegistry {
                     magiblade_attackspeed,
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
 
+    public static final RegistrySupplier<CaelestisSwordItem> CAELESTIS = ITEM.register( "caelestis", () ->
+            new CaelestisSwordItem(ModToolMaterial.UNIQUE,
+                    (int) (enigma_damage_modifier),
+                    enigma_attackspeed,
+                    new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
+
 
 }

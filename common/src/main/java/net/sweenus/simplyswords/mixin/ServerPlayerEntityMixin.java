@@ -17,6 +17,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -53,6 +54,31 @@ public abstract class ServerPlayerEntityMixin {
                 if (!player.hasStatusEffect(EffectRegistry.MAGISLAM.get()))
                     serverPlayer.getWorld().playSoundFromEntity(null, serverPlayer, SoundRegistry.MAGIC_SWORD_PARRY_03.get(),
                         SoundCategory.PLAYERS, 0.7f, 0.5f + (serverPlayer.getRandom().nextBetween(1, 5) * 0.1f));
+            }
+
+            if (serverPlayer.hasStatusEffect(EffectRegistry.ASTRAL_SHIFT.get())) {
+                StatusEffectInstance astralShiftInstance = player.getStatusEffect(EffectRegistry.ASTRAL_SHIFT.get());
+                if (astralShiftInstance != null) {
+                    int duration = astralShiftInstance.getDuration();
+
+                    if (duration > 10) {
+                        HelperMethods.incrementStatusEffect(serverPlayer, EffectRegistry.ASTRAL_SHIFT.get(), duration, (int) Math.max(1, (amount / 10)), 99);
+
+                        SoundEvent[] soundOptions = new SoundEvent[]{
+                                SoundRegistry.DISTORTION_ARC_01.get(),
+                                SoundRegistry.DISTORTION_ARC_02.get(),
+                                SoundRegistry.DISTORTION_ARC_03.get()
+                        };
+
+                        Random random = new Random();
+                        SoundEvent soundRandom = soundOptions[random.nextInt(soundOptions.length)];
+
+                        serverPlayer.getWorld().playSoundFromEntity(null, serverPlayer, soundRandom,
+                                SoundCategory.PLAYERS, 0.7f, 0.5f + (serverPlayer.getRandom().nextBetween(1, 5) * 0.1f));
+
+                        cir.setReturnValue(false);
+                    }
+                }
             }
 
             // Magiscythe trigger
