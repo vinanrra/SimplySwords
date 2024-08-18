@@ -74,6 +74,8 @@ public class BattleStandardDarkEntity extends PathAwareEntity {
                     HelperMethods.incrementStatusEffect(ownerEntity, StatusEffects.HASTE, 60, 1, 7);
             }
             if (ownerEntity != null && standardType != null) {
+                if (!ownerEntity.isAlive())
+                    this.setHealth(this.getHealth() - 1000);
                 int radius = 6;
                 if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, ownerEntity, "soul") > 0)
                     abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, ownerEntity, "soul");

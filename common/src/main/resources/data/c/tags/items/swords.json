@@ -118,7 +118,10 @@
     "simplyswords:ribboncleaver",
     "simplyswords:decaying_relic",
     "simplyswords:magiscythe",
+    "simplyswords:magiblade",
+    "simplyswords:magispear",
     "simplyswords:enigma",
+    "simplyswords:caelestis",
     {
       "id": "simplyswords:dreadtide",
       "required": false

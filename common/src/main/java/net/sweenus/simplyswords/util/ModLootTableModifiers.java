@@ -196,6 +196,8 @@ public class ModLootTableModifiers {
                             pool.with(ItemEntry.builder(ItemsRegistry.FLAMEWIND.get()));
                         if (Config.getBoolean("enableRibboncleaver", "Loot", ConfigDefaultValues.enableRibboncleaver))
                             pool.with(ItemEntry.builder(ItemsRegistry.RIBBONCLEAVER.get()));
+                        if (Config.getBoolean("enableCaelestis", "Loot", ConfigDefaultValues.enableCaelestis))
+                            pool.with(ItemEntry.builder(ItemsRegistry.CAELESTIS.get()));
 
                         context.addPool(pool);
                     }
@@ -273,6 +275,8 @@ public class ModLootTableModifiers {
                             pool.with(ItemEntry.builder(ItemsRegistry.FLAMEWIND.get()));
                         if (Config.getBoolean("enableRibboncleaver", "Loot", ConfigDefaultValues.enableRibboncleaver))
                             pool.with(ItemEntry.builder(ItemsRegistry.RIBBONCLEAVER.get()));
+                        if (Config.getBoolean("enableCaelestis", "Loot", ConfigDefaultValues.enableCaelestis))
+                            pool.with(ItemEntry.builder(ItemsRegistry.CAELESTIS.get()));
 
                         context.addPool(pool);
                     }

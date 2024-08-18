@@ -17,7 +17,6 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -25,9 +24,11 @@ import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
+import net.sweenus.simplyswords.item.custom.CaelestisSwordItem;
 import net.sweenus.simplyswords.registry.EffectRegistry;
 import net.sweenus.simplyswords.registry.ItemsRegistry;
 import net.sweenus.simplyswords.registry.SoundRegistry;
+import net.sweenus.simplyswords.util.AbilityMethods;
 import net.sweenus.simplyswords.util.HelperMethods;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -63,21 +64,16 @@ public abstract class ServerPlayerEntityMixin {
 
                     if (duration > 10) {
                         HelperMethods.incrementStatusEffect(serverPlayer, EffectRegistry.ASTRAL_SHIFT.get(), duration, (int) Math.max(1, (amount / 10)), 99);
-
-                        SoundEvent[] soundOptions = new SoundEvent[]{
-                                SoundRegistry.DISTORTION_ARC_01.get(),
-                                SoundRegistry.DISTORTION_ARC_02.get(),
-                                SoundRegistry.DISTORTION_ARC_03.get()
-                        };
-
-                        Random random = new Random();
-                        SoundEvent soundRandom = soundOptions[random.nextInt(soundOptions.length)];
-
-                        serverPlayer.getWorld().playSoundFromEntity(null, serverPlayer, soundRandom,
-                                SoundCategory.PLAYERS, 0.7f, 0.5f + (serverPlayer.getRandom().nextBetween(1, 5) * 0.1f));
-
+                        AbilityMethods.astralShiftSounds(serverPlayer);
                         cir.setReturnValue(false);
                     }
+                }
+            }
+
+            if (serverPlayer.getMainHandStack().getItem() instanceof CaelestisSwordItem) {
+                if (AbilityMethods.astralShiftPassive(serverPlayer)) {
+                    AbilityMethods.astralShiftSounds(serverPlayer);
+                    cir.setReturnValue(false);
                 }
             }
 
@@ -169,7 +165,7 @@ public abstract class ServerPlayerEntityMixin {
                     ItemStack stackInSlot = serverPlayer.getInventory().getStack(i);
 
                     if (stackInSlot.isOf(containedRemnant.getItem()) || stackInSlot.isOf(tamperedRemnant.getItem())) {
-                        if (chance < 6 && Config.getBoolean("enableContainedRemnants", "Loot", ConfigDefaultValues.enableContainedRemnants)) {
+                        if (chance < 21 && Config.getBoolean("enableContainedRemnants", "Loot", ConfigDefaultValues.enableContainedRemnants)) {
                             List<Item> itemsFromTag = Registries.ITEM.stream()
                                     .filter(item -> item.getDefaultStack().isIn(desiredItemsTag))
                                     .toList();

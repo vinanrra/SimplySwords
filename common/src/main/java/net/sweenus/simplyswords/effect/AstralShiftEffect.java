@@ -12,6 +12,8 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Box;
+import net.sweenus.simplyswords.config.Config;
+import net.sweenus.simplyswords.config.ConfigDefaultValues;
 import net.sweenus.simplyswords.registry.SoundRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
 
@@ -34,9 +36,9 @@ public class AstralShiftEffect extends StatusEffect {
                         double x = entity.getX();
                         double y = entity.getY();
                         double z = entity.getZ();
-                        float damageMulti = 0.8f; //Config.getFloat("magistormDamage", "UniqueEffects", ConfigDefaultValues.magistormDamage);
-                        float damageMax = 300;
-                        double radius = 8; //Config.getFloat("magistormRadius", "UniqueEffects", ConfigDefaultValues.magistormRadius);
+                        float damageMulti = (int) Config.getFloat("astralShiftDamageModifier", "UniqueEffects", ConfigDefaultValues.astralShiftDamageModifier);
+                        float damageMax = (int) Config.getFloat("astralShiftDamageMax", "UniqueEffects", ConfigDefaultValues.astralShiftDamageMax);
+                        double radius = 8;
 
                         float damage = Math.min((amplifier) * damageMulti, damageMax);
 
@@ -59,6 +61,7 @@ public class AstralShiftEffect extends StatusEffect {
                                 HelperMethods.spawnRainingParticles(world, ParticleTypes.WARPED_SPORE, target, 4, 2);
                                 HelperMethods.spawnOrbitParticles(world, target.getPos(), ParticleTypes.WARPED_SPORE, 0.5, 6);
                                 HelperMethods.spawnWaistHeightParticles(world, ParticleTypes.SMOKE, player, target, 15);
+                                HelperMethods.spawnRainingParticles(world, ParticleTypes.EXPLOSION, target, 2, 1);
                             }
                         }
                         entity.removeStatusEffect(this);

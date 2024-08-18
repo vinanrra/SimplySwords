@@ -122,6 +122,7 @@
   "item.simplyswords.enigma":                                                                                              "Enigma",
   "item.simplyswords.magispear":                                                                                              "Magispear",
   "item.simplyswords.magiblade":                                                                                              "Magiblade",
+  "item.simplyswords.caelestis":                                                                                              "Caelestis",
 
 
   "item.simplyswords.runic_tablet":                                                                                     "Runic Tablet",
@@ -512,10 +513,16 @@
   "item.simplyswords.contained_remnant_description4":                                                         "when in close proximity to you.",
   "item.simplyswords.contained_remnant_description5":                                                         "Keeping this item in your inventory",
   "item.simplyswords.contained_remnant_description6":                                                         "may yield further insights.",
+  "item.simplyswords.contained_remnant_description7":                                                         "Try keeping this in your inventory",
+  "item.simplyswords.contained_remnant_description8":                                                         "alongside a Runic Tablet while",
+  "item.simplyswords.contained_remnant_description9":                                                         "exploring the End dimension.",
   "item.simplyswords.contained_remnant.event":                                                                    "A Remnant in your inventory seems to have changed form",
   "item.simplyswords.contained_remnant.event2":                                                                  "A Remnant in your inventory is acting strangely",
   "item.simplyswords.tampered_remnant_description3":                                                         "It appears to have been tampered",
   "item.simplyswords.tampered_remnant_description4":                                                         "with somehow...",
+  "item.simplyswords.decayingrelicsworditem.tooltip1":                                                         "Try keeping this in your inventory",
+  "item.simplyswords.decayingrelicsworditem.tooltip2":                                                         "while exploring the deepest,",
+  "item.simplyswords.decayingrelicsworditem.tooltip3":                                                         "darkest depths of the Overworld.",
   "item.simplyswords.magicythe.event":                                                                                 "Your Decaying Relic has begun making sounds",
   "item.simplyswords.magicythe.event2":                                                                               "Your Decaying Relic seems to be reacting to this area",
   "item.simplyswords.magiblade.event":                                                                                 "Your Decaying Relic seems to be quivering",
@@ -845,7 +852,7 @@
   "item.simplyswords.ribboncleaversworditem.tooltip6":                                                                  "the next few incoming hits,",
   "item.simplyswords.ribboncleaversworditem.tooltip7":                                                                  "gaining knockback resistance,",
   "item.simplyswords.ribboncleaversworditem.tooltip8":                                                                  "and causing your next attack",
-  "item.simplyswords.ribboncleaversworditem.tooltip9":                                                                  "to deal 200% damage to a",
+  "item.simplyswords.ribboncleaversworditem.tooltip9":                                                                  "to deal +95% damage to a",
   "item.simplyswords.ribboncleaversworditem.tooltip10":                                                                 "single target.",
 
   "item.simplyswords.magiscythesworditem.tooltip1":                                                                                       "Unique Effect: Magistorm",
@@ -889,6 +896,19 @@
   "item.simplyswords.magispearsworditem.tooltip7":                                                                                       "followed by a slam attack,",
   "item.simplyswords.magispearsworditem.tooltip8":                                                                                       "damaging nearby enemies.",
   "item.simplyswords.magispearsworditem.tooltip9":                                                                                       "You are immune while leaping.",
+
+  "item.simplyswords.caelestissworditem.tooltip1":                                                                                       "Unique Effect: Astral Shift",
+  "item.simplyswords.caelestissworditem.tooltip2":                                                                                       "While wielded, grants a chance",
+  "item.simplyswords.caelestissworditem.tooltip3":                                                                                       "to completely avoid incoming",
+  "item.simplyswords.caelestissworditem.tooltip4":                                                                                       "damage.",
+  "item.simplyswords.caelestissworditem.tooltip5":                                                                                       "Briefly step into the astral plane,",
+  "item.simplyswords.caelestissworditem.tooltip6":                                                                                       "becoming immune to damage for",
+  "item.simplyswords.caelestissworditem.tooltip7":                                                                                       "%ds",
+  "item.simplyswords.caelestissworditem.tooltip8":                                                                                       "Upon leaving the astral plane,",
+  "item.simplyswords.caelestissworditem.tooltip9":                                                                                       "release a violent explosion,",
+  "item.simplyswords.caelestissworditem.tooltip10":                                                                                      "dealing area damage relative",
+  "item.simplyswords.caelestissworditem.tooltip11":                                                                                       "to the damage negated while",
+  "item.simplyswords.caelestissworditem.tooltip12":                                                                                       "in the astral plane.",
 
 
   "item.simplyswords.dormantrelicsworditem.tooltip2":                                                                   "A faint power seems to emanate from within.",
@@ -1068,6 +1088,7 @@
 
   "item.simplyswords.common.blacklisteffect":                                                                           "ABILITY DISABLED",
   "item.simplyswords.common.showtooltip":                                                                               "- Hold §2ALT§7 to view gem sockets -",
+  "item.simplyswords.common.showtooltip.info":                                                                               "- Hold §2ALT§7 for more info -",
   "item.simplyswords.compat.mythicmetals.regrowth":                                                                     "Regrowth",
   "item.simplyswords.compat.mythicmetals.looting":                                                                      "Bonus Looting",
 
@@ -1214,6 +1235,7 @@
   "text.autoconfig.simplyswords_main.option.weapon_attributes.enigma_damageModifier":                                   "§6Enigma§7 damage modifier",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magispear_damageModifier":                            "§6Magispear§7 damage modifier",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magiblade_damageModifier":                            "§6Magiblade§7 damage modifier",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.caelestis_damageModifier":                              "§6Caelestis§7 damage modifier",
 
   "text.autoconfig.simplyswords_main.option.weapon_attributes.brimstone_attackSpeed.@PrefixText" :                      "§6[Attack Speed Modifiers]§7\nRecommended range: -1.0 to -3.7, with -1.0 being fast and -3.7 being slow.",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.brimstone_attackSpeed":                                   "§6Brimstone§7 attack speed",
@@ -1256,6 +1278,7 @@
   "text.autoconfig.simplyswords_main.option.weapon_attributes.enigma_attackSpeed":                                      "§6Enigma§7 attack speed",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magispear_attackSpeed":                               "§6Magispear§7 attack speed",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magiblade_attackSpeed":                               "§6Magiblade§7 attack speed",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.caelestis_attackSpeed":                               "§6Caelestis§7 attack speed",
 
 
 
@@ -1339,6 +1362,7 @@
   "text.autoconfig.simplyswords_main.option.loot.enableTempest":                                                        "Tempest can be looted",
   "text.autoconfig.simplyswords_main.option.loot.enableFlamewind":                                                      "Flamewind can be looted",
   "text.autoconfig.simplyswords_main.option.loot.enableRibboncleaver":                                                  "Ribboncleaver can be looted",
+  "text.autoconfig.simplyswords_main.option.loot.enableCaelestis":                                                        "Caelestis can be looted",
 
   "text.autoconfig.simplyswords_main.option.general.enableWeaponImpactSounds":                                          "Enable weapon impact sounds",
   "text.autoconfig.simplyswords_main.option.general.weaponImpactSoundsVolume":                                          "Weapon impact sounds volume",
@@ -1595,6 +1619,13 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamDamageModifier":                                                     "Magislam damage modifier",
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamMagicChance":                                                   "Magislam magic chance",
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamMagicModifier":                                          "Magislam magic modifier",
+
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftCooldown.@PrefixText" :                           "§6[Caelestis]§7",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftCooldown":                                                "Astral Shift cooldown",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftDuration":                                                  "Astral Shift duration",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftDamageModifier":                                      "Astral Shift damage modifier",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftDamageMax":                                             "Astral Shift damage max",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftChance":                                                    "Astral Shift avoidance chance",
 
 
   "text.autoconfig.simplyswords_main.option.runic_effects.swiftnessChance.@PrefixText" :                                "§b[Swiftness]§7",

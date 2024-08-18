@@ -1,7 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import dev.architectury.platform.Platform;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -10,20 +8,16 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.particle.BlockStateParticleEffect;
-import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
 import net.sweenus.simplyswords.item.UniqueSwordItem;
 import net.sweenus.simplyswords.registry.EffectRegistry;
-import net.sweenus.simplyswords.registry.ItemsRegistry;
 import net.sweenus.simplyswords.registry.SoundRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
 
@@ -48,18 +42,19 @@ public class CaelestisSwordItem extends UniqueSwordItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        int skillCooldown = (int) Config.getFloat("ribbonwrathCooldown", "UniqueEffects", ConfigDefaultValues.ribbonwrathCooldown);
+        int skillCooldown = (int) Config.getFloat("astralShiftCooldown", "UniqueEffects", ConfigDefaultValues.astralShiftCooldown);
+        int duration = (int) Config.getFloat("astralShiftDuration", "UniqueEffects", ConfigDefaultValues.astralShiftDuration);
 
 
         world.playSound(null, user.getBlockPos(), SoundRegistry.ACTIVATE_PLINTH_03.get(),
                 user.getSoundCategory(), 0.4f, 1.3f);
 
         user.addStatusEffect(new StatusEffectInstance(EffectRegistry.ASTRAL_SHIFT.get(),
-                180, 0, false, false, true));
+                duration, 0, false, false, true));
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS,
-                180, 0, false, false, true));
+                duration, 0, false, false, true));
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS,
-                180, 0, false, false, true));
+                duration, 0, false, false, true));
         user.getItemCooldownManager().set(this, skillCooldown);
 
         return super.use(world, user, hand);
@@ -69,44 +64,8 @@ public class CaelestisSwordItem extends UniqueSwordItem {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (stepMod > 0) stepMod--;
         if (stepMod <= 0) stepMod = 7;
-        //HelperMethods.createFootfalls(entity, stack, world, stepMod, ParticleTypes.FALLING_OBSIDIAN_TEAR,
-        //        ParticleTypes.MYCELIUM, ParticleTypes.MYCELIUM, true);
-
-        //Drag weapon particles
-        if (entity.isOnGround() && Platform.isModLoaded("bettercombat") && HelperMethods.isWalking(entity)
-                && entity instanceof PlayerEntity player) {
-            if (player.getMainHandStack().isOf(ItemsRegistry.RIBBONCLEAVER.get())) {
-
-                BlockState blockState = entity.getSteppingBlockState();
-                ParticleEffect particleEffect = new BlockStateParticleEffect(ParticleTypes.BLOCK, blockState);
-
-                double bodyRadians = Math.toRadians(entity.getBodyYaw() + 180);
-                Vec3d backwardDirection = new Vec3d(-Math.sin(bodyRadians), 0, Math.cos(bodyRadians)).multiply(1.1);
-
-                double strafeRadians = Math.toRadians(entity.getBodyYaw() + 90);
-                Vec3d strafeDirection = new Vec3d(-Math.sin(strafeRadians), 0, Math.cos(strafeRadians));
-
-                Vec3d movementVector = entity.getVelocity();
-                double strafeMagnitude = movementVector.dotProduct(strafeDirection.normalize());
-
-                double pivotOffsetFactor = 3;
-                Vec3d pivotOffset = strafeDirection.multiply(strafeMagnitude * pivotOffsetFactor);
-
-                Vec3d adjustedBackwardDirection = backwardDirection.subtract(pivotOffset);
-
-                Vec3d handPosOffset = entity.getHandPosOffset(stack.getItem());
-                double particleX = entity.getX() + adjustedBackwardDirection.x + handPosOffset.getX();
-                double particleY = entity.getY() + handPosOffset.getY();
-                double particleZ = entity.getZ() + adjustedBackwardDirection.z + handPosOffset.getZ();
-
-                particleY = entity.isOnGround() ? entity.getY() : particleY;
-
-                world.addParticle(particleEffect, particleX, particleY, particleZ, 0, 0.0, 0);
-                world.addParticle(ParticleTypes.POOF, particleX, particleY, particleZ, 0, 0.0, 0);
-
-            }
-        }
-
+        HelperMethods.createFootfalls(entity, stack, world, stepMod, ParticleTypes.ENCHANT,
+                ParticleTypes.ENCHANT, ParticleTypes.MYCELIUM, true);
         super.inventoryTick(stack, world, entity, slot, selected);
     }
 
@@ -117,18 +76,22 @@ public class CaelestisSwordItem extends UniqueSwordItem {
         Style TEXT = HelperMethods.getStyle("text");
 
         tooltip.add(Text.literal(""));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip1").setStyle(ABILITY));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip2").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip3").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip4").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip1").setStyle(ABILITY));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip2").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip3").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip4").setStyle(TEXT));
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.onrightclick").setStyle(RIGHTCLICK));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip5").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip6").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip7").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip8").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip9").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.ribboncleaversworditem.tooltip10").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip5").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip6").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip7",
+                (int) Config.getFloat("astralShiftDuration", "UniqueEffects", ConfigDefaultValues.astralShiftDuration) / 20).setStyle(TEXT));
+        tooltip.add(Text.literal(""));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip8").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip9").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip10").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip11").setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.caelestissworditem.tooltip12").setStyle(TEXT));
 
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
     }

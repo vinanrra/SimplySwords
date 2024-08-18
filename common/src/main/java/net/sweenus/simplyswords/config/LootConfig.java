@@ -56,6 +56,7 @@ public class LootConfig implements ConfigData {
     public boolean enableTempest = true;
     public boolean enableFlamewind = true;
     public boolean enableRibboncleaver = true;
+    public boolean enableCaelestis = true;
 
 
 

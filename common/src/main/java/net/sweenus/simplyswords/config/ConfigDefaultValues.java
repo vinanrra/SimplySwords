@@ -239,6 +239,12 @@ public class ConfigDefaultValues {
     public static float magislamDamageModifier = 2.0f;
     public static float magislamMagicChance = 35f;
     public static float magislamMagicModifier = 0.5f;
+
+    public static float astralShiftCooldown = 420;
+    public static float astralShiftDuration = 100f;
+    public static float astralShiftDamageModifier = 1.0f;
+    public static float astralShiftDamageMax = 300f;
+    public static float astralShiftChance = 5f;
     
     // -- WEAPON ATTRIBUTES -- //
 
@@ -363,6 +369,7 @@ public class ConfigDefaultValues {
     public static float enigma_damageModifier = 7.0f;
     public static float magispear_damageModifier = 4.0f;
     public static float magiblade_damageModifier = 3.0f;
+    public static float caelestis_damageModifier = 6.0f;
 
     
     public static float brimstone_attackSpeed = -2.8f;
@@ -405,6 +412,7 @@ public class ConfigDefaultValues {
     public static float enigma_attackSpeed = -3.2f;
     public static float magispear_attackSpeed = -2.5f;
     public static float magiblade_attackSpeed = -2.0f;
+    public static float caelestis_attackSpeed = -2.9f;
     
     // -- STATUS EFFECTS --
 
@@ -555,6 +563,7 @@ public class ConfigDefaultValues {
     public static boolean enableTempest = true;
     public static boolean enableFlamewind = true;
     public static boolean enableRibboncleaver = true;
+    public static boolean enableCaelestis = true;
     
     // -- GENERAL CONFIG --
 

@@ -109,6 +109,7 @@ public class ItemsRegistry {
     static float enigma_attackspeed = Config.getFloat("enigma_attackSpeed", "WeaponAttributes", ConfigDefaultValues.enigma_attackSpeed);
     static float magispear_attackspeed = Config.getFloat("magispear_attackSpeed", "WeaponAttributes", ConfigDefaultValues.magispear_attackSpeed);
     static float magiblade_attackspeed = Config.getFloat("magiblade_attackSpeed", "WeaponAttributes", ConfigDefaultValues.magiblade_attackSpeed);
+    static float caelestis_attackspeed = Config.getFloat("caelestis_attackSpeed", "WeaponAttributes", ConfigDefaultValues.caelestis_attackSpeed);
 
 
 
@@ -151,6 +152,7 @@ public class ItemsRegistry {
     static float enigma_damage_modifier = Config.getFloat("enigma_damageModifier", "WeaponAttributes", ConfigDefaultValues.enigma_damageModifier);
     static float magispear_damage_modifier = Config.getFloat("magispear_damageModifier", "WeaponAttributes", ConfigDefaultValues.magispear_damageModifier);
     static float magiblade_damage_modifier = Config.getFloat("magiblade_damageModifier", "WeaponAttributes", ConfigDefaultValues.magiblade_damageModifier);
+    static float caelestis_damage_modifier = Config.getFloat("caelestis_damageModifier", "WeaponAttributes", ConfigDefaultValues.caelestis_damageModifier);
 
 
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(SimplySwords.MOD_ID, RegistryKeys.ITEM);
@@ -952,8 +954,8 @@ public class ItemsRegistry {
 
     public static final RegistrySupplier<CaelestisSwordItem> CAELESTIS = ITEM.register( "caelestis", () ->
             new CaelestisSwordItem(ModToolMaterial.UNIQUE,
-                    (int) (enigma_damage_modifier),
-                    enigma_attackspeed,
+                    (int) (caelestis_damage_modifier),
+                    caelestis_attackspeed,
                     new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS).rarity(Rarity.EPIC).fireproof()));
 
 

@@ -1,5 +1,6 @@
 package net.sweenus.simplyswords.item.custom;
 
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -9,10 +10,12 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.sweenus.simplyswords.item.UniqueSwordItem;
+import net.sweenus.simplyswords.registry.ItemsRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
 
 import java.util.List;
@@ -50,6 +53,16 @@ public class DormantRelicSwordItem extends UniqueSwordItem {
 
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.dormantrelicsworditem.tooltip2").setStyle(TEXT));
+        if (this.asItem().equals(ItemsRegistry.DECAYING_RELIC.get())) {
+            tooltip.add(Text.literal(""));
+            if (Screen.hasAltDown()) {
+                tooltip.add(Text.translatable("item.simplyswords.decayingrelicsworditem.tooltip1").formatted(Formatting.GRAY));
+                tooltip.add(Text.translatable("item.simplyswords.decayingrelicsworditem.tooltip2").formatted(Formatting.GRAY));
+                tooltip.add(Text.translatable("item.simplyswords.decayingrelicsworditem.tooltip3").formatted(Formatting.GRAY));
+            } else {
+                tooltip.add(Text.translatable("item.simplyswords.common.showtooltip.info").formatted(Formatting.GRAY));
+            }
+        }
 
         super.appendTooltip(itemStack, world, tooltip, tooltipContext);
     }

@@ -88,6 +88,8 @@ public class BattleStandardEntity extends PathAwareEntity {
                 if (ownerEntity == null) this.setHealth(this.getHealth() - 1000);
             }
             if (ownerEntity != null && standardType != null) {
+                if (!ownerEntity.isAlive())
+                    this.setHealth(this.getHealth() - 1000);
                 int radius = 6;
                 if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, ownerEntity, "fire") > 0) {
                     abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, ownerEntity, "fire");

@@ -254,4 +254,11 @@ public class UniqueEffectsConfig implements ConfigData {
     public float magislamMagicChance = 35f;
     public float magislamMagicModifier = 0.5f;
 
+    @ConfigEntry.Gui.PrefixText
+    public float astralShiftCooldown = 420;
+    public float astralShiftDuration = 100f;
+    public float astralShiftDamageModifier = 1.0f;
+    public float astralShiftDamageMax = 300f;
+    public float astralShiftChance = 5f;
+
 }

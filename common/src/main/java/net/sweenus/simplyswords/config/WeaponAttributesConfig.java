@@ -129,6 +129,7 @@ public class WeaponAttributesConfig implements ConfigData {
     public float enigma_damageModifier = 7.0f;
     public float magispear_damageModifier = 4.0f;
     public float magiblade_damageModifier = 3.0f;
+    public float caelestis_damageModifier = 6.0f;
 
     @ConfigEntry.Gui.PrefixText
     public float brimstone_attackSpeed = -2.8f;
@@ -171,5 +172,6 @@ public class WeaponAttributesConfig implements ConfigData {
     public float enigma_attackSpeed = -3.2f;
     public float magispear_attackSpeed = -2.5f;
     public float magiblade_attackSpeed = -2.0f;
+    public float caelestis_attackSpeed = -2.9f;
 
 }
