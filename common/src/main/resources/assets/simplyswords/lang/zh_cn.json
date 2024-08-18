@@ -1363,7 +1363,7 @@
   "text.autoconfig.simplyswords_main.option.loot.enableTempest":                                                        "烈风 可通过战利品获取",
   "text.autoconfig.simplyswords_main.option.loot.enableFlamewind":                                                      "燎原 可通过战利品获取",
   "text.autoconfig.simplyswords_main.option.loot.enableRibboncleaver":                                                  "荣缎劈刀 可通过战利品获取",
-  "text.autoconfig.simplyswords_main.option.loot.enable星阙":                                                      "星阙 可通过战利品获取",
+  "text.autoconfig.simplyswords_main.option.loot.enableCaelestis":                                                      "星阙 可通过战利品获取",
 
   "text.autoconfig.simplyswords_main.option.general.enableWeaponImpactSounds":                                          "启用武器击中音效",
   "text.autoconfig.simplyswords_main.option.general.weaponImpactSoundsVolume":                                          "击中音效音量",
