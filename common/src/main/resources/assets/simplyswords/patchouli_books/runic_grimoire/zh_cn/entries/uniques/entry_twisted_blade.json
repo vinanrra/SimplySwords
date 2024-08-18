@@ -1,5 +1,5 @@
 {
-  "name": "扭曲之刃",
+  "name": "扭曲波刃剑",
   "icon": "simplyswords:twisted_blade",
   "advancement": "simplyswords:twisted_blade",
   "category": "simplyswords:category_unique_weapons",
@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "simplyswords:twisted_blade",
-      "text": "扭曲之刃是一把令人生畏的大剑，以其独特而致命的设计闻名。这把剑是由一种特殊的钢制造，能在打击时改变自身的形状。"
+      "text": "扭曲波刃剑是一把令人生畏的大剑，以其独特而致命的设计闻名。这把剑是由一种特殊的钢制造，能在打击时改变自身的形状。"
     },
     {
       "type": "patchouli:text",

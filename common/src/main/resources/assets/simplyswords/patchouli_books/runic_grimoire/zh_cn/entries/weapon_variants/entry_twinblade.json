@@ -1,12 +1,12 @@
 {
-  "name": "双刃剑",
+  "name": "双头剑",
   "icon": "simplyswords:iron_twinblade",
   "category": "simplyswords:category_weapon_variants",
   "pages": [
     {
       "type": "patchouli:spotlight",
       "item": "simplyswords:iron_twinblade",
-      "text": "双刃剑是一种需要高超的技巧和灵活性才能驾驭的武器。它拥有两把剑刃，因此它拥有很高的速度和精确度。它是一把强大的武器，但需要合适的人。"
+      "text": "双头剑是一种需要高超的技巧和灵活性才能驾驭的武器。它由两把剑刃组合在一起而成，因此它拥有很高的速度和精确度。它是一把强大的武器，但需要合适的人。"
     },
     {
       "type": "patchouli:crafting",
