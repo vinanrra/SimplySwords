@@ -122,6 +122,7 @@
   "item.simplyswords.enigma": "谜风",
   "item.simplyswords.magispear": "秘法之矛",
   "item.simplyswords.magiblade": "秘法双头剑",
+  "item.simplyswords.caelestis": "星阙",
 
   
   "item.simplyswords.runic_tablet": "符文石板",
@@ -512,10 +513,16 @@
   "item.simplyswords.contained_remnant_description4": "容器似乎能对你产生反应。",
   "item.simplyswords.contained_remnant_description5": "把它放在物品栏中，也许",
   "item.simplyswords.contained_remnant_description6": "可以观察到进一步的变化。",
+  "item.simplyswords.contained_remnant_description7": "也许在探索末地时，把它",
+  "item.simplyswords.contained_remnant_description8": "和符文石板一块，放在物",
+  "item.simplyswords.contained_remnant_description9": "品栏里，会发生某种变化。",
   "item.simplyswords.contained_remnant.event":  "你背包中的强能容器似乎发生了某些改变",
   "item.simplyswords.contained_remnant.event2": "你背包中的强能容器好像有些不对劲",
   "item.simplyswords.tampered_remnant_description3": "",
   "item.simplyswords.tampered_remnant_description4": "容器已经发生了某种转化…",
+  "item.simplyswords.decayingrelicsworditem.tooltip1": "在主世界地底深处探",
+  "item.simplyswords.decayingrelicsworditem.tooltip2": "索时，把它放在物品",
+  "item.simplyswords.decayingrelicsworditem.tooltip3": "栏里，也许产生变化。",
   "item.simplyswords.magicythe.event":  "腐朽遗杖嗡嗡作响",
   "item.simplyswords.magicythe.event2": "腐朽遗杖似乎对这个区域有一些反应",
   "item.simplyswords.magiblade.event":  "腐朽遗杖微微颤动",
@@ -553,6 +560,8 @@
   "effect.simplyswords.spore_swarm": "孢群",
   "effect.simplyswords.magistorm": "魔法风暴",
   "effect.simplyswords.magislam": "魔法跃击",
+  "effect.simplyswords.astral_shift": "斗转星移",
+  "effect.simplyswords.fatal_flicker": "绝息一闪",
 
   "item.simplyswords.onrightclick": "右键时：",
   "item.simplyswords.onrightclickheld": "长按右键时：",
@@ -889,6 +898,19 @@
   "item.simplyswords.magispearsworditem.tooltip8": "伤害周围所有敌人。",
   "item.simplyswords.magispearsworditem.tooltip9": "你在跃起期间无敌。",
   
+  "item.simplyswords.caelestissworditem.tooltip1":  "独特效果：斗转星移",
+  "item.simplyswords.caelestissworditem.tooltip2":  "装备这个物品时，",
+  "item.simplyswords.caelestissworditem.tooltip3":  "将获得概率完全",
+  "item.simplyswords.caelestissworditem.tooltip4":  "免除伤害的能力。",
+  "item.simplyswords.caelestissworditem.tooltip5":  "短暂地遁入星界，",
+  "item.simplyswords.caelestissworditem.tooltip6":  "并免除一切伤害，",
+  "item.simplyswords.caelestissworditem.tooltip7":  "持续时间：%d秒。",
+  "item.simplyswords.caelestissworditem.tooltip8":  "离开星界时，将",
+  "item.simplyswords.caelestissworditem.tooltip9":  "引发强烈的爆炸，",
+  "item.simplyswords.caelestissworditem.tooltip10": "造成范围性伤害，",
+  "item.simplyswords.caelestissworditem.tooltip11": "伤害量与星界免",
+  "item.simplyswords.caelestissworditem.tooltip12": "除的伤害正相关。",
+
 
   "item.simplyswords.dormantrelicsworditem.tooltip2": "微弱的能量从中逸散。",
   "item.simplyswords.poweredrelicsworditem.tooltip2": "更强的能量从中逸散。",
@@ -1067,6 +1089,7 @@
   
   "item.simplyswords.common.blacklisteffect": "能力已被禁用",
   "item.simplyswords.common.showtooltip": "- 按§2ALT§7以查看宝石槽 -",
+  "item.simplyswords.common.showtooltip.info": "- 按§2ALT§7以查看详情 -",
   "item.simplyswords.compat.mythicmetals.regrowth": "再生",
   "item.simplyswords.compat.mythicmetals.looting": "战利品加成",
 
@@ -1213,6 +1236,7 @@
   "text.autoconfig.simplyswords_main.option.weapon_attributes.enigma_damageModifier":                                   "§6谜风§7 伤害调整数",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magispear_damageModifier":                                "§6秘法之矛§7 伤害调整数",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magiblade_damageModifier":                                "§6秘法双头剑§7 伤害调整数",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.caelestis_damageModifier":                                "§6星阙§7 伤害调整数",
 
   "text.autoconfig.simplyswords_main.option.weapon_attributes.brimstone_attackSpeed.@PrefixText" :                      "§a[攻速调整数]§7\n推荐范围：-1.0至-3.7，-1.0快，-3.7慢。",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.brimstone_attackSpeed":                                   "§6硫磺阔剑§7 攻速调整数",
@@ -1255,6 +1279,7 @@
   "text.autoconfig.simplyswords_main.option.weapon_attributes.enigma_attackSpeed":                                      "§6谜风§7 攻速调整数",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magispear_attackSpeed":                                   "§6秘法之矛§7 攻速调整数",
   "text.autoconfig.simplyswords_main.option.weapon_attributes.magiblade_attackSpeed":                                   "§6秘法双头剑§7 攻速调整数",
+  "text.autoconfig.simplyswords_main.option.weapon_attributes.caelestis_attackSpeed":                                   "§6星阙§7 攻速调整数",
 
 
 
@@ -1338,6 +1363,7 @@
   "text.autoconfig.simplyswords_main.option.loot.enableTempest":                                                        "烈风 可通过战利品获取",
   "text.autoconfig.simplyswords_main.option.loot.enableFlamewind":                                                      "燎原 可通过战利品获取",
   "text.autoconfig.simplyswords_main.option.loot.enableRibboncleaver":                                                  "荣缎劈刀 可通过战利品获取",
+  "text.autoconfig.simplyswords_main.option.loot.enableCaelestis":                                                      "星阙 可通过战利品获取",
 
   "text.autoconfig.simplyswords_main.option.general.enableWeaponImpactSounds":                                          "启用武器击中音效",
   "text.autoconfig.simplyswords_main.option.general.weaponImpactSoundsVolume":                                          "击中音效音量",
@@ -1594,6 +1620,13 @@
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamDamageModifier":                                     "秘法跃击 伤害",
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamMagicChance":                                        "秘法跃击 法伤概率",
   "text.autoconfig.simplyswords_main.option.unique_effects.magislamMagicModifier":                                      "秘法跃击 魔法伤害",
+
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftCooldown.@PrefixText" :                           "§6[星阙]§7",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftCooldown":                                        "斗转星移 冷却时间",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftDuration":                                        "斗转星移 持续时间",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftDamageModifier":                                  "斗转星移 伤害",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftDamageMax":                                       "斗转星移 最大伤害",
+  "text.autoconfig.simplyswords_main.option.unique_effects.astralShiftChance":                                          "斗转星移 免伤概率",
 
 
   "text.autoconfig.simplyswords_main.option.runic_effects.swiftnessChance.@PrefixText" :                                "§b[极速]§7",
