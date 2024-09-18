@@ -18,6 +18,7 @@ import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -327,7 +328,7 @@ public class HelperMethods {
 
     public static void incrementStatusEffect(
             LivingEntity livingEntity,
-            StatusEffect statusEffect,
+            RegistryEntry<StatusEffect> statusEffect,
             int duration,
             int amplifier,
             int amplifierMax) {
@@ -350,7 +351,7 @@ public class HelperMethods {
 
     public static SimplySwordsStatusEffectInstance incrementSimplySwordsStatusEffect(
             LivingEntity livingEntity,
-            StatusEffect statusEffect,
+            RegistryEntry<StatusEffect> statusEffect,
             int duration,
             int amplifier,
             int amplifierMax) {

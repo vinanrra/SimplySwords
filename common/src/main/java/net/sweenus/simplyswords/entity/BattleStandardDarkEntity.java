@@ -39,7 +39,8 @@ public class BattleStandardDarkEntity extends PathAwareEntity {
 
     public static DefaultAttributeContainer.Builder createBattleStandardDarkAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 150.0).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.0f)
-                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0f);
+                .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 100.0f)
+                .add(EntityAttributes.GENERIC_STEP_HEIGHT, 3.0);
     }
 
     public BattleStandardDarkEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
@@ -84,7 +85,6 @@ public class BattleStandardDarkEntity extends PathAwareEntity {
 
                 if (standardType.equals("enigma")) {
                     radius = 2;
-                    this.setStepHeight(3f);
                     int moveRadius = (int) Config.getFloat("enigmaChaseRadius", "UniqueEffects", ConfigDefaultValues.enigmaChaseRadius);
                     abilityDamage = 1;
                     Box box = HelperMethods.createBox(this, moveRadius);
@@ -123,7 +123,7 @@ public class BattleStandardDarkEntity extends PathAwareEntity {
                             le.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 120, 0), this);
                             if (standardType.equals("enigma")) {
                                 SimplySwordsStatusEffectInstance effect = HelperMethods.incrementSimplySwordsStatusEffect(
-                                        le, EffectRegistry.PAIN.get(), 60, 1, 49);
+                                        le, EffectRegistry.PAIN, 60, 1, 49);
                                 effect.setSourceEntity(ownerEntity);
                                 effect.setAdditionalData(0);
                                 le.addStatusEffect(effect);

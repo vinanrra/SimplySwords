@@ -8,7 +8,6 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.BeeEntity;
-import net.minecraft.world.EntityView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,10 +51,10 @@ public class SimplySwordsBeeEntity extends BeeEntity implements Tameable {
     }
 
     //I think this is just Entity.getWorld()? What even are mappings
-    @Override
-    public EntityView method_48926() {
-        return this.getWorld();
-    }
+    //@Override
+    //public EntityView method_48926() {
+        //return this.getWorld();
+    //} 1.21
 
     public void setOwner(LivingEntity livingEntity) {
         this.ownerUuid = livingEntity.getUuid();

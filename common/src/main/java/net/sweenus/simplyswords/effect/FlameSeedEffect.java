@@ -34,7 +34,7 @@ public class FlameSeedEffect extends OrbitingEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         int duration = 0;
         if (!livingEntity.getWorld().isClient()) {
             ServerWorld serverWorld = (ServerWorld) livingEntity.getWorld();
@@ -43,7 +43,7 @@ public class FlameSeedEffect extends OrbitingEffect {
             float pitch = 1.3f;
             int frequency = 20;
             SoundEvent soundEvent = SoundEvents.ENTITY_GENERIC_BURN;
-            if (livingEntity.getStatusEffect(EffectRegistry.FLAMESEED.get()) instanceof SimplySwordsStatusEffectInstance statusEffect) {
+            if (livingEntity.getStatusEffect(EffectRegistry.FLAMESEED) instanceof SimplySwordsStatusEffectInstance statusEffect) {
                 sourceEntity = statusEffect.getSourceEntity();
                 additionalData = statusEffect.getAdditionalData();
                 duration = statusEffect.getDuration();
@@ -73,7 +73,7 @@ public class FlameSeedEffect extends OrbitingEffect {
                     for (Entity entity : serverWorld.getOtherEntities(livingEntity, box, EntityPredicates.VALID_LIVING_ENTITY)) {
                         if ((entity instanceof LivingEntity le) && HelperMethods.checkFriendlyFire(le, sourceEntity)) {
                             le.damage(damageSource, (abilityDamage));
-                            if (!le.hasStatusEffect(EffectRegistry.FLAMESEED.get()) && additionalData > 0) {
+                            if (!le.hasStatusEffect(EffectRegistry.FLAMESEED) && additionalData > 0) {
                                 additionalData -= 1;
                                 SimplySwordsStatusEffectInstance flamSeedEffect = new SimplySwordsStatusEffectInstance(
                                         EffectRegistry.FLAMESEED.get(), 101, 0, false,
@@ -106,6 +106,7 @@ public class FlameSeedEffect extends OrbitingEffect {
             }
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return false;
     }
 
     @Override

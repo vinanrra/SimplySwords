@@ -27,7 +27,7 @@ public class GobberNetherSwordItem extends SwordItem {
         List<Item> potentialIngredients = new ArrayList<>(List.of());
         Arrays.stream(repairIngredient).toList().forEach(repIngredient ->
                 potentialIngredients.add(
-                        Registries.ITEM.get(new Identifier(repIngredient))));
+                        Registries.ITEM.get(Identifier.of(repIngredient))));
 
 
         return potentialIngredients.contains(ingredient.getItem());

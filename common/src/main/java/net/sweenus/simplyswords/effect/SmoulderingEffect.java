@@ -10,11 +10,12 @@ public class SmoulderingEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
 
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return true;
     }
 
     @Override

@@ -13,12 +13,13 @@ public class FrenzyEffect extends OrbitingEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             if (!(livingEntity.getMainHandStack().getItem() instanceof WickpiercerSwordItem) && !(livingEntity.getOffHandStack().getItem() instanceof WickpiercerSwordItem))
-                livingEntity.removeStatusEffect(EffectRegistry.FRENZY.get());
+                livingEntity.removeStatusEffect(EffectRegistry.FRENZY);
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return false;
     }
 
     @Override

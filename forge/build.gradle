@@ -1,19 +1,23 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id 'com.github.johnrengelman.shadow'
 }
 
 repositories {
     maven {url "https://cursemaven.com"}
     maven { url "https://maven.blamejared.com" }
     maven { url "https://maven.shedaniel.me/" }
+    maven {
+        name = 'NeoForged'
+        url = 'https://maven.neoforged.net/releases'
+    }
 
 }
 
 architectury {
     platformSetupLoomIde()
-    forge()
+    neoForge()
 }
-
+/*
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 
@@ -25,6 +29,7 @@ loom {
         mixinConfig "simplyswords.mixins.json"
     }
 }
+ */
 
 configurations {
     common
@@ -35,25 +40,27 @@ configurations {
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    // Remove the next line if you don't want to depend on the API
-    modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
     modApi("me.shedaniel.cloth:cloth-config-forge:${rootProject.cloth_config_version}")
 
     //Patchouli
-    modImplementation ("vazkii.patchouli:Patchouli:1.20.1-81-FORGE")
+    modImplementation ("vazkii.patchouli:Patchouli:1.21-87-NEOFORGE")
 
-    common(project(path: ":common", configuration: "namedElements")) { transitive false }
-    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+    neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
+
+    // Architectury API. This is optional, and you can comment it out if you don't need it.
+    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive false }
+    shadowCommon(project(path: ':common', configuration: 'transformProductionNeoForge')) { transitive false }
 
     //modImplementation ("curse.maven:gobber-301700:4007899")
 }
 
 processResources {
-    inputs.property "version", project.version
+    inputs.property 'version', project.version
 
-    filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand version: project.version
     }
 }
 

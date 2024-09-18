@@ -8,6 +8,8 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
@@ -112,10 +114,12 @@ public class BattleStandardEntity extends PathAwareEntity {
                                 }
                                 //Nullification negative effects
                                 case "nullification" -> {
-                                    for (StatusEffectInstance statusEffect : le.getStatusEffects()) {
-                                        if (statusEffect != null && statusEffect.getEffectType().isBeneficial()) {
-                                            le.removeStatusEffect(statusEffect.getEffectType());
-                                            break;
+                                    for (StatusEffectInstance statusEffectInstance : le.getStatusEffects()) {
+                                        StatusEffect statusEffect = statusEffectInstance.getEffectType().value();
+                                            if (statusEffect != null && statusEffect.isBeneficial()) {
+                                                le.removeStatusEffect(statusEffectInstance.getEffectType());
+                                                break;
+                                            }
                                         }
                                     }
                                 }
@@ -126,7 +130,7 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     if (negativeEffect != null) {
                                         try {
                                             le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(new Identifier(negativeEffect)),
+                                                    Registries.STATUS_EFFECT.get(Identifier.of(negativeEffect)),
                                                     20, negativeEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(negativeEffect);
@@ -136,7 +140,7 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     if (negativeEffectSecondary != null) {
                                         try {
                                             le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(new Identifier(negativeEffectSecondary)),
+                                                    Registries.STATUS_EFFECT.get(Identifier.of(negativeEffectSecondary)),
                                                     20, negativeEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(negativeEffectSecondary);
@@ -202,7 +206,7 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     if (positiveEffect != null) {
                                         try {
                                             le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(new Identifier(positiveEffect)),
+                                                    Registries.STATUS_EFFECT.get(Identifier.of(positiveEffect)),
                                                     85, positiveEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(positiveEffect);
@@ -212,7 +216,7 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     if (positiveEffectSecondary != null) {
                                         try {
                                             le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(new Identifier(positiveEffectSecondary)),
+                                                    Registries.STATUS_EFFECT.get(Identifier.of(positiveEffectSecondary)),
                                                     85, positiveEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(positiveEffectSecondary);

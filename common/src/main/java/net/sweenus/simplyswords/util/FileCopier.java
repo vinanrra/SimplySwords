@@ -17,7 +17,7 @@ public class FileCopier {
     public static void copyFileToConfigDirectory() throws IOException {
         if (!Platform.isModLoaded(SimplySwords.MOD_ID)
                 || !SimplySwords.passVersionCheck("eldritch_end", SimplySwords.minimumEldritchEndVersion)
-                || Platform.isForge())
+                || Platform.isNeoForge())
             return;
 
         Optional<Path> simplySwords$safeRecipePath = Platform.getMod(SimplySwords.MOD_ID).findResource(

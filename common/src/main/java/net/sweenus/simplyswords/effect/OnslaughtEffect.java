@@ -14,7 +14,7 @@ public class OnslaughtEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
         if (!pLivingEntity.getWorld().isClient()) {
             if (pLivingEntity instanceof PlayerEntity) {
 
@@ -31,14 +31,14 @@ public class OnslaughtEffect extends StatusEffect {
                 }
 
                 //If Onslaught is expiring, remove all haste and grant weakness. Also expire Onslaught early.
-                if (pLivingEntity.hasStatusEffect(EffectRegistry.ONSLAUGHT.get())) {
-                    StatusEffectInstance statusEffect = pLivingEntity.getStatusEffect(EffectRegistry.ONSLAUGHT.get());
+                if (pLivingEntity.hasStatusEffect(EffectRegistry.ONSLAUGHT)) {
+                    StatusEffectInstance statusEffect = pLivingEntity.getStatusEffect(EffectRegistry.ONSLAUGHT);
                     assert statusEffect != null;
                     if (statusEffect.getDuration() < 10 && pLivingEntity.hasStatusEffect(StatusEffects.HASTE)) {
                         pLivingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 80,
                                 0), pLivingEntity);
                         pLivingEntity.removeStatusEffect(StatusEffects.HASTE);
-                        pLivingEntity.removeStatusEffect(EffectRegistry.ONSLAUGHT.get());
+                        pLivingEntity.removeStatusEffect(EffectRegistry.ONSLAUGHT);
                     }
                 }
             }
@@ -46,6 +46,7 @@ public class OnslaughtEffect extends StatusEffect {
 
         super.applyUpdateEffect(pLivingEntity, pAmplifier);
 
+        return true;
     }
 
     @Override

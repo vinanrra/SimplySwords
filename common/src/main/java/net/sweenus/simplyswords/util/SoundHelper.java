@@ -33,7 +33,7 @@ public class SoundHelper {
 
         // Schedule the sound to play repeatedly
         scheduler.scheduleAtFixedRate(() -> {
-            if (entity.isAlive() && entity.hasStatusEffect(EffectRegistry.ELEMENTAL_VORTEX.get())) {
+            if (entity.isAlive() && entity.hasStatusEffect(EffectRegistry.ELEMENTAL_VORTEX)) {
                 playSound(serverWorld, entity, soundEvent);
             } else {
                 stopLoopingSound(entity, soundId); // Stop the scheduler if the entity is no longer valid

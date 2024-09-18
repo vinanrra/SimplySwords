@@ -26,7 +26,6 @@ import net.sweenus.simplyswords.client.renderer.BattleStandardDarkRenderer;
 import net.sweenus.simplyswords.client.renderer.BattleStandardRenderer;
 import net.sweenus.simplyswords.client.renderer.model.BattleStandardDarkModel;
 import net.sweenus.simplyswords.client.renderer.model.BattleStandardModel;
-import net.sweenus.simplyswords.compat.EldritchEndCompat;
 import net.sweenus.simplyswords.compat.eldritch_end.EldritchEndCompatRegistry;
 import net.sweenus.simplyswords.config.*;
 import net.sweenus.simplyswords.entity.BattleStandardDarkEntity;
@@ -119,7 +118,7 @@ public class SimplySwords {
         EntityAttributeRegistry.register(EntityRegistry.SIMPLYBEEENTITY, SimplySwordsBeeEntity::createSimplyBeeAttributes);
         ModLootTableModifiers.init();
         if (passVersionCheck("eldritch_end", minimumEldritchEndVersion)) {
-            EldritchEndCompat.registerModItems();
+            //EldritchEndCompat.registerModItems(); 1.21
             EldritchEndCompatRegistry.EFFECT.register();
         }
         try {
@@ -147,8 +146,8 @@ public class SimplySwords {
 
     @Environment(EnvType.CLIENT)
     public static class Client {
-        public static final EntityModelLayer BATTLESTANDARD_MODEL = new EntityModelLayer(new Identifier("battlestandard", "cube"), "main");
-        public static final EntityModelLayer BATTLESTANDARD_DARK_MODEL = new EntityModelLayer(new Identifier("battlestandarddark", "cube"), "main");
+        public static final EntityModelLayer BATTLESTANDARD_MODEL = new EntityModelLayer(Identifier.of("battlestandard", "cube"), "main");
+        public static final EntityModelLayer BATTLESTANDARD_DARK_MODEL = new EntityModelLayer(Identifier.of("battlestandarddark", "cube"), "main");
 
         @Environment(EnvType.CLIENT)
         public static void initializeClient() {

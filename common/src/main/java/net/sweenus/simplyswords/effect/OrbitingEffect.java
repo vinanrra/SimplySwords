@@ -17,7 +17,7 @@ public class OrbitingEffect extends StatusEffect {
     private double currentAngle = 0.0;
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient) {
             ServerWorld serverWorld = (ServerWorld) livingEntity.getWorld();
             Vec3d center = livingEntity.getPos().add(0, livingEntity.getHeight() / 2.0, 0); // Center around the entity's waist
@@ -50,6 +50,7 @@ public class OrbitingEffect extends StatusEffect {
             }
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return true;
     }
 
     // Protected method to set the particle type

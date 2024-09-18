@@ -30,7 +30,7 @@ public class MagistormEffect extends HighOrbitingEffect {
         width = 4;
     }
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             ServerWorld world = (ServerWorld) livingEntity.getWorld();
             double x = livingEntity.getX();
@@ -65,13 +65,14 @@ public class MagistormEffect extends HighOrbitingEffect {
                                 SoundCategory.PLAYERS, 0.1f, 1.0f + (player.getRandom().nextFloat()));
 
                         if (new Random().nextInt(100) < 5)
-                            HelperMethods.incrementStatusEffect(livingEntity, EffectRegistry.MAGISTORM.get(), (int) duration, 1, 10);
+                            HelperMethods.incrementStatusEffect(livingEntity, EffectRegistry.MAGISTORM, (int) duration, 1, 10);
                     }
                 }
             }
         }
 
         super.applyUpdateEffect(livingEntity, amplifier);
+        return false;
     }
 
 

@@ -21,7 +21,7 @@ public class SporeSwarmEffect extends WideOrbitingEffect {
         setParticleType3(ParticleTypes.WARPED_SPORE);
     }
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             ServerWorld world = (ServerWorld) livingEntity.getWorld();
             double x = livingEntity.getX();
@@ -40,12 +40,12 @@ public class SporeSwarmEffect extends WideOrbitingEffect {
                         if ((livingEntity.getMainHandStack().getItem() instanceof BrambleSwordItem) && (livingEntity.getOffHandStack().getItem() instanceof BrambleSwordItem))
                             maxAmp = 74;
                         SimplySwordsStatusEffectInstance effect = HelperMethods.incrementSimplySwordsStatusEffect(
-                                ee, EffectRegistry.PAIN.get(), 60, 1, maxAmp);
+                                ee, EffectRegistry.PAIN, 60, 1, maxAmp);
                         effect.setSourceEntity(livingEntity);
                         effect.setAdditionalData(0);
                         ee.addStatusEffect(effect);
                         HelperMethods.spawnWaistHeightParticles(world, ParticleTypes.SMOKE, ee, livingEntity, 10);
-                        HelperMethods.incrementStatusEffect(livingEntity, EffectRegistry.SPORE_SWARM.get(), 200, 1, 4);
+                        HelperMethods.incrementStatusEffect(livingEntity, EffectRegistry.SPORE_SWARM, 200, 1, 4);
                     }
                 }
             }
@@ -53,6 +53,7 @@ public class SporeSwarmEffect extends WideOrbitingEffect {
 
         super.applyUpdateEffect(livingEntity, amplifier);
 
+        return false;
     }
 
 

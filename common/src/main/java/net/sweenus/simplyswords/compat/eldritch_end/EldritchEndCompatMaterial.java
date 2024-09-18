@@ -1,18 +1,18 @@
 package net.sweenus.simplyswords.compat.eldritch_end;
 
 import com.google.common.base.Suppliers;
-import net.fabricmc.yarn.constants.MiningLevels;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.function.Supplier;
 
 public enum EldritchEndCompatMaterial implements ToolMaterial {
+    ;
 
-    ABERRATION(MiningLevels.NETHERITE, 3270, 15.0f, 5.0f, 30, Registries.ITEM.get(new Identifier("eldritch_end:aberration_heart")));
+    //ABERRATION(MiningLevels.NETHERITE, 3270, 15.0f, 5.0f, 30, Registries.ITEM.get(Identifier.of("eldritch_end:aberration_heart"))); 1.21
 
     private final int miningLevel;
     private final int itemDurability;
@@ -46,8 +46,8 @@ public enum EldritchEndCompatMaterial implements ToolMaterial {
     }
 
     @Override
-    public int getMiningLevel() {
-        return this.miningLevel;
+    public TagKey<Block> getInverseTag() {
+        return null;
     }
 
     @Override

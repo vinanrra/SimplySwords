@@ -11,10 +11,11 @@ public class RibbonwrathEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
 
         super.applyUpdateEffect(pLivingEntity, pAmplifier);
 
+        return true;
     }
 
     @Override

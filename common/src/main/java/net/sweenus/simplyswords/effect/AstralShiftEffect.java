@@ -24,7 +24,7 @@ public class AstralShiftEffect extends StatusEffect {
         super (statusEffectCategory, color);
     }
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getWorld().isClient()) {
             ServerWorld world = (ServerWorld) entity.getWorld();
 
@@ -71,6 +71,7 @@ public class AstralShiftEffect extends StatusEffect {
         }
 
         super.applyUpdateEffect(entity, amplifier);
+        return true;
     }
 
     @Override

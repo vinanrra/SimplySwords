@@ -23,11 +23,11 @@ public class PainEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             int startingTickFrequency = 15;
 
-            if (livingEntity.getStatusEffect(EffectRegistry.PAIN.get()) instanceof SimplySwordsStatusEffectInstance statusEffect) {
+            if (livingEntity.getStatusEffect(EffectRegistry.PAIN) instanceof SimplySwordsStatusEffectInstance statusEffect) {
                 sourceEntity = statusEffect.getSourceEntity();
                 additionalData = statusEffect.getAdditionalData();
             }
@@ -44,6 +44,7 @@ public class PainEffect extends StatusEffect {
             }
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return true;
     }
 
     @Override

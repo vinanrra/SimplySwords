@@ -7,6 +7,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
 import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
@@ -40,9 +41,9 @@ public class EffectRegistry {
     public static final RegistrySupplier<StatusEffect> FRENZY = EFFECT.register("frenzy", () ->
             new FrenzyEffect(StatusEffectCategory.BENEFICIAL, 1124687)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED,
-                            "54e1b9b9-6de9-49bb-a716-564b3d375892",
+                            Identifier.of("54e1b9b9-6de9-49bb-a716-564b3d375892"),
                             0.8,
-                            EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+                            EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
     public static final RegistrySupplier<StatusEffect> VOIDCLOAK = EFFECT.register("voidcloak", () ->
             new VoidcloakEffect(StatusEffectCategory.BENEFICIAL, 1124687)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED,

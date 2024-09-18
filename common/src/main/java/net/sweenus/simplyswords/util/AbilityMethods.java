@@ -89,7 +89,7 @@ public class AbilityMethods {
                     if ((entity instanceof LivingEntity ee)) {
                         if (HelperMethods.checkFriendlyFire(ee, user) && choose > 0.7) {
                             var stormtarget = ee.getBlockPos();
-                            ee.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), frequency+5, 0), user);
+                            ee.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE, frequency+5, 0), user);
                             LightningEntity storm = EntityType.LIGHTNING_BOLT.spawn(sworld, stormtarget, SpawnReason.TRIGGERED);
                             if (storm != null) {
                                 storm.setCosmetic(true);

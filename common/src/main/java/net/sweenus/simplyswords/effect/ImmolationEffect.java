@@ -24,7 +24,7 @@ public class ImmolationEffect extends WideOrbitingEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
         if (!pLivingEntity.getWorld().isClient()) {
             if (pLivingEntity instanceof PlayerEntity player) {
                 if (pLivingEntity.age % 15 == 0) {
@@ -49,7 +49,7 @@ public class ImmolationEffect extends WideOrbitingEffect {
                             if (rpnbt != null) {
                                 if (!player.getMainHandStack().getNbt().getString("runic_power").equals("immolation")
                                         && !player.getMainHandStack().getNbt().getString("nether_power").equals("radiance")) {
-                                    player.removeStatusEffect(EffectRegistry.IMMOLATION.get());
+                                    player.removeStatusEffect(EffectRegistry.IMMOLATION);
                                 }
                             }
                         }
@@ -59,12 +59,12 @@ public class ImmolationEffect extends WideOrbitingEffect {
                             if (rpnbt != null) {
                                 if (!player.getOffHandStack().getNbt().getString("runic_power").equals("immolation")
                                         && !player.getOffHandStack().getNbt().getString("nether_power").equals("radiance")) {
-                                    player.removeStatusEffect(EffectRegistry.IMMOLATION.get());
+                                    player.removeStatusEffect(EffectRegistry.IMMOLATION);
                                 }
                             }
                         }
                     }
-                    else {player.removeStatusEffect(EffectRegistry.IMMOLATION.get());}
+                    else {player.removeStatusEffect(EffectRegistry.IMMOLATION);}
 
 
                     //Damage
@@ -86,6 +86,7 @@ public class ImmolationEffect extends WideOrbitingEffect {
 
         super.applyUpdateEffect(pLivingEntity, pAmplifier);
 
+        return false;
     }
 
     @Override

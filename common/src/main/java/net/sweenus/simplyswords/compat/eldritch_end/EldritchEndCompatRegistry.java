@@ -16,10 +16,10 @@ public class EldritchEndCompatRegistry {
 
     public static final RegistrySupplier<StatusEffect> VOIDHUNGER = EFFECT.register("voidhunger", () ->
             new VoidhungerEffect(StatusEffectCategory.HARMFUL, 1124687)
-                    .addAttributeModifier(Registries.ATTRIBUTE.get(new Identifier("eldritch_end:corruption")),
+                    .addAttributeModifier(Registries.ATTRIBUTE.get(Identifier.of("eldritch_end:corruption")),
                             "03360b9d-c99b-4525-826a-ff5da528ebc2",
                             1.0,
-                            EntityAttributeModifier.Operation.ADDITION));
+                            EntityAttributeModifier.Operation.ADD_VALUE));
 
 
 }

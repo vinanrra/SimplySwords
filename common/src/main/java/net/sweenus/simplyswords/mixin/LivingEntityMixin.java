@@ -60,8 +60,8 @@ public abstract class LivingEntityMixin {
     private float simplyswords$modifyDamageAmount(float amount, DamageSource source) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         if (!livingEntity.getWorld().isClient()) {
-            StatusEffectInstance voidcloakEffect = livingEntity.getStatusEffect(EffectRegistry.VOIDCLOAK.get());
-            StatusEffectInstance ribbonwrathEffect = livingEntity.getStatusEffect(EffectRegistry.RIBBONWRATH.get());
+            StatusEffectInstance voidcloakEffect = livingEntity.getStatusEffect(EffectRegistry.VOIDCLOAK);
+            StatusEffectInstance ribbonwrathEffect = livingEntity.getStatusEffect(EffectRegistry.RIBBONWRATH);
             if (voidcloakEffect != null) {
                 int amplifier = voidcloakEffect.getAmplifier();
                 float reductionFactor = 1 - (amplifier + 1) * 0.10f; // +1 because amplifier starts at 0
@@ -82,7 +82,7 @@ public abstract class LivingEntityMixin {
         if (!livingEntity.getWorld().isClient()) {
 
             if (SimplySwords.passVersionCheck("eldritch_end", minimumEldritchEndVersion)
-                    && Registries.STATUS_EFFECT.get(new Identifier("simplyswords:voidhunger")) != null)
+                    && Registries.STATUS_EFFECT.get(Identifier.of("simplyswords:voidhunger")) != null)
                 EldritchEndCompatMethods.generateVoidcloakStacks(livingEntity);
         }
     }

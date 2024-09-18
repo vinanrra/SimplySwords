@@ -13,7 +13,7 @@ import net.sweenus.simplyswords.entity.BattleStandardEntity;
 public class BattleStandardRenderer extends MobEntityRenderer<BattleStandardEntity, BattleStandardModel> {
 
 
-     private static final Identifier TEXTURE = new Identifier("simplyswords","textures/entity/battlestandard/battlestandard_texture.png");
+     private static final Identifier TEXTURE = Identifier.of("simplyswords","textures/entity/battlestandard/battlestandard_texture.png");
 
      public BattleStandardRenderer(EntityRendererFactory.Context context) {
          super(context, new BattleStandardModel(context.getPart(SimplySwords.Client.BATTLESTANDARD_MODEL)), 0.1f);

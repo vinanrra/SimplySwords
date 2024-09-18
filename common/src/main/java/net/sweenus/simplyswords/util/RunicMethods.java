@@ -36,7 +36,7 @@ public class RunicMethods {
         target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, duration, 1), attacker);
 
         if (attacker.getRandom().nextInt(100) <= hitChance) {
-            target.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), freezeDuration, 1), attacker);
+            target.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE, freezeDuration, 1), attacker);
             attacker.getWorld().playSoundFromEntity(null, attacker, SoundRegistry.MAGIC_SWORD_SPELL_02.get(),
                     attacker.getSoundCategory(), 0.1f, 1.8f);
         }
@@ -48,7 +48,7 @@ public class RunicMethods {
         int duration = (int) Config.getFloat("wildfireDuration", "RunicEffects", ConfigDefaultValues.wildfireDuration);
 
         if (attacker.getRandom().nextInt(100) <= hitChance) {
-            target.addStatusEffect(new StatusEffectInstance(EffectRegistry.WILDFIRE.get(), duration, 3), attacker);
+            target.addStatusEffect(new StatusEffectInstance(EffectRegistry.WILDFIRE, duration, 3), attacker);
             attacker.getWorld().playSoundFromEntity(null, attacker, SoundRegistry.MAGIC_SWORD_SPELL_02.get(),
                     attacker.getSoundCategory(), 0.1f, 1.8f);
         }
@@ -302,7 +302,7 @@ public class RunicMethods {
         //increase damage if 2H wep
         if (HelperMethods.isUniqueTwohanded(stack))
             amp = 2;
-        target.addStatusEffect(new StatusEffectInstance(EffectRegistry.ECHO.get(), 20, amp), attacker);
+        target.addStatusEffect(new StatusEffectInstance(EffectRegistry.ECHO, 20, amp), attacker);
     }
 
     // Nether Power - BERSERK
@@ -320,20 +320,20 @@ public class RunicMethods {
     // Nether Power - RADIANCE
     public static void postHitNetherRadiance(LivingEntity target, LivingEntity attacker) {
         if (target.hasStatusEffect(StatusEffects.WEAKNESS)) {
-            attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.IMMOLATION.get(), 200, 4), attacker);
+            attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.IMMOLATION, 200, 4), attacker);
         }
     }
 
     // Nether Power - ONSLAUGHT
     public static void postHitNetherOnslaught(LivingEntity target, LivingEntity attacker) {
         if (target.hasStatusEffect(StatusEffects.SLOWNESS) && !attacker.hasStatusEffect(StatusEffects.WEAKNESS)) {
-            attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.ONSLAUGHT.get(), 80, 0), attacker);
+            attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.ONSLAUGHT, 80, 0), attacker);
         }
     }
 
     // Nether Power - NULLIFICATION
     public static void postHitNetherNullification(LivingEntity user) {
-        if (!user.hasStatusEffect(EffectRegistry.BATTLE_FATIGUE.get())) {
+        if (!user.hasStatusEffect(EffectRegistry.BATTLE_FATIGUE)) {
             if (!user.getWorld().isClient()) {
                 ServerWorld serverWorld = (ServerWorld) user.getWorld();
                 BlockState currentState = serverWorld.getBlockState(user.getBlockPos().up(4).offset(user.getMovementDirection(), 3));
@@ -352,7 +352,7 @@ public class RunicMethods {
                         banner.standardType = "nullification";
                         banner.setCustomName(Text.translatable("entity.simplyswords.battlestandard.name", user.getName()));
                     }
-                    user.addStatusEffect(new StatusEffectInstance(EffectRegistry.BATTLE_FATIGUE.get(), 800, 0), user);
+                    user.addStatusEffect(new StatusEffectInstance(EffectRegistry.BATTLE_FATIGUE, 800, 0), user);
                 }
             }
         }

@@ -24,11 +24,11 @@ public class VoidAssaultEffect extends OrbitingEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             int voidcallerStartingTickFrequency = (int) Config.getFloat("voidcallerStartingTickFrequency", "UniqueEffects", ConfigDefaultValues.voidcallerStartingTickFrequency);
 
-            if (livingEntity.getStatusEffect(EffectRegistry.VOIDASSAULT.get()) instanceof SimplySwordsStatusEffectInstance statusEffect) {
+            if (livingEntity.getStatusEffect(EffectRegistry.VOIDASSAULT) instanceof SimplySwordsStatusEffectInstance statusEffect) {
                 sourceEntity = statusEffect.getSourceEntity();
                 additionalData = statusEffect.getAdditionalData();
             }
@@ -42,6 +42,7 @@ public class VoidAssaultEffect extends OrbitingEffect {
             }
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return false;
     }
 
     @Override

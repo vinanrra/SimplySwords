@@ -56,13 +56,13 @@ public class FatalFlickerEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity user, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity user, int amplifier) {
 
         super.applyUpdateEffect(user, amplifier);
 
         if (!user.getWorld().isClient()) {
 
-            int ability_timer = Objects.requireNonNull(user.getStatusEffect(EffectRegistry.FATAL_FLICKER.get())).getDuration();
+            int ability_timer = Objects.requireNonNull(user.getStatusEffect(EffectRegistry.FATAL_FLICKER)).getDuration();
             World world = user.getWorld();
             int radius = (int) Config.getFloat("fatalFlickerRadius", "UniqueEffects", ConfigDefaultValues.fatalFlickerRadius);
 
@@ -96,6 +96,7 @@ public class FatalFlickerEffect extends StatusEffect {
                 }
             }
         }
+        return true;
     }
 
     @Override

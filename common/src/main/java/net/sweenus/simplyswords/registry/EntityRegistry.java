@@ -20,7 +20,7 @@ public class EntityRegistry {
     public static final RegistrySupplier<EntityType<SimplySwordsBeeEntity>> SIMPLYBEEENTITY = ENTITIES.register(
             "simplybeeentity",
             () -> EntityType.Builder.create(SimplySwordsBeeEntity::new, SpawnGroup.CREATURE)
-                    .build(new Identifier(SimplySwords.MOD_ID, "simplybeeentity").toString())
+                    .build(Identifier.of(SimplySwords.MOD_ID, "simplybeeentity").toString())
     );
 
 

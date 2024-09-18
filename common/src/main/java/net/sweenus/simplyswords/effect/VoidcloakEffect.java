@@ -11,8 +11,9 @@ public class VoidcloakEffect extends OrbitingEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         super.applyUpdateEffect(livingEntity, amplifier);
+        return false;
     }
 
     @Override

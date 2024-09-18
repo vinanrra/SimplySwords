@@ -13,16 +13,17 @@ public class EchoEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             int damage = Config.getInt("echoDamage", "StatusEffects", ConfigDefaultValues.echoDamage);
             if (livingEntity.age % 15 == 0) {
                 livingEntity.timeUntilRegen = 0;
                 livingEntity.damage(livingEntity.getDamageSources().magic(), damage+amplifier);
-                livingEntity.removeStatusEffect(EffectRegistry.ECHO.get());
+                livingEntity.removeStatusEffect(EffectRegistry.ECHO);
             }
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return true;
     }
 
     @Override

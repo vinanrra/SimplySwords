@@ -29,14 +29,14 @@ public class BattleStandardModel extends EntityModel<BattleStandardEntity> {
 		ModelPartData bb_main = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -29.75F, -0.25F, 9.0F, 17.0F, 0.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 24.0F, 0.0F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
-	@Override
-	public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		supports.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		bb_main.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-	}
 
 	@Override
 	public void setAngles(BattleStandardEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+
+	}
+
+	@Override
+	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, int color) {
 
 	}
 }

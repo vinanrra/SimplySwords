@@ -13,12 +13,13 @@ public class RibboncleaveEffect extends OrbitingEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.getWorld().isClient()) {
             if (!(livingEntity.getMainHandStack().getItem() instanceof RibboncleaverSwordItem))
-                livingEntity.removeStatusEffect(EffectRegistry.RIBBONCLEAVE.get());
+                livingEntity.removeStatusEffect(EffectRegistry.RIBBONCLEAVE);
         }
         super.applyUpdateEffect(livingEntity, amplifier);
+        return false;
     }
 
     @Override

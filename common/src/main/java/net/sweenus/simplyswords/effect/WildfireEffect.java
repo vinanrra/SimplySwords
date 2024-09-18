@@ -17,7 +17,7 @@ public class WildfireEffect extends StatusEffect {
     public WildfireEffect(StatusEffectCategory statusEffectCategory, int color) {super (statusEffectCategory, color); }
 
     @Override
-    public void applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
         if (!pLivingEntity.getWorld().isClient()) {
             LivingEntity pPlayer = pLivingEntity.getAttacker();
             if (pPlayer != null){
@@ -43,6 +43,7 @@ public class WildfireEffect extends StatusEffect {
 
         super.applyUpdateEffect(pLivingEntity, pAmplifier);
 
+        return true;
     }
 
     @Override
