@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -54,7 +55,7 @@ public class BrambleSwordItem extends UniqueSwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style ABILITY = HelperMethods.getStyle("ability");
         Style TEXT = HelperMethods.getStyle("text");
 
@@ -69,6 +70,6 @@ public class BrambleSwordItem extends UniqueSwordItem {
         tooltip.add(Text.translatable("item.simplyswords.bramblesworditem.tooltip7").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.bramblesworditem.tooltip8").setStyle(TEXT));
 
-        super.appendTooltip(itemStack, world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }

@@ -1,17 +1,16 @@
 package net.sweenus.simplyswords.item;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
 import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.util.HelperMethods;
 
@@ -48,7 +47,7 @@ public class SimplySwordsSwordItem extends SwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
 
 
         int rgbPrometheum = 0x3A6A56;
@@ -61,7 +60,7 @@ public class SimplySwordsSwordItem extends SwordItem {
         else if (this.getName(itemStack).getString().contains("Carmot"))
             tooltip.add(Text.translatable("item.simplyswords.compat.mythicmetals.looting").setStyle(CARMOT));
 
-        super.appendTooltip(itemStack,world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 
 }

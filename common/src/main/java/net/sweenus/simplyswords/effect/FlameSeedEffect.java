@@ -77,7 +77,7 @@ public class FlameSeedEffect extends OrbitingEffect {
                             if (!le.hasStatusEffect(EffectRegistry.FLAMESEED) && additionalData > 0) {
                                 additionalData -= 1;
                                 SimplySwordsStatusEffectInstance flamSeedEffect = new SimplySwordsStatusEffectInstance(
-                                        EffectRegistry.FLAMESEED.get(), 101, 0, false,
+                                        EffectRegistry.FLAMESEED, 101, 0, false,
                                         false, true);
                                 flamSeedEffect.setSourceEntity(sourceEntity);
                                 flamSeedEffect.setAdditionalData(additionalData);

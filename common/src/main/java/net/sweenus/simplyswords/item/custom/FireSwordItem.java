@@ -6,6 +6,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
@@ -86,7 +87,7 @@ public class FireSwordItem extends UniqueSwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style TEXT = HelperMethods.getStyle("text");
         Style ABILITY = HelperMethods.getStyle("ability");
 
@@ -94,6 +95,6 @@ public class FireSwordItem extends UniqueSwordItem {
         tooltip.add(Text.translatable("item.simplyswords.firesworditem.tooltip1").setStyle(ABILITY));
         tooltip.add(Text.translatable("item.simplyswords.firesworditem.tooltip2").setStyle(TEXT));
 
-        super.appendTooltip(itemStack, world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }

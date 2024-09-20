@@ -3,11 +3,11 @@ package net.sweenus.simplyswords.item;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
-import net.minecraft.world.World;
 import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.registry.ItemsRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
@@ -28,7 +28,7 @@ public class ContainedRemnantItem extends Item {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
 
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.contained_remnant_description").formatted(Formatting.GRAY));

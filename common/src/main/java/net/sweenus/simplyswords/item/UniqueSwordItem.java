@@ -7,6 +7,7 @@ import net.minecraft.inventory.StackReference;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -74,8 +75,7 @@ public abstract class UniqueSwordItem extends SwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext
-            tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         SimplySwordsAPI.appendTooltipGemSocketLogic(itemStack, tooltip);
     }
 }

@@ -7,6 +7,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
@@ -94,7 +95,7 @@ public class EmberlashSwordItem extends UniqueSwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style RIGHTCLICK = HelperMethods.getStyle("rightclick");
         Style ABILITY = HelperMethods.getStyle("ability");
         Style TEXT = HelperMethods.getStyle("text");
@@ -115,6 +116,6 @@ public class EmberlashSwordItem extends UniqueSwordItem {
             tooltip.add(Text.translatable("item.simplyswords.compat.scaleFire"));
         }
 
-        super.appendTooltip(itemStack, world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }

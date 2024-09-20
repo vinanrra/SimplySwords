@@ -7,6 +7,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
@@ -123,14 +124,14 @@ public class DreadtideSwordItem extends UniqueSwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style CORRUPTED_LIGHT = HelperMethods.getStyle("corrupted_light");
         Style CORRUPTED_ABILITY = HelperMethods.getStyle("corrupted_ability");
         Style TEXT = HelperMethods.getStyle("corrupted_text");
         MutableText ability_icon = Text.empty().append("\uA996 ");
-        MutableText type = TextAPI.Styles.getGradient(Text.translatable("item.eldritch_end.corrupted_item.type"), 1, 6043781, 9326287, 1.0F);
+        MutableText types = TextAPI.Styles.getGradient(Text.translatable("item.eldritch_end.corrupted_item.type"), 1, 6043781, 9326287, 1.0F);
 
-        tooltip.add(Text.literal("\uA999 ").append(type.fillStyle(type.getStyle().withUnderline(true))));
+        tooltip.add(Text.literal("\uA999 ").append(types.fillStyle(types.getStyle().withUnderline(true))));
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.dreadtidesworditem.tooltip1").setStyle(CORRUPTED_ABILITY));
         tooltip.add(Text.translatable("item.simplyswords.dreadtidesworditem.tooltip2").setStyle(TEXT));
@@ -150,6 +151,6 @@ public class DreadtideSwordItem extends UniqueSwordItem {
         tooltip.add(Text.literal("\uA999 ").append(Text.translatable("item.simplyswords.dreadtidesworditem.tooltip12").setStyle(HelperMethods.getStyle("corrupted"))));
         tooltip.add(Text.translatable("item.simplyswords.dreadtidesworditem.tooltip13").setStyle(HelperMethods.getStyle("corrupted")));
 
-        super.appendTooltip(itemStack, world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }

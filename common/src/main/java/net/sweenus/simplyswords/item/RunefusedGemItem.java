@@ -1,10 +1,10 @@
 package net.sweenus.simplyswords.item;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.StackReference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
@@ -49,7 +49,7 @@ public class RunefusedGemItem extends Item {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style RUNIC = HelperMethods.getStyle("runic");
         Style TEXT = HelperMethods.getStyle("text");
 

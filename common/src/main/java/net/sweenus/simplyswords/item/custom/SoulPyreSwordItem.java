@@ -7,6 +7,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.text.Style;
@@ -125,7 +126,7 @@ public class SoulPyreSwordItem extends UniqueSwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style RIGHTCLICK = HelperMethods.getStyle("rightclick");
         Style ABILITY = HelperMethods.getStyle("ability");
         Style TEXT = HelperMethods.getStyle("text");
@@ -144,6 +145,6 @@ public class SoulPyreSwordItem extends UniqueSwordItem {
         tooltip.add(Text.translatable("item.simplyswords.soulpyresworditem.tooltip8").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.soulpyresworditem.tooltip9").setStyle(TEXT));
 
-        super.appendTooltip(itemStack, world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }

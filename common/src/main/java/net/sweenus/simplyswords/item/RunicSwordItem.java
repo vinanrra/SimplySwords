@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -10,6 +9,7 @@ import net.minecraft.inventory.StackReference;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Style;
@@ -181,7 +181,7 @@ public class RunicSwordItem extends SwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style RIGHTCLICK = HelperMethods.getStyle("rightclick");
         Style RUNIC = HelperMethods.getStyle("runic");
         Style TEXT = HelperMethods.getStyle("text");

@@ -6,6 +6,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
@@ -105,7 +106,7 @@ public class MagibladeSwordItem extends UniqueSwordItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
+    public void appendTooltip(ItemStack itemStack, TooltipContext tooltipContext, List<Text> tooltip, TooltipType type) {
         Style RIGHTCLICK = HelperMethods.getStyle("rightclick");
         Style ABILITY = HelperMethods.getStyle("ability");
         Style TEXT = HelperMethods.getStyle("text");
@@ -123,6 +124,6 @@ public class MagibladeSwordItem extends UniqueSwordItem {
         tooltip.add(Text.translatable("item.simplyswords.magibladesworditem.tooltip8").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.magibladesworditem.tooltip9").setStyle(TEXT));
 
-        super.appendTooltip(itemStack, world, tooltip, tooltipContext);
+        super.appendTooltip(itemStack, tooltipContext, tooltip, type);
     }
 }
