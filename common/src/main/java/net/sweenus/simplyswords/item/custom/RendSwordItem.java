@@ -26,8 +26,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class RendSwordItem extends UniqueSwordItem {
-    public RendSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public RendSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

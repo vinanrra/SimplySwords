@@ -1,14 +1,6 @@
 package net.sweenus.simplyswords.forge.compat;
 
-import net.minecraft.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import net.sweenus.simplyswords.SimplySwords;
-import net.sweenus.simplyswords.item.GobberEndSwordItem;
-import net.sweenus.simplyswords.item.GobberNetherSwordItem;
-import net.sweenus.simplyswords.item.ModToolMaterial;
-import net.sweenus.simplyswords.item.SimplySwordsSwordItem;
 
 public class GobberCompat {
 
@@ -81,6 +73,7 @@ public class GobberCompat {
     static int gobber_end_modifier = (int) SimplySwords.weaponAttributesConfig.gobberEnd_damageModifier;
 
     //GOBBER
+    /* 1.21
 
     public static final DeferredRegister<Item> GOBBER_ITEM = DeferredRegister.create(ForgeRegistries.ITEMS, SimplySwords.MOD_ID);
     
@@ -271,5 +264,7 @@ public class GobberCompat {
     public static void registerModItems() {
         SimplySwords.LOGGER.info("Registering Gobber compat Items for " + SimplySwords.MOD_ID);
     }
+
+     */
 
 }

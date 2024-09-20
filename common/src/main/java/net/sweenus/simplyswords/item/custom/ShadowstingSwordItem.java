@@ -34,8 +34,8 @@ public class ShadowstingSwordItem extends UniqueSwordItem {
     int blindDuration = (int) Config.getFloat("shadowmistBlindDuration", "UniqueEffects", ConfigDefaultValues.shadowmistBlindDuration);
     int radius = (int) Config.getFloat("shadowmistRadius", "UniqueEffects", ConfigDefaultValues.shadowmistRadius);
 
-    public ShadowstingSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public ShadowstingSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

@@ -24,8 +24,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class CaelestisSwordItem extends UniqueSwordItem {
-    public CaelestisSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public CaelestisSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

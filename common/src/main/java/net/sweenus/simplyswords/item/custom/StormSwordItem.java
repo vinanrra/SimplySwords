@@ -25,8 +25,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class StormSwordItem extends UniqueSwordItem {
-    public StormSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public StormSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     private static int stepMod = 0;

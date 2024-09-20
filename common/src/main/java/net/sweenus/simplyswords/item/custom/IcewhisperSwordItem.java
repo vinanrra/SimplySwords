@@ -28,8 +28,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class IcewhisperSwordItem extends UniqueSwordItem {
-    public IcewhisperSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public IcewhisperSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     private static int stepMod = 0;

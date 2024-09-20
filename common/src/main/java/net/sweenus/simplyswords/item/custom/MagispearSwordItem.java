@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.Random;
 
 public class MagispearSwordItem extends UniqueSwordItem {
-    public MagispearSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public MagispearSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

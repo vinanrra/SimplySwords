@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Random;
 
 public class MagiscytheSwordItem extends UniqueSwordItem {
-    public MagiscytheSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public MagiscytheSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

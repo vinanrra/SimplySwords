@@ -1,13 +1,11 @@
 package net.sweenus.simplyswords.item;
 
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
 import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
@@ -19,9 +17,8 @@ import java.util.List;
 public class GobberEndSwordItem extends SwordItem {
     String[] repairIngredient;
 
-    public GobberEndSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, String... repairIngredient) {
-        super(toolMaterial, attackDamage, attackSpeed,
-                new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS));
+    public GobberEndSwordItem(ToolMaterial toolMaterial, String... repairIngredient) {
+        super(toolMaterial, new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS));
         this.repairIngredient = repairIngredient;
     }
 

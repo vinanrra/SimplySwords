@@ -38,8 +38,8 @@ public class StormbringerSwordItem extends UniqueSwordItem {
     boolean parrySuccess;
     int parrySuccession;
 
-    public StormbringerSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public StormbringerSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

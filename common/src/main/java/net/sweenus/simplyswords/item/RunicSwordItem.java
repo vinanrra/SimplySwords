@@ -29,8 +29,8 @@ public class RunicSwordItem extends SwordItem {
 
     public static int maxUseTime;
 
-    public RunicSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings.fireproof());
+    public RunicSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings.fireproof());
     }
 
     @Override

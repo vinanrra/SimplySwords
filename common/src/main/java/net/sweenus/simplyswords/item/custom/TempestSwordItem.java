@@ -1,5 +1,6 @@
 package net.sweenus.simplyswords.item.custom;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -31,8 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TempestSwordItem extends UniqueSwordItem {
-    public TempestSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public TempestSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class TempestSwordItem extends UniqueSwordItem {
             HelperMethods.playHitSounds(attacker, target);
             SoundEvent soundSelect;
             ParticleEffect particleSelect;
-            StatusEffect statusSelect;
+            RegistrySupplier<StatusEffect> statusSelect;
 
             List<SoundEvent> sounds = new ArrayList<>();
             sounds.add(SoundRegistry.SPELL_FIRE.get());
@@ -66,11 +67,11 @@ public class TempestSwordItem extends UniqueSwordItem {
             particles.add(ParticleTypes.SMOKE);
             particles.add(ParticleTypes.CLOUD);
 
-            List<StatusEffect> status = new ArrayList<>();
-            status.add(EffectRegistry.FIRE_VORTEX.get());
-            status.add(EffectRegistry.FROST_VORTEX.get());
-            status.add(EffectRegistry.FIRE_VORTEX.get());
-            status.add(EffectRegistry.FROST_VORTEX.get());
+            List<RegistrySupplier<StatusEffect>> status = new ArrayList<>();
+            status.add(EffectRegistry.FIRE_VORTEX);
+            status.add(EffectRegistry.FROST_VORTEX);
+            status.add(EffectRegistry.FIRE_VORTEX);
+            status.add(EffectRegistry.FROST_VORTEX);
 
             int random      = attacker.getRandom().nextInt(3);
             soundSelect     = sounds.get(random);

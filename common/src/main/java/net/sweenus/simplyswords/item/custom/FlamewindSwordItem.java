@@ -28,8 +28,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class FlamewindSwordItem extends UniqueSwordItem {
-    public FlamewindSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public FlamewindSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

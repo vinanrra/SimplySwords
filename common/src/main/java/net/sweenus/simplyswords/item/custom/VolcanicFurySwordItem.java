@@ -29,8 +29,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class VolcanicFurySwordItem extends UniqueSwordItem {
-    public VolcanicFurySwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public VolcanicFurySwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     private static int stepMod = 0;

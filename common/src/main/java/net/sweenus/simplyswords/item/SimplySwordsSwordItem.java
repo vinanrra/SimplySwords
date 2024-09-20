@@ -11,7 +11,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Identifier;
-import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.util.HelperMethods;
 
 import java.util.ArrayList;
@@ -21,9 +20,8 @@ import java.util.List;
 public class SimplySwordsSwordItem extends SwordItem {
     String[] repairIngredient;
 
-    public SimplySwordsSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, String... repairIngredient) {
-        super(toolMaterial, attackDamage, attackSpeed,
-                new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS));
+    public SimplySwordsSwordItem(ToolMaterial toolMaterial, Settings settings, String... repairIngredient) {
+        super(toolMaterial, settings);
         this.repairIngredient = repairIngredient;
     }
 

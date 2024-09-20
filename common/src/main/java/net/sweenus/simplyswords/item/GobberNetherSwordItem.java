@@ -16,9 +16,8 @@ import java.util.List;
 public class GobberNetherSwordItem extends SwordItem {
     String[] repairIngredient;
 
-    public GobberNetherSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, String... repairIngredient) {
-        super(toolMaterial, attackDamage, attackSpeed,
-                new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS));
+    public GobberNetherSwordItem(ToolMaterial toolMaterial, String... repairIngredient) {
+        super(toolMaterial, new Item.Settings().arch$tab(SimplySwords.SIMPLYSWORDS));
         this.repairIngredient = repairIngredient;
     }
 

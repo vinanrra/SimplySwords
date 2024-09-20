@@ -23,8 +23,8 @@ import java.util.List;
 public class DormantRelicSwordItem extends UniqueSwordItem {
     private static int stepMod = 0;
 
-    public DormantRelicSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public DormantRelicSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

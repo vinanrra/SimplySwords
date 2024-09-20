@@ -26,8 +26,8 @@ public class RighteousRelicSwordItem extends UniqueSwordItem {
     private static int stepMod = 0;
     int abilityChance = (int) Config.getFloat("righteousStandardChance", "UniqueEffects", ConfigDefaultValues.righteousStandardChance);
 
-    public RighteousRelicSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public RighteousRelicSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

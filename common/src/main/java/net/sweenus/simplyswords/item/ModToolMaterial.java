@@ -1,18 +1,19 @@
 package net.sweenus.simplyswords.item;
 
 import com.google.common.base.Suppliers;
-import net.fabricmc.yarn.constants.MiningLevels;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.tag.TagKey;
 import net.sweenus.simplyswords.registry.ItemsRegistry;
 
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    RUNIC(MiningLevels.NETHERITE, 2031, 9.0f, 5.0f, 25, Items.NETHERITE_INGOT),
-    UNIQUE(MiningLevels.NETHERITE, 3270, 15.0f, 5.0f, 30, ItemsRegistry.RUNIC_TABLET.get()),
+    RUNIC(4, 2031, 9.0f, 5.0f, 25, Items.NETHERITE_INGOT),
+    UNIQUE(4, 3270, 15.0f, 5.0f, 30, ItemsRegistry.RUNIC_TABLET.get()),
 
     //MYTHIC METALS
     ADAMANTITE(4, 1024, 7.0F, 5F, 16, Items.DIAMOND),
@@ -80,8 +81,8 @@ public enum ModToolMaterial implements ToolMaterial {
     }
 
     @Override
-    public int getMiningLevel() {
-        return this.miningLevel;
+    public TagKey<Block> getInverseTag() {
+        return null;
     }
 
     @Override

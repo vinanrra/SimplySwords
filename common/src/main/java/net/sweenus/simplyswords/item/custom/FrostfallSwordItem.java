@@ -30,8 +30,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class FrostfallSwordItem extends UniqueSwordItem {
-    public FrostfallSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public FrostfallSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

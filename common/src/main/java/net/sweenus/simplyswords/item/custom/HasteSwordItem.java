@@ -24,8 +24,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class HasteSwordItem extends UniqueSwordItem {
-    public HasteSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public HasteSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

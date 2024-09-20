@@ -9,7 +9,6 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
@@ -17,6 +16,7 @@ import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -96,7 +96,7 @@ public class BattleStandardEntity extends PathAwareEntity {
                 if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, ownerEntity, "fire") > 0) {
                     abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, ownerEntity, "fire");
                 }
-                //AOE Aura
+                // AOE Aura
                 if (this.age % 10 == 0) {
                     Box box = new Box(this.getX() + radius, this.getY() + (float) radius / 3, this.getZ() + radius,
                             this.getX() - radius, this.getY() - (float) radius / 3, this.getZ() - radius);
@@ -105,21 +105,20 @@ public class BattleStandardEntity extends PathAwareEntity {
                                 && le != ownerEntity && !(le instanceof BattleStandardEntity)
                                 && !(le instanceof BattleStandardDarkEntity)) {
 
-                            //Sunfire negative effects
+                            // Sunfire negative effects
                             switch (standardType) {
                                 case "sunfire" -> {
                                     le.damage(ownerEntity.getDamageSources().magic(), abilityDamage);
                                     le.setOnFireFor(1);
                                     le.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 120, 1), this);
                                 }
-                                //Nullification negative effects
+                                // Nullification negative effects
                                 case "nullification" -> {
                                     for (StatusEffectInstance statusEffectInstance : le.getStatusEffects()) {
                                         StatusEffect statusEffect = statusEffectInstance.getEffectType().value();
-                                            if (statusEffect != null && statusEffect.isBeneficial()) {
-                                                le.removeStatusEffect(statusEffectInstance.getEffectType());
-                                                break;
-                                            }
+                                        if (statusEffect != null && statusEffect.isBeneficial()) {
+                                            le.removeStatusEffect(statusEffectInstance.getEffectType());
+                                            break;
                                         }
                                     }
                                 }
@@ -129,9 +128,8 @@ public class BattleStandardEntity extends PathAwareEntity {
                                         le.damage(ownerEntity.getDamageSources().magic(), abilityDamage);
                                     if (negativeEffect != null) {
                                         try {
-                                            le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(Identifier.of(negativeEffect)),
-                                                    20, negativeEffectAmplifier), this);
+                                            RegistryEntry<StatusEffect> negativeEffectEntry = Registries.STATUS_EFFECT.getEntry(Identifier.of(negativeEffect)).orElseThrow();
+                                            le.addStatusEffect(new StatusEffectInstance(negativeEffectEntry, 20, negativeEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(negativeEffect);
                                             this.setHealth(this.getHealth() - 1000);
@@ -139,9 +137,8 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     }
                                     if (negativeEffectSecondary != null) {
                                         try {
-                                            le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(Identifier.of(negativeEffectSecondary)),
-                                                    20, negativeEffectAmplifier), this);
+                                            RegistryEntry<StatusEffect> negativeEffectSecondaryEntry = Registries.STATUS_EFFECT.getEntry(Identifier.of(negativeEffectSecondary)).orElseThrow();
+                                            le.addStatusEffect(new StatusEffectInstance(negativeEffectSecondaryEntry, 20, negativeEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(negativeEffectSecondary);
                                             this.setHealth(this.getHealth() - 1000);
@@ -154,6 +151,7 @@ public class BattleStandardEntity extends PathAwareEntity {
                     HelperMethods.spawnParticle(getWorld(), ParticleTypes.LAVA, this.getX(), this.getY(), this.getZ(),
                             0, 0, 0);
                 }
+
 
                 //Landing effects
                 if (this.getHealth() > this.getMaxHealth() - 2 && this.isOnGround()) {
@@ -189,12 +187,14 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     le.heal(abilityHeal);
                                     le.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 90, 1), this);
                                 }
-                                //Nullification positive effects
+// Nullification positive effects
                                 case "nullification" -> {
-                                    for (StatusEffectInstance statusEffect : le.getStatusEffects()) {
-                                        if (statusEffect != null && !statusEffect.getEffectType().isBeneficial()
-                                                && !Objects.equals(statusEffect.getEffectType(), EffectRegistry.BATTLE_FATIGUE.get())) {
-                                            le.removeStatusEffect(statusEffect.getEffectType());
+                                    for (StatusEffectInstance statusEffectInstance : le.getStatusEffects()) {
+                                        RegistryEntry<StatusEffect> effectEntry = statusEffectInstance.getEffectType();
+                                        StatusEffect effect = effectEntry.value();
+                                        if (effect != null && !effect.isBeneficial()
+                                                && !Objects.equals(effectEntry, EffectRegistry.BATTLE_FATIGUE.get())) {
+                                            le.removeStatusEffect(effectEntry);
                                             break;
                                         }
                                     }
@@ -205,9 +205,8 @@ public class BattleStandardEntity extends PathAwareEntity {
                                         le.heal(abilityHeal);
                                     if (positiveEffect != null) {
                                         try {
-                                            le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(Identifier.of(positiveEffect)),
-                                                    85, positiveEffectAmplifier), this);
+                                            RegistryEntry<StatusEffect> positiveEffectEntry = Registries.STATUS_EFFECT.getEntry(Identifier.of(positiveEffect)).orElseThrow();
+                                            le.addStatusEffect(new StatusEffectInstance(positiveEffectEntry, 85, positiveEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(positiveEffect);
                                             this.setHealth(this.getHealth() - 1000);
@@ -215,9 +214,8 @@ public class BattleStandardEntity extends PathAwareEntity {
                                     }
                                     if (positiveEffectSecondary != null) {
                                         try {
-                                            le.addStatusEffect(new StatusEffectInstance(
-                                                    Registries.STATUS_EFFECT.get(Identifier.of(positiveEffectSecondary)),
-                                                    85, positiveEffectAmplifier), this);
+                                            RegistryEntry<StatusEffect> positiveEffectSecondaryEntry = Registries.STATUS_EFFECT.getEntry(Identifier.of(positiveEffectSecondary)).orElseThrow();
+                                            le.addStatusEffect(new StatusEffectInstance(positiveEffectSecondaryEntry, 85, positiveEffectAmplifier), this);
                                         } catch (Exception e) {
                                             errorCatch(positiveEffectSecondary);
                                             this.setHealth(this.getHealth() - 1000);

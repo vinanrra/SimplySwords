@@ -34,8 +34,8 @@ public class HarbingerSwordItem extends UniqueSwordItem {
     int skillCooldown = (int) Config.getFloat("abyssalStandardCooldown", "UniqueEffects", ConfigDefaultValues.abyssalStandardCooldown);
     int abilityChance = (int) Config.getFloat("abyssalStandardChance", "UniqueEffects", ConfigDefaultValues.abyssalStandardChance);
 
-    public HarbingerSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public HarbingerSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

@@ -29,8 +29,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class LichbladeSwordItem extends UniqueSwordItem {
-    public LichbladeSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public LichbladeSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     private static int stepMod = 0;

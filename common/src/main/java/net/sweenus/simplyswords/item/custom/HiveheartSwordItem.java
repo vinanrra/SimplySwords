@@ -28,8 +28,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class HiveheartSwordItem extends UniqueSwordItem {
-    public HiveheartSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public HiveheartSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

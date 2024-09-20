@@ -28,8 +28,8 @@ public class WhisperwindSwordItem extends UniqueSwordItem {
     int skillCooldown = (int) Config.getFloat("fatalFlickerCooldown", "UniqueEffects", ConfigDefaultValues.fatalFlickerCooldown);
     int abilityChance = (int) Config.getFloat("fatalFlickerChance", "UniqueEffects", ConfigDefaultValues.fatalFlickerChance);
 
-    public WhisperwindSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public WhisperwindSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

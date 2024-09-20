@@ -32,8 +32,8 @@ public class StormsEdgeSwordItem extends UniqueSwordItem {
     int skillCooldown = (int) Config.getFloat("stormJoltCooldown", "UniqueEffects", ConfigDefaultValues.stormJoltCooldown);
     int chargeChance = (int) Config.getFloat("stormJoltChance", "UniqueEffects", ConfigDefaultValues.stormJoltChance);
 
-    public StormsEdgeSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public StormsEdgeSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

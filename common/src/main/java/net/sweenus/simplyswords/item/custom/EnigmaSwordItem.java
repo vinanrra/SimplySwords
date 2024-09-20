@@ -34,8 +34,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class EnigmaSwordItem extends UniqueSwordItem {
-    public EnigmaSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public EnigmaSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

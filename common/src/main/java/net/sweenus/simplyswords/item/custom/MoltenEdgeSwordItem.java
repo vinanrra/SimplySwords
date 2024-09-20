@@ -29,8 +29,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class MoltenEdgeSwordItem extends UniqueSwordItem {
-    public MoltenEdgeSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public MoltenEdgeSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

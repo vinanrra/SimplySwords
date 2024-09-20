@@ -32,8 +32,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class DreadtideSwordItem extends UniqueSwordItem {
-    public DreadtideSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public DreadtideSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

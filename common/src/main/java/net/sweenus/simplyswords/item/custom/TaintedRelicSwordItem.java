@@ -27,8 +27,8 @@ public class TaintedRelicSwordItem extends UniqueSwordItem {
     private static int stepMod = 0;
     int abilityChance = (int) Config.getFloat("abyssalStandardChance", "UniqueEffects", ConfigDefaultValues.abyssalStandardChance);
 
-    public TaintedRelicSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public TaintedRelicSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

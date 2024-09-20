@@ -7,7 +7,6 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.util.HelperMethods;
 
 import java.util.ArrayList;
@@ -17,9 +16,8 @@ import java.util.List;
 public class SimplySwordsNetheriteSwordItem extends SwordItem {
     String[] repairIngredient;
 
-    public SimplySwordsNetheriteSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, String... repairIngredient) {
-        super(toolMaterial, attackDamage, attackSpeed,
-                new Settings().arch$tab(SimplySwords.SIMPLYSWORDS).fireproof());
+    public SimplySwordsNetheriteSwordItem(ToolMaterial toolMaterial, Settings settings, String... repairIngredient) {
+        super(toolMaterial, settings);
         this.repairIngredient = repairIngredient;
     }
 

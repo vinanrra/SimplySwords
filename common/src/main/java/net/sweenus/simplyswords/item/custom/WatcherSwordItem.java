@@ -22,8 +22,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class WatcherSwordItem extends UniqueSwordItem {
-    public WatcherSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public WatcherSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

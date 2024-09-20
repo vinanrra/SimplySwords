@@ -34,8 +34,8 @@ public class SunfireSwordItem extends UniqueSwordItem {
     int skillCooldown = (int) Config.getFloat("righteousStandardCooldown", "UniqueEffects", ConfigDefaultValues.righteousStandardCooldown);
     int abilityChance = (int) Config.getFloat("righteousStandardChance", "UniqueEffects", ConfigDefaultValues.righteousStandardChance);
 
-    public SunfireSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public SunfireSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

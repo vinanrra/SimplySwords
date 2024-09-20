@@ -23,8 +23,8 @@ public abstract class UniqueSwordItem extends SwordItem {
 
     String iRarity = "UNIQUE";
 
-    public UniqueSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings.fireproof());
+    public UniqueSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings.fireproof());
     }
 
     public abstract int getMaxUseTime(ItemStack stack);

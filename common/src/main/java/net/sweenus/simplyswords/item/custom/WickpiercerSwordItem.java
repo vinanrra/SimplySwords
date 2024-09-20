@@ -25,8 +25,8 @@ import net.sweenus.simplyswords.util.HelperMethods;
 import java.util.List;
 
 public class WickpiercerSwordItem extends UniqueSwordItem {
-    public WickpiercerSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public WickpiercerSwordItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override
