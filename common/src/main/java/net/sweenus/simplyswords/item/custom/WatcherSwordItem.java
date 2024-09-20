@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -24,6 +23,11 @@ import java.util.List;
 public class WatcherSwordItem extends UniqueSwordItem {
     public WatcherSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     private static int stepMod = 0;

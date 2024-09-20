@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;

@@ -2,6 +2,7 @@ package net.sweenus.simplyswords.effect;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
@@ -59,7 +60,7 @@ public class MagislamEffect extends OrbitingEffect {
                         }
                         HelperMethods.spawnOrbitParticles((ServerWorld) player.getWorld(), player.getPos(), ParticleTypes.CAMPFIRE_COSY_SMOKE, 2, 8);
                         HelperMethods.spawnOrbitParticles((ServerWorld) player.getWorld(), player.getPos(), ParticleTypes.EXPLOSION, 1, 3);
-                        player.getWorld().playSoundFromEntity(null, player, SoundEvents.ENTITY_GENERIC_EXPLODE,
+                        player.getWorld().playSoundFromEntity(null, player, SoundEvents.ENTITY_GENERIC_EXPLODE.value(),
                                 SoundCategory.PLAYERS, 0.9f, 1.1f);
                         player.removeStatusEffect(EffectRegistry.MAGISLAM);
                         player.removeStatusEffect(EffectRegistry.RESILIENCE);
@@ -69,6 +70,11 @@ public class MagislamEffect extends OrbitingEffect {
         }
         super.applyUpdateEffect(livingEntity, amplifier);
         return false;
+    }
+
+    @Override
+    public void onRemoved(LivingEntity entity, AttributeContainer attributes) {
+
     }
 
 

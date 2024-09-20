@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -9,8 +8,8 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Style;
@@ -33,10 +32,15 @@ public class MoltenEdgeSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
-    private static DefaultParticleType particleWalk = ParticleTypes.FALLING_LAVA;
-    private static DefaultParticleType particleSprint = ParticleTypes.FALLING_LAVA;
-    private static DefaultParticleType particlePassive = ParticleTypes.SMOKE;
+    private static SimpleParticleType particleWalk = ParticleTypes.FALLING_LAVA;
+    private static SimpleParticleType particleSprint = ParticleTypes.FALLING_LAVA;
+    private static SimpleParticleType particlePassive = ParticleTypes.SMOKE;
 
     private final int abilityCooldown = (int) Config.getFloat("moltenRoarCooldown", "UniqueEffects", ConfigDefaultValues.moltenRoarCooldown);
     int radius = (int) Config.getFloat("moltenRoarRadius", "UniqueEffects", ConfigDefaultValues.moltenRoarRadius);
@@ -81,7 +85,7 @@ public class MoltenEdgeSwordItem extends UniqueSwordItem {
             world.playSoundFromEntity(null, user, SoundRegistry.DARK_SWORD_ENCHANT.get(),
                     user.getSoundCategory(), 0.7f, 1.5f);
             int duration = roar_timer_max * amp / 2;
-            user.addStatusEffect(new StatusEffectInstance(EffectRegistry.ONSLAUGHT.get(), duration, 0), user);
+            user.addStatusEffect(new StatusEffectInstance(EffectRegistry.ONSLAUGHT, duration, 0), user);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, duration, 3), user);
             user.getItemCooldownManager().set(this, abilityCooldown);
             particlePassive = ParticleTypes.LARGE_SMOKE;

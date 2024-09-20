@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -27,6 +26,11 @@ import java.util.Random;
 public class MagispearSwordItem extends UniqueSwordItem {
     public MagispearSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     private static int stepMod = 0;
@@ -56,8 +60,8 @@ public class MagispearSwordItem extends UniqueSwordItem {
 
         world.playSound(null, user.getBlockPos(), SoundRegistry.MAGIC_SHAMANIC_NORDIC_27.get(),
                 user.getSoundCategory(), 0.2f, 1.1f);
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.MAGISLAM.get(), 62, 1));
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RESILIENCE.get(), 64, 3));
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.MAGISLAM, 62, 1));
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RESILIENCE, 64, 3));
         user.getItemCooldownManager().set(this, skillCooldown);
 
         return super.use(world, user, hand);

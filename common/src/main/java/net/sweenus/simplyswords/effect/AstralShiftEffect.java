@@ -2,7 +2,6 @@ package net.sweenus.simplyswords.effect;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -14,6 +13,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Box;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
+import net.sweenus.simplyswords.registry.EffectRegistry;
 import net.sweenus.simplyswords.registry.SoundRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
 
@@ -29,8 +29,8 @@ public class AstralShiftEffect extends StatusEffect {
             ServerWorld world = (ServerWorld) entity.getWorld();
 
             if (entity instanceof PlayerEntity player) {
-                if (player.hasStatusEffect(this)) {
-                    StatusEffectInstance effectInstance = player.getStatusEffect(this);
+                if (player.hasStatusEffect(EffectRegistry.ASTRAL_SHIFT)) {
+                    StatusEffectInstance effectInstance = player.getStatusEffect(EffectRegistry.ASTRAL_SHIFT);
                     if (effectInstance != null && effectInstance.getDuration() < 10) {
 
                         double x = entity.getX();
@@ -64,7 +64,7 @@ public class AstralShiftEffect extends StatusEffect {
                                 HelperMethods.spawnRainingParticles(world, ParticleTypes.EXPLOSION, target, 2, 1);
                             }
                         }
-                        entity.removeStatusEffect(this);
+                        entity.removeStatusEffect(EffectRegistry.ASTRAL_SHIFT);
                     }
                 }
             }
@@ -77,10 +77,5 @@ public class AstralShiftEffect extends StatusEffect {
     @Override
     public boolean canApplyUpdateEffect(int pDuration, int pAmplifier) {
         return true;
-    }
-
-
-    @Override
-    public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
     }
 }

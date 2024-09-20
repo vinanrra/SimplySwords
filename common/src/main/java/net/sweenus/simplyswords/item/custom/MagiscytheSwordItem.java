@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -30,6 +29,11 @@ public class MagiscytheSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
     public static boolean scalesWithSpellPower;
 
@@ -39,14 +43,14 @@ public class MagiscytheSwordItem extends UniqueSwordItem {
             HelperMethods.playHitSounds(attacker, target);
             ServerWorld world = (ServerWorld) attacker.getWorld();
 
-            if (attacker.hasStatusEffect(EffectRegistry.MAGISTORM.get())) {
+            if (attacker.hasStatusEffect(EffectRegistry.MAGISTORM)) {
                 world.playSound(null, attacker.getBlockPos(), SoundRegistry.ELEMENTAL_BOW_SCIFI_SHOOT_IMPACT_03.get(),
                         attacker.getSoundCategory(), 0.1f, 1.9f);
 
                 float repairChance = Config.getFloat("magistormRepairChance", "UniqueEffects", ConfigDefaultValues.magistormRepairChance);
                 Random random = new Random();
                 for (EquipmentSlot slot : EquipmentSlot.values()) {
-                    if (slot.getType() == EquipmentSlot.Type.ARMOR || slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND) {
+                    if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR || slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND) {
                         ItemStack item = attacker.getEquippedStack(slot);
                         if (!item.isEmpty() && random.nextFloat() < repairChance && item.getDamage() > 0) {
                             item.setDamage((int) (item.getDamage() - HelperMethods.getAttackDamage(stack)));
@@ -66,7 +70,7 @@ public class MagiscytheSwordItem extends UniqueSwordItem {
 
         world.playSound(null, user.getBlockPos(), SoundRegistry.MAGIC_SHAMANIC_NORDIC_22.get(),
                 user.getSoundCategory(), 0.2f, 1.1f);
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.MAGISTORM.get(), baseEffectDuration, 1));
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.MAGISTORM, baseEffectDuration, 1));
         user.getItemCooldownManager().set(this, skillCooldown);
 
         return super.use(world, user, hand);

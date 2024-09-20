@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -32,6 +31,11 @@ public class HiveheartSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -54,7 +58,7 @@ public class HiveheartSwordItem extends UniqueSwordItem {
                     beeEntity.shouldAngerAt(target);
                     beeEntity.setInvulnerable(true);
                     beeEntity.setOwner(attacker);
-                    double attackDamage = (1 + skillDamage * this.getAttackDamage());
+                    double attackDamage = (1 + skillDamage * HelperMethods.getAttackDamage(this.getDefaultStack()));
                     EntityAttributeInstance attackAttribute = beeEntity.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
                     if (attackAttribute != null)
                         attackAttribute.setBaseValue(attackDamage);

@@ -16,7 +16,7 @@ public class FreezeEffect extends StatusEffect {
             double y = pLivingEntity.getY();
             double z = pLivingEntity.getZ();
 
-            pLivingEntity.teleport(x, y, z);
+            pLivingEntity.teleport(x, y, z, false);
             pLivingEntity.setVelocity(0, 0, 0);
         }
 

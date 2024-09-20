@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -28,6 +27,11 @@ import java.util.List;
 public class SoulPyreSwordItem extends UniqueSwordItem {
     public SoulPyreSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     private int relocationTimer;
@@ -71,7 +75,7 @@ public class SoulPyreSwordItem extends UniqueSwordItem {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, resistance_duration, 0), user);
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, resistance_duration, 0), user);
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.HASTE, relocationDuration, 3), user);
-                target.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), relocationDuration - 10, 0), user);
+                target.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE, relocationDuration - 10, 0), user);
                 canRelocate = true;
                 relocationTimer = relocationDuration;
                 //AOE ignite & pull

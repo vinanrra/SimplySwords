@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -23,6 +22,11 @@ public class BrambleSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -32,8 +36,8 @@ public class BrambleSwordItem extends UniqueSwordItem {
             int fhitchance = (int) Config.getFloat("brambleChance", "UniqueEffects", ConfigDefaultValues.brambleChance);
             HelperMethods.playHitSounds(attacker, target);
             if (attacker.getRandom().nextInt(100) <= fhitchance) {
-                if (!attacker.hasStatusEffect(EffectRegistry.SPORE_SWARM.get()))
-                    attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.SPORE_SWARM.get(), 200, 2, false, false, true));
+                if (!attacker.hasStatusEffect(EffectRegistry.SPORE_SWARM))
+                    attacker.addStatusEffect(new StatusEffectInstance(EffectRegistry.SPORE_SWARM, 200, 2, false, false, true));
             }
 
         }

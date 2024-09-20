@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -39,7 +38,7 @@ public class StormSwordItem extends UniqueSwordItem {
             int phitchance = (int) Config.getFloat("stormChance", "UniqueEffects", ConfigDefaultValues.stormChance);
 
             if (attacker.getRandom().nextInt(100) <= phitchance) {
-                target.addStatusEffect(new StatusEffectInstance(EffectRegistry.STORM.get(), 2, 1), attacker);
+                target.addStatusEffect(new StatusEffectInstance(EffectRegistry.STORM, 2, 1), attacker);
             }
         }
         return super.postHit(stack, target, attacker);

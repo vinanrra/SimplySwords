@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -29,6 +28,11 @@ public class WickpiercerSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -42,9 +46,9 @@ public class WickpiercerSwordItem extends UniqueSwordItem {
             if (attacker instanceof PlayerEntity player)
                 damageSource = attacker.getDamageSources().playerAttack(player);
 
-            if (attacker.hasStatusEffect(EffectRegistry.FRENZY.get())) {
+            if (attacker.hasStatusEffect(EffectRegistry.FRENZY)) {
                 target.timeUntilRegen = 0;
-                target.damage(damageSource, this.getAttackDamage() * damageModifier);
+                target.damage(damageSource, (float) (HelperMethods.getAttackDamage(this.getDefaultStack()) * damageModifier));
                 world.playSound(null, attacker.getBlockPos(), SoundRegistry.SPELL_FIRE.get(),
                         attacker.getSoundCategory(), 0.2f, 1.9f);
             }
@@ -66,7 +70,7 @@ public class WickpiercerSwordItem extends UniqueSwordItem {
         world.playSound(null, user.getBlockPos(), SoundRegistry.SPELL_FIRE.get(),
                 user.getSoundCategory(), 0.5f, 1.0f);
 
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.FRENZY.get(), effectDuration, 0));
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.FRENZY, effectDuration, 0));
         user.getItemCooldownManager().set(this, skillCooldown);
 
         return super.use(world, user, hand);

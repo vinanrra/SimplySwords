@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -10,8 +9,8 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -36,9 +35,9 @@ public class EmberIreSwordItem extends UniqueSwordItem {
     }
 
     private static int stepMod = 0;
-    private static DefaultParticleType particleWalk = ParticleTypes.FALLING_LAVA;
-    private static DefaultParticleType particleSprint = ParticleTypes.FALLING_LAVA;
-    private static DefaultParticleType particlePassive = ParticleTypes.SMOKE;
+    private static SimpleParticleType particleWalk = ParticleTypes.FALLING_LAVA;
+    private static SimpleParticleType particleSprint = ParticleTypes.FALLING_LAVA;
+    private static SimpleParticleType particlePassive = ParticleTypes.SMOKE;
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -100,7 +99,7 @@ public class EmberIreSwordItem extends UniqueSwordItem {
                 targetEntity.timeUntilRegen = 0;
                 targetEntity.damage(damageSource, finalDamage);
 
-                world.playSound(null, targetEntity.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE,
+                world.playSound(null, targetEntity.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXPLODE.value(),
                         user.getSoundCategory(), 0.4f, 1.1f);
                 HelperMethods.spawnOrbitParticles((ServerWorld) world, targetEntity.getPos(), ParticleTypes.EXPLOSION, 1, 1 );
                 HelperMethods.spawnOrbitParticles((ServerWorld) world, targetEntity.getPos(), ParticleTypes.POOF, 1, 20 );

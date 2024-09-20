@@ -35,6 +35,11 @@ public class TempestSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
     public static boolean scalesWithSpellPower;
 
@@ -82,7 +87,7 @@ public class TempestSwordItem extends UniqueSwordItem {
                     target, statusSelect, 500, 1, vortexMaxStacks);
 
             effect.setSourceEntity(attacker);
-            effect.setAdditionalData((int) getAttackDamage() / 3);
+            effect.setAdditionalData((int) HelperMethods.getAttackDamage(this.getDefaultStack()) / 3);
             target.addStatusEffect(effect);
 
         }
@@ -102,9 +107,9 @@ public class TempestSwordItem extends UniqueSwordItem {
             for (Entity entity : serverWorld.getOtherEntities(user, box, EntityPredicates.VALID_LIVING_ENTITY)) {
                 if ((entity instanceof LivingEntity le) && HelperMethods.checkFriendlyFire(le, user)) {
 
-                    if (le.hasStatusEffect(EffectRegistry.FIRE_VORTEX.get()) && le.hasStatusEffect(EffectRegistry.FROST_VORTEX.get())) {
-                        StatusEffectInstance frostVortex = le.getStatusEffect(EffectRegistry.FROST_VORTEX.get());
-                        StatusEffectInstance fireVortex  = le.getStatusEffect(EffectRegistry.FIRE_VORTEX.get());
+                    if (le.hasStatusEffect(EffectRegistry.FIRE_VORTEX) && le.hasStatusEffect(EffectRegistry.FROST_VORTEX)) {
+                        StatusEffectInstance frostVortex = le.getStatusEffect(EffectRegistry.FROST_VORTEX);
+                        StatusEffectInstance fireVortex  = le.getStatusEffect(EffectRegistry.FIRE_VORTEX);
                         int totalAmplifier = 0;
                         if (fireVortex != null && frostVortex != null)
                             totalAmplifier = fireVortex.getAmplifier() + frostVortex.getAmplifier();
@@ -117,11 +122,11 @@ public class TempestSwordItem extends UniqueSwordItem {
                             soundHasPlayed = true;
                         }
 
-                        SimplySwordsStatusEffectInstance status = HelperMethods.incrementSimplySwordsStatusEffect(user, EffectRegistry.ELEMENTAL_VORTEX.get(), vortexDuration, totalAmplifier, vortexMaxSize);
+                        SimplySwordsStatusEffectInstance status = HelperMethods.incrementSimplySwordsStatusEffect(user, EffectRegistry.ELEMENTAL_VORTEX, vortexDuration, totalAmplifier, vortexMaxSize);
                         status.setAdditionalData(Math.max(1, totalAmplifier));
                         status.setSourceEntity(user);
-                        le.removeStatusEffect(EffectRegistry.FIRE_VORTEX.get());
-                        le.removeStatusEffect(EffectRegistry.FROST_VORTEX.get());
+                        le.removeStatusEffect(EffectRegistry.FIRE_VORTEX);
+                        le.removeStatusEffect(EffectRegistry.FROST_VORTEX);
                         user.getItemCooldownManager().set(this, skillCooldown);
                     }
                 }

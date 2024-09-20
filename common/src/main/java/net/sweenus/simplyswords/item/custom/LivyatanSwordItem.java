@@ -2,7 +2,6 @@ package net.sweenus.simplyswords.item.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -34,6 +33,11 @@ public class LivyatanSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
     public static boolean scalesWithSpellPower;
     int radius = (int) Config.getFloat("frostShatterRadius", "UniqueEffects", ConfigDefaultValues.frostShatterRadius);
@@ -59,7 +63,7 @@ public class LivyatanSwordItem extends UniqueSwordItem {
                         target.getX() - radius, target.getY() - radius, target.getZ() - radius);
                 for (Entity entity : world.getOtherEntities(attacker, box, EntityPredicates.VALID_LIVING_ENTITY)) {
                     if ((entity instanceof LivingEntity le) && HelperMethods.checkFriendlyFire(le, attacker)) {
-                        le.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), shatter_timer_max + 10, 0), attacker);
+                        le.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE, shatter_timer_max + 10, 0), attacker);
                         le.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, shatter_timer_max - 10, 4), attacker);
                         world.playSoundFromEntity(null, le, SoundRegistry.ELEMENTAL_BOW_ICE_SHOOT_IMPACT_01.get(),
                                 le.getSoundCategory(), 0.1f, 3f);
@@ -101,8 +105,8 @@ public class LivyatanSwordItem extends UniqueSwordItem {
                 for (Entity otherEntity : world.getOtherEntities(entity, box, EntityPredicates.VALID_LIVING_ENTITY)) {
                     //Ice shatter
                     if (otherEntity instanceof LivingEntity le) {
-                        if (le.hasStatusEffect(EffectRegistry.FREEZE.get())) {
-                            le.removeStatusEffect(EffectRegistry.FREEZE.get());
+                        if (le.hasStatusEffect(EffectRegistry.FREEZE)) {
+                            le.removeStatusEffect(EffectRegistry.FREEZE);
                             le.removeStatusEffect(StatusEffects.RESISTANCE);
                             world.playSoundFromEntity(null, le, SoundRegistry.ELEMENTAL_BOW_ICE_SHOOT_IMPACT_02.get(),
                                     le.getSoundCategory(), 0.2f, 3f);

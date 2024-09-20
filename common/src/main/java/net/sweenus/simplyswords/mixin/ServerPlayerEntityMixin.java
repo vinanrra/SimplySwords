@@ -50,7 +50,7 @@ public abstract class ServerPlayerEntityMixin {
 
             //Effect Resilience
             if (serverPlayer.hasStatusEffect(EffectRegistry.RESILIENCE)) {
-                HelperMethods.decrementStatusEffect(serverPlayer, EffectRegistry.RESILIENCE.get());
+                HelperMethods.decrementStatusEffect(serverPlayer, EffectRegistry.RESILIENCE);
                 cir.setReturnValue(false);
                 if (!player.hasStatusEffect(EffectRegistry.MAGISLAM))
                     serverPlayer.getWorld().playSoundFromEntity(null, serverPlayer, SoundRegistry.MAGIC_SWORD_PARRY_03.get(),

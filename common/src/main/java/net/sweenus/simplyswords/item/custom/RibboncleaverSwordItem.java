@@ -2,7 +2,6 @@ package net.sweenus.simplyswords.item.custom;
 
 import dev.architectury.platform.Platform;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -33,6 +32,11 @@ public class RibboncleaverSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -59,9 +63,9 @@ public class RibboncleaverSwordItem extends UniqueSwordItem {
         user.setVelocity(user.getRotationVector().multiply(+1.7));
         user.setVelocity(user.getVelocity().x, 0, user.getVelocity().z); // Prevent user flying to the heavens
         user.velocityModified = true;
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RIBBONCLEAVE.get(),
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RIBBONCLEAVE,
                 60, 0, false, false, true));
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RESILIENCE.get(),
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.RESILIENCE,
                 15, resilienceAmplifier, false, false, true));
         user.getItemCooldownManager().set(this, skillCooldown);
 

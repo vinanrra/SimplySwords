@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -29,6 +28,11 @@ public class StarsEdgeSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -38,7 +42,7 @@ public class StarsEdgeSwordItem extends UniqueSwordItem {
             float skillLifestealModifier = Config.getFloat("celestialSurgeLifestealModifier", "UniqueEffects", ConfigDefaultValues.celestialSurgeLifestealModifier);
             ServerWorld world = (ServerWorld) attacker.getWorld();
             DamageSource damageSource = world.getDamageSources().generic();
-            float abilityDamage = getAttackDamage();
+            float abilityDamage = (float) HelperMethods.getAttackDamage(this.getDefaultStack());
             if (attacker instanceof PlayerEntity player)
                 damageSource = attacker.getDamageSources().playerAttack(player);
 
@@ -108,7 +112,7 @@ public class StarsEdgeSwordItem extends UniqueSwordItem {
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip1").setStyle(ABILITY));
         tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip2").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip3", getAttackDamage() * skillDamageModifier).setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip3", HelperMethods.getAttackDamage(this.getDefaultStack()) * skillDamageModifier).setStyle(TEXT));
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip4").setStyle(TEXT));
         tooltip.add(Text.literal(""));

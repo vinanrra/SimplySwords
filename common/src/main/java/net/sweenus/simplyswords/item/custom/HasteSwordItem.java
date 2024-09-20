@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -26,6 +25,11 @@ import java.util.List;
 public class HasteSwordItem extends UniqueSwordItem {
     public HasteSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     private static int stepMod = 0;
@@ -78,8 +82,8 @@ public class HasteSwordItem extends UniqueSwordItem {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (stepMod > 0) stepMod--;
         if (stepMod <= 0) stepMod = 7;
-        HelperMethods.createFootfalls(entity, stack, world, stepMod, ParticleTypes.ENTITY_EFFECT,
-                ParticleTypes.ENTITY_EFFECT, ParticleTypes.ENTITY_EFFECT, false);
+        HelperMethods.createFootfalls(entity, stack, world, stepMod, ParticleTypes.ASH,
+                ParticleTypes.ASH, ParticleTypes.ASH, false);
         super.inventoryTick(stack, world, entity, slot, selected);
     }
 

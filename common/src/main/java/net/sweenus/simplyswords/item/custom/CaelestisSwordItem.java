@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -28,6 +27,11 @@ public class CaelestisSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -49,7 +53,7 @@ public class CaelestisSwordItem extends UniqueSwordItem {
         world.playSound(null, user.getBlockPos(), SoundRegistry.ACTIVATE_PLINTH_03.get(),
                 user.getSoundCategory(), 0.4f, 1.3f);
 
-        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.ASTRAL_SHIFT.get(),
+        user.addStatusEffect(new StatusEffectInstance(EffectRegistry.ASTRAL_SHIFT,
                 duration, 0, false, false, true));
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.DARKNESS,
                 duration, 0, false, false, true));

@@ -43,7 +43,7 @@ public class FatalFlickerEffect extends StatusEffect {
         }
         for (Entity entity : entities) {
             if ((entity instanceof LivingEntity le) && HelperMethods.checkFriendlyFire(le, user)) {
-                HelperMethods.incrementStatusEffect(le, EffectRegistry.ECHO.get(), 20, amplifier, maxAmplifier);
+                HelperMethods.incrementStatusEffect(le, EffectRegistry.ECHO, 20, amplifier, maxAmplifier);
             }
         }
 

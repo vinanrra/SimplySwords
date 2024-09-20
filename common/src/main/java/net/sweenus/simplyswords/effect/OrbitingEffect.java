@@ -1,6 +1,7 @@
 package net.sweenus.simplyswords.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleEffect;
@@ -8,7 +9,7 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 
-public class OrbitingEffect extends StatusEffect {
+public abstract class OrbitingEffect extends StatusEffect {
     protected ParticleEffect particleType = ParticleTypes.SMOKE; // Default particle type
     public OrbitingEffect(StatusEffectCategory statusEffectCategory, int color) {
         super (statusEffectCategory, color);
@@ -57,6 +58,8 @@ public class OrbitingEffect extends StatusEffect {
     protected void setParticleType(ParticleEffect particleType) {
         this.particleType = particleType;
     }
+
+    public abstract void onRemoved(LivingEntity entity, AttributeContainer attributes);
 
     @Override
     public boolean canApplyUpdateEffect(int pDuration, int pAmplifier) {

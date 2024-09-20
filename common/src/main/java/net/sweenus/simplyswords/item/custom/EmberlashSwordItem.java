@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item.custom;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -29,6 +28,11 @@ public class EmberlashSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
     public static boolean scalesWithSpellPower;
 
@@ -37,9 +41,9 @@ public class EmberlashSwordItem extends UniqueSwordItem {
         if (!attacker.getWorld().isClient()) {
             ServerWorld world = (ServerWorld) attacker.getWorld();
             DamageSource damageSource = world.getDamageSources().generic();
-            float abilityDamage = getAttackDamage();
+            float abilityDamage = (float) HelperMethods.getAttackDamage(this.getDefaultStack());
             float spellScalingModifier = Config.getFloat("smoulderSpellScaling", "UniqueEffects", ConfigDefaultValues.smoulderSpellScaling);
-            if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, attacker, "fire") > getAttackDamage()) {
+            if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, attacker, "fire") > HelperMethods.getAttackDamage(this.getDefaultStack())) {
                 abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, attacker, "fire");
                 scalesWithSpellPower = true;
             }
@@ -50,15 +54,15 @@ public class EmberlashSwordItem extends UniqueSwordItem {
             int maximum_stacks = (int) Config.getFloat("smoulderMaxStacks", "UniqueEffects", ConfigDefaultValues.smoulderMaxStacks);
             HelperMethods.playHitSounds(attacker, target);
 
-            if (target.hasStatusEffect(EffectRegistry.SMOULDERING.get())) {
+            if (target.hasStatusEffect(EffectRegistry.SMOULDERING)) {
                 target.timeUntilRegen = 0;
-                StatusEffectInstance smoulderingEffect = target.getStatusEffect(EffectRegistry.SMOULDERING.get());
+                StatusEffectInstance smoulderingEffect = target.getStatusEffect(EffectRegistry.SMOULDERING);
                 if (smoulderingEffect != null) {
                     float damageMultiplier = 0.15f * smoulderingEffect.getAmplifier();
                     target.damage(damageSource, abilityDamage * damageMultiplier);
                 }
             }
-            HelperMethods.incrementStatusEffect(target, EffectRegistry.SMOULDERING.get(), 100, 1, maximum_stacks+1);
+            HelperMethods.incrementStatusEffect(target, EffectRegistry.SMOULDERING, 100, 1, maximum_stacks+1);
 
         }
         return super.postHit(stack, target, attacker);
@@ -101,7 +105,7 @@ public class EmberlashSwordItem extends UniqueSwordItem {
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip3").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip4").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip5", getAttackDamage() * 0.20f).setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip5", HelperMethods.getAttackDamage(this.getDefaultStack()) * 0.20f).setStyle(TEXT));
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.onrightclick").setStyle(RIGHTCLICK));
         tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip6").setStyle(TEXT));

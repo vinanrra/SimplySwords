@@ -2,7 +2,6 @@ package net.sweenus.simplyswords.item.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -36,6 +35,11 @@ public class SunfireSwordItem extends UniqueSwordItem {
 
     public SunfireSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     @Override

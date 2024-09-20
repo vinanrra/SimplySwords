@@ -39,6 +39,7 @@ public class GobberEndSwordItem extends SwordItem {
     //Unbreakable weapon support for Gobber
     static boolean unbreakable = Config.getBoolean("compatGobberEndWeaponsUnbreakable", "General", ConfigDefaultValues.compatGobberEndWeaponsUnbreakable);
 
+    /* 1.21
     @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player)
     {
@@ -49,5 +50,6 @@ public class GobberEndSwordItem extends SwordItem {
             stack.getOrCreateNbt().putBoolean("Unbreakable", true);
         }
     }
+     */
 
 }

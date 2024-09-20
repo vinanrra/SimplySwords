@@ -3,7 +3,6 @@ package net.sweenus.simplyswords.item.custom;
 import dev.architectury.platform.Platform;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
@@ -36,6 +35,11 @@ import java.util.List;
 public class EnigmaSwordItem extends UniqueSwordItem {
     public EnigmaSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     private static int stepMod = 0;
@@ -71,7 +75,7 @@ public class EnigmaSwordItem extends UniqueSwordItem {
                     banner.setCustomName(Text.translatable("entity.simplyswords.battlestandard.name", user.getName()));
                     banner.setCustomNameVisible(false);
                     banner.setInvisible(true);
-                    banner.addStatusEffect( new StatusEffectInstance(EffectRegistry.ELEMENTAL_VORTEX.get(), 900, 11, false, false, false));
+                    banner.addStatusEffect( new StatusEffectInstance(EffectRegistry.ELEMENTAL_VORTEX, 900, 11, false, false, false));
                 }
                 user.getItemCooldownManager().set(this.getDefaultStack().getItem(), (int) Config.getFloat("enigmaCooldown", "UniqueEffects", ConfigDefaultValues.enigmaCooldown));
             }

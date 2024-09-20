@@ -1,7 +1,6 @@
 package net.sweenus.simplyswords.item.custom;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -30,6 +29,11 @@ import java.util.List;
 public class StealSwordItem extends UniqueSwordItem {
     public StealSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     private static int stepMod = 0;
@@ -89,7 +93,7 @@ public class StealSwordItem extends UniqueSwordItem {
                     if (le.hasStatusEffect(StatusEffects.SLOWNESS) && le.hasStatusEffect(StatusEffects.GLOWING)) {
                         if (le.distanceTo(user) > 5) { //can we check target here?
                             le.addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, bduration, 1), user);
-                            user.teleport(le.getX(), le.getY(), le.getZ());
+                            user.teleport(le.getX(), le.getY(), le.getZ(), false);
                             sworld.playSoundFromEntity(null, le, SoundRegistry.ELEMENTAL_SWORD_SCIFI_ATTACK_03.get(),
                                     le.getSoundCategory(), 0.3f, 1.5f);
                             le.damage(user.getDamageSources().freeze(), abilityDamage);

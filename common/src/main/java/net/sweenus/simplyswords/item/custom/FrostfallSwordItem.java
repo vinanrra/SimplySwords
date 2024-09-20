@@ -2,7 +2,6 @@ package net.sweenus.simplyswords.item.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -34,6 +33,11 @@ public class FrostfallSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
     public static boolean scalesWithSpellPower;
 
@@ -60,7 +64,7 @@ public class FrostfallSwordItem extends UniqueSwordItem {
                         target.getX() - radius, target.getY() - radius, target.getZ() - radius);
                 for (Entity entity : world.getOtherEntities(attacker, box, EntityPredicates.VALID_LIVING_ENTITY)) {
                     if ((entity instanceof LivingEntity le) && HelperMethods.checkFriendlyFire(le, attacker)) {
-                        le.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE.get(), shatter_timer_max + 10, 0), attacker);
+                        le.addStatusEffect(new StatusEffectInstance(EffectRegistry.FREEZE, shatter_timer_max + 10, 0), attacker);
                         le.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, shatter_timer_max - 10, 4), attacker);
                         world.playSoundFromEntity(null, le, SoundRegistry.ELEMENTAL_BOW_ICE_SHOOT_IMPACT_01.get(),
                                 le.getSoundCategory(), 0.1f, 3f);
@@ -94,7 +98,7 @@ public class FrostfallSwordItem extends UniqueSwordItem {
             double zpos = user.getZ() - 2;
             user.setVelocity(0, 0, 0); // Stop player in place
             user.velocityModified = true;
-            user.teleport(lastX, lastY, lastZ); //Ensure they don't end up stuck inside a block
+            user.teleport(lastX, lastY, lastZ, false); // Ensure they don't end up stuck inside a block
 
             for (int i = 3; i > 0; i--) {
                 for (int j = 3; j > 0; j--) {
@@ -109,22 +113,22 @@ public class FrostfallSwordItem extends UniqueSwordItem {
                     BlockState currentState4 = world.getBlockState(poscheck4);
                     BlockState state = Blocks.ICE.getDefaultState();
                     if (i + j != 4) {
-                        if (currentState == Blocks.AIR.getDefaultState() || currentState == Blocks.SNOW.getDefaultState() || currentState == Blocks.GRASS.getDefaultState()
+                        if (currentState == Blocks.AIR.getDefaultState() || currentState == Blocks.SNOW.getDefaultState() || currentState == Blocks.GRASS_BLOCK.getDefaultState()
                                 || currentState == Blocks.LARGE_FERN.getDefaultState() || currentState == Blocks.FERN.getDefaultState())
                             world.setBlockState(poscheck, state);
-                        if (currentState2 == Blocks.AIR.getDefaultState() || currentState2 == Blocks.SNOW.getDefaultState() || currentState2 == Blocks.GRASS.getDefaultState()
+                        if (currentState2 == Blocks.AIR.getDefaultState() || currentState2 == Blocks.SNOW.getDefaultState() || currentState2 == Blocks.GRASS_BLOCK.getDefaultState()
                                 || currentState2 == Blocks.LARGE_FERN.getDefaultState() || currentState2 == Blocks.FERN.getDefaultState())
                             world.setBlockState(poscheck2, state);
                     }
-                    if (currentState3 == Blocks.AIR.getDefaultState() || currentState3 == Blocks.SNOW.getDefaultState() || currentState3 == Blocks.GRASS.getDefaultState()
+                    if (currentState3 == Blocks.AIR.getDefaultState() || currentState3 == Blocks.SNOW.getDefaultState() || currentState3 == Blocks.GRASS_BLOCK.getDefaultState()
                             || currentState3 == Blocks.LARGE_FERN.getDefaultState() || currentState3 == Blocks.FERN.getDefaultState())
                         world.setBlockState(poscheck3, state);
-                    if (currentState4 == Blocks.AIR.getDefaultState() || currentState4 == Blocks.SNOW.getDefaultState() || currentState4 == Blocks.GRASS.getDefaultState()
+                    if (currentState4 == Blocks.AIR.getDefaultState() || currentState4 == Blocks.SNOW.getDefaultState() || currentState4 == Blocks.GRASS_BLOCK.getDefaultState()
                             || currentState4 == Blocks.LARGE_FERN.getDefaultState() || currentState4 == Blocks.FERN.getDefaultState())
                         world.setBlockState(poscheck4, state);
                 }
             }
-            user.teleport(lastX, lastY, lastZ);
+            user.teleport(lastX, lastY, lastZ, false);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, shatter_timer_max, 4), user);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, shatter_timer_max, 4), user);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, shatter_timer_max, 4), user);
@@ -150,7 +154,7 @@ public class FrostfallSwordItem extends UniqueSwordItem {
                 for (Entity otherEntity : world.getOtherEntities(player, box, EntityPredicates.VALID_LIVING_ENTITY)) {
                     //Ice shatter
                     if (otherEntity instanceof LivingEntity le) {
-                        if (le.hasStatusEffect(EffectRegistry.FREEZE.get())) {
+                        if (le.hasStatusEffect(EffectRegistry.FREEZE)) {
                             world.playSoundFromEntity(null, le, SoundRegistry.ELEMENTAL_BOW_ICE_SHOOT_IMPACT_02.get(),
                                     le.getSoundCategory(), 0.2f, 3f);
                             le.damage(player.getDamageSources().indirectMagic(entity, entity), abilityDamage);

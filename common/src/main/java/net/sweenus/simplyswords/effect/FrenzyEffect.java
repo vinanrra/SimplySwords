@@ -1,6 +1,7 @@
 package net.sweenus.simplyswords.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.particle.ParticleTypes;
 import net.sweenus.simplyswords.item.custom.WickpiercerSwordItem;
@@ -20,6 +21,11 @@ public class FrenzyEffect extends OrbitingEffect {
         }
         super.applyUpdateEffect(livingEntity, amplifier);
         return false;
+    }
+
+    @Override
+    public void onRemoved(LivingEntity entity, AttributeContainer attributes) {
+
     }
 
     @Override

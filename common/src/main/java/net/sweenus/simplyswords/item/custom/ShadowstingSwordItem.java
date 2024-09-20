@@ -2,7 +2,6 @@ package net.sweenus.simplyswords.item.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -36,6 +35,11 @@ public class ShadowstingSwordItem extends UniqueSwordItem {
 
     public ShadowstingSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
     }
 
     @Override
@@ -91,7 +95,7 @@ public class ShadowstingSwordItem extends UniqueSwordItem {
         BlockState currentStateHigh = world.getBlockState(user.getBlockPos().up(1).offset(user.getMovementDirection(), 5));
         BlockState state = Blocks.AIR.getDefaultState();
         if (currentStateLow == state && currentStateHigh == state) {
-            user.teleport(targetPositionX, targetPositionY, targetPositionZ);
+            user.teleport(targetPositionX, targetPositionY, targetPositionZ, false);
         }
         return super.use(world, user, hand);
     }

@@ -18,6 +18,7 @@ import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.SimpleParticleType;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.scoreboard.AbstractTeam;
 import net.minecraft.server.world.ServerWorld;
@@ -378,7 +379,7 @@ public class HelperMethods {
         return statusReturn;
     }
 
-    public static void decrementStatusEffect(LivingEntity livingEntity, StatusEffect statusEffect) {
+    public static void decrementStatusEffect(LivingEntity livingEntity, RegistryEntry<StatusEffect> statusEffect) {
 
         if (livingEntity.hasStatusEffect(statusEffect)) {
             int currentAmplifier = livingEntity.getStatusEffect(statusEffect).getAmplifier();
@@ -396,8 +397,8 @@ public class HelperMethods {
     }
 
     // createFootfalls - creates weapon footfall particle effects (footsteps)
-    public static void createFootfalls(Entity entity, ItemStack stack, World world, int stepMod, DefaultParticleType particle,
-                                       DefaultParticleType sprintParticle, DefaultParticleType passiveParticle, boolean passiveParticles) {
+    public static void createFootfalls(Entity entity, ItemStack stack, World world, int stepMod, SimpleParticleType particle,
+                                       SimpleParticleType sprintParticle, SimpleParticleType passiveParticle, boolean passiveParticles) {
         if ((entity instanceof PlayerEntity player) && Config.getBoolean("enableWeaponFootfalls", "General",ConfigDefaultValues.enableWeaponFootfalls) && player.getEquippedStack(EquipmentSlot.MAINHAND) == stack) {
             if (isWalking(player) && !player.isSwimming() && player.isOnGround()) {
                 if (stepMod == 6) {

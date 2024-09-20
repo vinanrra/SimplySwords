@@ -1,6 +1,7 @@
 package net.sweenus.simplyswords.effect;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
@@ -57,6 +58,11 @@ public class FrostVortexEffect extends OrbitingEffect {
         }
         super.applyUpdateEffect(livingEntity, amplifier);
         return false;
+    }
+
+    @Override
+    public void onRemoved(LivingEntity entity, AttributeContainer attributes) {
+
     }
 
     @Override

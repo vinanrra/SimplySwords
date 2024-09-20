@@ -1,7 +1,6 @@
 package net.sweenus.simplyswords.item.custom;
 
 import elocindev.necronomicon.api.text.TextAPI;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -36,6 +35,11 @@ public class DreadtideSwordItem extends UniqueSwordItem {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
 
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 0;
+    }
+
     private static int stepMod = 0;
 
     @Override
@@ -63,7 +67,7 @@ public class DreadtideSwordItem extends UniqueSwordItem {
                 if ((closestEntity instanceof LivingEntity ee)) {
                     if (HelperMethods.checkFriendlyFire(ee, user)) {
 
-                        StatusEffectInstance voidcloakEffect = user.getStatusEffect(EffectRegistry.VOIDCLOAK.get());
+                        StatusEffectInstance voidcloakEffect = user.getStatusEffect(EffectRegistry.VOIDCLOAK);
                         if (voidcloakEffect != null) {
                             SoundEvent soundSelect = SoundRegistry.MAGIC_SHAMANIC_VOICE_04.get();
                             List<SoundEvent> sounds = new ArrayList<>();
@@ -86,12 +90,12 @@ public class DreadtideSwordItem extends UniqueSwordItem {
                                     user.getSoundCategory(), 0.3f, 1.3f);
 
                             SimplySwordsStatusEffectInstance voidAssaultEffect = new SimplySwordsStatusEffectInstance(
-                                    EffectRegistry.VOIDASSAULT.get(), voidcallerDuration, voidcloakEffect.getAmplifier(), false,
+                                    EffectRegistry.VOIDASSAULT, voidcallerDuration, voidcloakEffect.getAmplifier(), false,
                                     false, true);
                             voidAssaultEffect.setSourceEntity(user);
-                            voidAssaultEffect.setAdditionalData((int) (getAttackDamage() * voidcallerDamageModifier));
+                            voidAssaultEffect.setAdditionalData((int) (HelperMethods.getAttackDamage(this.getDefaultStack()) * voidcallerDamageModifier));
                             ee.addStatusEffect(voidAssaultEffect);
-                            user.removeStatusEffect(EffectRegistry.VOIDCLOAK.get());
+                            user.removeStatusEffect(EffectRegistry.VOIDCLOAK);
                             user.getItemCooldownManager().set(this, skillCooldown);
                         }
                     }

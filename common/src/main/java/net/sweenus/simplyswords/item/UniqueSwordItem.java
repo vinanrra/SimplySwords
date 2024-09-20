@@ -1,6 +1,5 @@
 package net.sweenus.simplyswords.item;
 
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,13 +18,15 @@ import net.sweenus.simplyswords.util.HelperMethods;
 
 import java.util.List;
 
-public class UniqueSwordItem extends SwordItem {
+public abstract class UniqueSwordItem extends SwordItem {
 
     String iRarity = "UNIQUE";
 
     public UniqueSwordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings.fireproof());
     }
+
+    public abstract int getMaxUseTime(ItemStack stack);
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {

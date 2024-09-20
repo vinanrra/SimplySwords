@@ -66,7 +66,7 @@ public abstract class LivingEntityMixin {
                 int amplifier = voidcloakEffect.getAmplifier();
                 float reductionFactor = 1 - (amplifier + 1) * 0.10f; // +1 because amplifier starts at 0
                 amount *= reductionFactor;
-                HelperMethods.decrementStatusEffect(livingEntity, EffectRegistry.VOIDCLOAK.get());
+                HelperMethods.decrementStatusEffect(livingEntity, EffectRegistry.VOIDCLOAK);
             }
             if (ribbonwrathEffect != null) {
                 float reductionFactor = 0.85f;
