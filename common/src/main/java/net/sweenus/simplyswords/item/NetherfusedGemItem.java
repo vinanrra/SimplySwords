@@ -9,9 +9,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.ClickType;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
-import net.minecraft.world.World;
 import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.util.HelperMethods;
 
@@ -26,6 +24,7 @@ public class NetherfusedGemItem extends Item {
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player,
                              StackReference cursorStackReference) {
+        /* 1.21 temp
 
         if (stack.getOrCreateNbt().getString("nether_power").isEmpty()) {
 
@@ -33,9 +32,12 @@ public class NetherfusedGemItem extends Item {
             stack.getOrCreateNbt().putString("nether_power", netherfusedPowerSelection);
         }
 
+         */
+
         return false;
     }
 
+    /* 1.21 temp
     @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
         if (world.isClient) return;
@@ -44,6 +46,8 @@ public class NetherfusedGemItem extends Item {
         stack.getOrCreateNbt().putString("nether_power", netherfusedPowerSelection);
 
     }
+
+     */
 
     @Override
     public Text getName(ItemStack stack) {
@@ -57,6 +61,7 @@ public class NetherfusedGemItem extends Item {
         Style TEXT = HelperMethods.getStyle("text");
 
         tooltip.add(Text.literal(""));
+        /* 1.21 temp
 
         if (itemStack.getOrCreateNbt().getString("nether_power").isEmpty()) {
             tooltip.add(Text.translatable("item.simplyswords.netherfused_gem.tooltip1").setStyle(LEGENDARY));
@@ -178,5 +183,7 @@ public class NetherfusedGemItem extends Item {
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.gem_description").formatted(Formatting.GRAY, Formatting.ITALIC));
         tooltip.add(Text.translatable("item.simplyswords.gem_description2").formatted(Formatting.GRAY, Formatting.ITALIC));
+
+         */
     }
 }

@@ -1,15 +1,7 @@
 package net.sweenus.simplyswords.util;
 
-import dev.architectury.event.events.common.LootEvent;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.condition.RandomChanceLootCondition;
-import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.function.EnchantRandomlyLootFunction;
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
-import net.sweenus.simplyswords.config.SimplySwordsConfig;
-import net.sweenus.simplyswords.registry.ItemsRegistry;
 
 public class ModLootTableModifiers {
 
@@ -19,6 +11,7 @@ public class ModLootTableModifiers {
         float rareLootWeight = Config.getFloat("rareLootTableWeight", "Loot", ConfigDefaultValues.rareLootTableWeight);
         float runicLootWeight = Config.getFloat("runicLootTableWeight", "Loot", ConfigDefaultValues.runicLootTableWeight);
         float uniqueLootWeight = Config.getFloat("uniqueLootTableWeight", "Loot", ConfigDefaultValues.uniqueLootTableWeight);
+        /* 1.21 temp
 
 
         //STANDARD
@@ -283,6 +276,8 @@ public class ModLootTableModifiers {
                 }
             }
         }));
+
+         */
 
     }
 }

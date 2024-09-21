@@ -9,9 +9,7 @@ import net.minecraft.screen.slot.Slot;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.ClickType;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Rarity;
-import net.minecraft.world.World;
 import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.util.HelperMethods;
 
@@ -26,14 +24,18 @@ public class RunefusedGemItem extends Item {
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player,
                              StackReference cursorStackReference) {
+        /* 1.21 temp
         if (stack.getOrCreateNbt().getString("runic_power").isEmpty()) {
 
             String runefusedPowerSelection = HelperMethods.chooseRunefusedPower();
             stack.getOrCreateNbt().putString("runic_power", runefusedPowerSelection);
         }
+
+         */
         return false;
     }
 
+    /* 1.21 temp
     @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
         if (world.isClient) return;
@@ -41,6 +43,8 @@ public class RunefusedGemItem extends Item {
         String runefusedPowerSelection = HelperMethods.chooseRunefusedPower();
         stack.getOrCreateNbt().putString("runic_power", runefusedPowerSelection);
     }
+
+     */
 
     @Override
     public Text getName(ItemStack stack) {
@@ -54,6 +58,7 @@ public class RunefusedGemItem extends Item {
         Style TEXT = HelperMethods.getStyle("text");
 
         tooltip.add(Text.literal(""));
+        /* 1.21 temp
 
         if (itemStack.getOrCreateNbt().getString("runic_power").isEmpty()) {
             tooltip.add(Text.translatable("item.simplyswords.unidentifiedsworditem.tooltip1").setStyle(RUNIC));
@@ -142,5 +147,7 @@ public class RunefusedGemItem extends Item {
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.gem_description").formatted(Formatting.GRAY, Formatting.ITALIC));
         tooltip.add(Text.translatable("item.simplyswords.gem_description2").formatted(Formatting.GRAY, Formatting.ITALIC));
+
+         */
     }
 }

@@ -1,29 +1,7 @@
 package net.sweenus.simplyswords.item;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.StackReference;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.tooltip.TooltipType;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
-import net.minecraft.util.*;
-import net.minecraft.world.World;
-import net.sweenus.simplyswords.config.Config;
-import net.sweenus.simplyswords.config.ConfigDefaultValues;
-import net.sweenus.simplyswords.registry.EffectRegistry;
-import net.sweenus.simplyswords.registry.SoundRegistry;
-import net.sweenus.simplyswords.util.HelperMethods;
-import net.sweenus.simplyswords.util.RunicMethods;
-
-import java.util.List;
 
 public class RunicSwordItem extends SwordItem {
 
@@ -33,6 +11,7 @@ public class RunicSwordItem extends SwordItem {
         super(toolMaterial, settings.fireproof());
     }
 
+    /* 1.21 temp
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player,
                              StackReference cursorStackReference) {
@@ -294,4 +273,6 @@ public class RunicSwordItem extends SwordItem {
             }
         }
     }
+
+     */
 }

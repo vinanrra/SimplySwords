@@ -2,28 +2,19 @@ package net.sweenus.simplyswords.api;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
-import net.sweenus.simplyswords.config.Config;
-import net.sweenus.simplyswords.config.ConfigDefaultValues;
 import net.sweenus.simplyswords.entity.BattleStandardEntity;
 import net.sweenus.simplyswords.registry.EntityRegistry;
-import net.sweenus.simplyswords.registry.ItemsRegistry;
 import net.sweenus.simplyswords.registry.SoundRegistry;
 import net.sweenus.simplyswords.util.HelperMethods;
-import net.sweenus.simplyswords.util.RunicMethods;
 
 import java.util.List;
 
@@ -78,6 +69,7 @@ public class SimplySwordsAPI {
     // Performs postHit socket effects
     public static void postHitGemSocketLogic(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!attacker.getWorld().isClient()) {
+            /* 1.21 temp
             switch (stack.getOrCreateNbt().getString("runic_power")) {
                 case "freeze" -> RunicMethods.postHitRunicFreeze(target, attacker);
                 case "wildfire" -> RunicMethods.postHitRunicWildfire(target, attacker);
@@ -110,6 +102,7 @@ public class SimplySwordsAPI {
                 case "onslaught" -> RunicMethods.postHitNetherOnslaught(target, attacker);
                 case "nullification" -> RunicMethods.postHitNetherNullification(attacker);
             }
+             */
         }
     }
 
@@ -119,6 +112,7 @@ public class SimplySwordsAPI {
         Style RUNIC = HelperMethods.getStyle("runic");
         Style NETHERFUSED = HelperMethods.getStyle("legendary");
         Style TEXT = HelperMethods.getStyle("text");
+        /* 1.21 temp
 
         NbtCompound nbt = itemStack.getOrCreateNbt();
         if (!nbt.getString("runic_power").equals("no_socket") || !nbt.getString("nether_power").equals("no_socket")) {
@@ -325,10 +319,13 @@ public class SimplySwordsAPI {
         } else if (!nbt.getString("runic_power").equals("no_socket") || !nbt.getString("nether_power").equals("no_socket")) {
             tooltip.add(Text.translatable("item.simplyswords.common.showtooltip").formatted(Formatting.GRAY));
         }
+
+         */
     }
 
     // Allows for the socketing of gems
     public static void onClickedGemSocketLogic (ItemStack stack, ItemStack otherStack, PlayerEntity player) {
+        /* 1.21 temp
 
         if (Config.getBoolean("enableUniqueGemSockets", "General", ConfigDefaultValues.enableUniqueGemSockets)) {
             String powerType = null;
@@ -346,11 +343,14 @@ public class SimplySwordsAPI {
                 otherStack.decrement(1);
             }
         }
+
+         */
     }
 
     // netherSocketChance & runeSocketChance determine how likely these sockets are to appear on the item. An int of 50 = 50% chance for the socket to appear.
     public static void inventoryTickGemSocketLogic (ItemStack stack, World world, Entity entity,
                                                     int runeSocketChance, int netherSocketChance) {
+        /* 1.21 temp
 
         NbtCompound nbt = stack.getOrCreateNbt();
 
@@ -372,6 +372,8 @@ public class SimplySwordsAPI {
                 case "frost_ward" -> RunicMethods.inventoryTickRunicFrostWard(world, user);
             }
         }
+
+         */
 
     }
 

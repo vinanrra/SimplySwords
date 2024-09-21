@@ -6,7 +6,6 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.sound.SoundCategory;
@@ -42,6 +41,7 @@ public class ImmolationEffect extends WideOrbitingEffect {
                     ItemStack checkOffStack = player.getOffHandStack();
 
                     if (checkMainStack.getItem() instanceof SwordItem || checkOffStack.getItem() instanceof SwordItem) {
+                        /* 1.21 temp
 
                         //Check mainhand for immolation effect. Remove effect if not present
                         if (player.getMainHandStack().hasNbt()) {
@@ -63,6 +63,8 @@ public class ImmolationEffect extends WideOrbitingEffect {
                                 }
                             }
                         }
+
+                         */
                     }
                     else {player.removeStatusEffect(EffectRegistry.IMMOLATION);}
 
