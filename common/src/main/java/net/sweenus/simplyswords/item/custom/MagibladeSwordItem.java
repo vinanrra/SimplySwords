@@ -79,7 +79,7 @@ public class MagibladeSwordItem extends UniqueSwordItem {
         if (!user.getWorld().isClient() && user instanceof  PlayerEntity player) {
             int skillCooldown = (int) Config.getFloat("magibladeCooldown", "UniqueEffects", ConfigDefaultValues.magibladeCooldown);
             float damageModifier = Config.getFloat("magibladeDamageModifier", "UniqueEffects", ConfigDefaultValues.magibladeDamageModifier);
-            float damage = (float) (HelperMethods.getAttackDamage(stack) * damageModifier);
+            float damage = (float) (HelperMethods.getEntityAttackDamage(user) * damageModifier);
             float distance = Config.getFloat("magibladeSonicDistance", "UniqueEffects", ConfigDefaultValues.magibladeSonicDistance);
             DamageSource damageSource = player.getDamageSources().playerAttack(player);
 

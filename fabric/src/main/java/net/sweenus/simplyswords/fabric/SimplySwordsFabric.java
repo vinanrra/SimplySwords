@@ -3,7 +3,6 @@ package net.sweenus.simplyswords.fabric;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.sweenus.simplyswords.SimplySwords;
-import net.sweenus.simplyswords.compat.GobberCompat;
 import net.sweenus.simplyswords.fabric.compat.MythicMetalsCompat;
 
 public class SimplySwordsFabric implements ModInitializer {
@@ -17,12 +16,12 @@ public class SimplySwordsFabric implements ModInitializer {
         if (FabricLoader.getInstance().isModLoaded("quilt_loader") && FabricLoader.getInstance().isModLoaded("gobber2")
                 && FabricLoader.getInstance().isModLoaded("mythicmetals")) {
             System.out.println("SimplySwords: Detected Quilt Loader. Mythic Metals and Gobber compatibility fix is being applied.");
-            GobberCompat.registerModItems();
+            //GobberCompat.registerModItems(); 1.21
             MythicMetalsCompat.registerModItems();
         }
         else {
             if (FabricLoader.getInstance().isModLoaded("gobber2")) {
-                GobberCompat.registerModItems();
+                //GobberCompat.registerModItems(); 1.21
             }
             if (FabricLoader.getInstance().isModLoaded("mythicmetals")) {
                 MythicMetalsCompat.registerModItems();

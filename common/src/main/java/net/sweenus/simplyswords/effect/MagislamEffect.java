@@ -37,7 +37,7 @@ public class MagislamEffect extends OrbitingEffect {
                 double height = 0.9;
                 double descentVelocity = 1;
                 double damage_multiplier = Config.getFloat("magislamDamageModifier", "UniqueEffects", ConfigDefaultValues.magislamDamageModifier);
-                double damage = (HelperMethods.getAttackDamage(livingEntity.getMainHandStack()) * damage_multiplier);
+                double damage = (HelperMethods.getEntityAttackDamage(livingEntity) * damage_multiplier);
 
                 if (ability_timer >= 60) {
                     player.setVelocity(livingEntity.getRotationVector().multiply(+leapVelocity));

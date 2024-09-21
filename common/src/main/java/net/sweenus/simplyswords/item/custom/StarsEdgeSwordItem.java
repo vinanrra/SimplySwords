@@ -43,7 +43,7 @@ public class StarsEdgeSwordItem extends UniqueSwordItem {
             float skillLifestealModifier = Config.getFloat("celestialSurgeLifestealModifier", "UniqueEffects", ConfigDefaultValues.celestialSurgeLifestealModifier);
             ServerWorld world = (ServerWorld) attacker.getWorld();
             DamageSource damageSource = world.getDamageSources().generic();
-            float abilityDamage = (float) HelperMethods.getAttackDamage(this.getDefaultStack());
+            float abilityDamage = (float) HelperMethods.getEntityAttackDamage(attacker);
             if (attacker instanceof PlayerEntity player)
                 damageSource = attacker.getDamageSources().playerAttack(player);
 
@@ -113,7 +113,7 @@ public class StarsEdgeSwordItem extends UniqueSwordItem {
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip1").setStyle(ABILITY));
         tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip2").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip3", HelperMethods.getAttackDamage(this.getDefaultStack()) * skillDamageModifier).setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip3", skillDamageModifier).setStyle(TEXT));
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.starsedgesworditem.tooltip4").setStyle(TEXT));
         tooltip.add(Text.literal(""));

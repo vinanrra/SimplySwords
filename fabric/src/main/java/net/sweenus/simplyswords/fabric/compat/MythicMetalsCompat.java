@@ -1,15 +1,7 @@
 package net.sweenus.simplyswords.fabric.compat;
 
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
-import net.sweenus.simplyswords.fabric.item.PrometheumSwordItem;
-import net.sweenus.simplyswords.item.ModToolMaterial;
-import net.sweenus.simplyswords.item.SimplySwordsSwordItem;
 
 public class MythicMetalsCompat {
 
@@ -100,6 +92,7 @@ public class MythicMetalsCompat {
     static int celestium_modifier = (int) Config.getFloat("celestium_damageModifier", "WeaponAttributes", ConfigDefaultValues.celestium_damageModifier);
     static int metallurgium_modifier = (int) Config.getFloat("metallurgium_damageModifier", "WeaponAttributes", ConfigDefaultValues.metallurgium_damageModifier);
 
+    /* 1.21
 
     //ADAMANTITE
     public static final Item ADAMANTITE_LONGSWORD = registerItem( "mythicmetals_compat/adamantite/adamantite_longsword",
@@ -1238,5 +1231,7 @@ public class MythicMetalsCompat {
     public static void registerModItems() {
         SimplySwords.LOGGER.info("Registering Mythic Metals compat Items for " + SimplySwords.MOD_ID);
     }
+
+     */
 
 }

@@ -49,7 +49,7 @@ public class WickpiercerSwordItem extends UniqueSwordItem {
 
             if (attacker.hasStatusEffect(EffectRegistry.FRENZY)) {
                 target.timeUntilRegen = 0;
-                target.damage(damageSource, (float) (HelperMethods.getAttackDamage(this.getDefaultStack()) * damageModifier));
+                target.damage(damageSource, (float) (HelperMethods.getEntityAttackDamage(attacker) * damageModifier));
                 world.playSound(null, attacker.getBlockPos(), SoundRegistry.SPELL_FIRE.get(),
                         attacker.getSoundCategory(), 0.2f, 1.9f);
             }

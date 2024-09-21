@@ -1,16 +1,7 @@
 package net.sweenus.simplyswords.compat;
 
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
-import net.sweenus.simplyswords.SimplySwords;
 import net.sweenus.simplyswords.config.Config;
 import net.sweenus.simplyswords.config.ConfigDefaultValues;
-import net.sweenus.simplyswords.item.GobberEndSwordItem;
-import net.sweenus.simplyswords.item.GobberNetherSwordItem;
-import net.sweenus.simplyswords.item.ModToolMaterial;
-import net.sweenus.simplyswords.item.SimplySwordsSwordItem;
 
 public class GobberCompat {
 
@@ -81,6 +72,7 @@ public class GobberCompat {
     static int gobber_modifier = (int) Config.getFloat("gobber_damageModifier", "WeaponAttributes", ConfigDefaultValues.gobber_damageModifier);
     static int gobber_nether_modifier = (int) Config.getFloat("gobberNether_damageModifier", "WeaponAttributes", ConfigDefaultValues.gobberNether_damageModifier);
     static int gobber_end_modifier = (int) Config.getFloat("gobberEnd_damageModifier", "WeaponAttributes", ConfigDefaultValues.gobberEnd_damageModifier);
+    /* 1.21
 
 
     //GOBBER
@@ -278,4 +270,6 @@ public class GobberCompat {
         SimplySwords.LOGGER.info("Registering Gobber compat Items for " + SimplySwords.MOD_ID);
     }
 
+
+     */
 }

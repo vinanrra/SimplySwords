@@ -88,7 +88,7 @@ public class TempestSwordItem extends UniqueSwordItem {
                     target, statusSelect, 500, 1, vortexMaxStacks);
 
             effect.setSourceEntity(attacker);
-            effect.setAdditionalData((int) HelperMethods.getAttackDamage(this.getDefaultStack()) / 3);
+            effect.setAdditionalData((int) HelperMethods.getEntityAttackDamage(attacker) / 3);
             target.addStatusEffect(effect);
 
         }

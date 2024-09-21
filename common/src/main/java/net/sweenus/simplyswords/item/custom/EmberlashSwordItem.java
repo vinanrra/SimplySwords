@@ -36,15 +36,16 @@ public class EmberlashSwordItem extends UniqueSwordItem {
 
     private static int stepMod = 0;
     public static boolean scalesWithSpellPower;
+    public static float tooltipEffectDamage = 0.20f;
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!attacker.getWorld().isClient()) {
             ServerWorld world = (ServerWorld) attacker.getWorld();
             DamageSource damageSource = world.getDamageSources().generic();
-            float abilityDamage = (float) HelperMethods.getAttackDamage(this.getDefaultStack());
+            float abilityDamage = (float) HelperMethods.getEntityAttackDamage(attacker);
             float spellScalingModifier = Config.getFloat("smoulderSpellScaling", "UniqueEffects", ConfigDefaultValues.smoulderSpellScaling);
-            if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, attacker, "fire") > HelperMethods.getAttackDamage(this.getDefaultStack())) {
+            if (HelperMethods.commonSpellAttributeScaling(spellScalingModifier, attacker, "fire") > HelperMethods.getEntityAttackDamage(attacker)) {
                 abilityDamage = HelperMethods.commonSpellAttributeScaling(spellScalingModifier, attacker, "fire");
                 scalesWithSpellPower = true;
             }
@@ -106,7 +107,7 @@ public class EmberlashSwordItem extends UniqueSwordItem {
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip3").setStyle(TEXT));
         tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip4").setStyle(TEXT));
-        tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip5", HelperMethods.getAttackDamage(this.getDefaultStack()) * 0.20f).setStyle(TEXT));
+        tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip5", tooltipEffectDamage).setStyle(TEXT));
         tooltip.add(Text.literal(""));
         tooltip.add(Text.translatable("item.simplyswords.onrightclick").setStyle(RIGHTCLICK));
         tooltip.add(Text.translatable("item.simplyswords.emberlashsworditem.tooltip6").setStyle(TEXT));

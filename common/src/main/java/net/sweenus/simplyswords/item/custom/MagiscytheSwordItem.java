@@ -54,7 +54,7 @@ public class MagiscytheSwordItem extends UniqueSwordItem {
                     if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR || slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND) {
                         ItemStack item = attacker.getEquippedStack(slot);
                         if (!item.isEmpty() && random.nextFloat() < repairChance && item.getDamage() > 0) {
-                            item.setDamage((int) (item.getDamage() - HelperMethods.getAttackDamage(stack)));
+                            item.setDamage((int) (item.getDamage() - HelperMethods.getEntityAttackDamage(attacker)));
                             break;
                         }
                     }

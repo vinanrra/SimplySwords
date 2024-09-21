@@ -55,7 +55,7 @@ public class FireSwordItem extends UniqueSwordItem {
                         livingEntity.setOnFireFor(3);
                         livingEntity.takeKnockback(1, 0.1, 0.1);
                         livingEntity.timeUntilRegen = 0;
-                        livingEntity.damage(damageSource, (float) HelperMethods.getAttackDamage(stack));
+                        livingEntity.damage(damageSource, (float) HelperMethods.getEntityAttackDamage(attacker));
                         livingEntity.timeUntilRegen = 0;
                     }
                 }

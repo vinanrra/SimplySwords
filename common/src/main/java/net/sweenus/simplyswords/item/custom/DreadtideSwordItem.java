@@ -94,7 +94,7 @@ public class DreadtideSwordItem extends UniqueSwordItem {
                                     EffectRegistry.VOIDASSAULT, voidcallerDuration, voidcloakEffect.getAmplifier(), false,
                                     false, true);
                             voidAssaultEffect.setSourceEntity(user);
-                            voidAssaultEffect.setAdditionalData((int) (HelperMethods.getAttackDamage(this.getDefaultStack()) * voidcallerDamageModifier));
+                            voidAssaultEffect.setAdditionalData((int) (HelperMethods.getEntityAttackDamage(user) * voidcallerDamageModifier));
                             ee.addStatusEffect(voidAssaultEffect);
                             user.removeStatusEffect(EffectRegistry.VOIDCLOAK);
                             user.getItemCooldownManager().set(this, skillCooldown);

@@ -76,7 +76,7 @@ public class EmberIreSwordItem extends UniqueSwordItem {
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (!world.isClient && user.getEquippedStack(EquipmentSlot.MAINHAND) == stack) {
             Optional<LivingEntity> targetEntityReturn = HelperMethods.findClosestTarget(user, 18, 3);
-            double damageAmount = HelperMethods.getAttackDamage(stack) * 0.3;
+            double damageAmount = HelperMethods.getEntityAttackDamage(user) * 0.3;
             if (targetEntityReturn.isPresent() && HelperMethods.checkFriendlyFire(targetEntityReturn.get(), user)) {
                 LivingEntity targetEntity = targetEntityReturn.get();
                 SoundEvent soundSelect = SoundRegistry.ELEMENTAL_BOW_FIRE_SHOOT_IMPACT_03.get();
@@ -93,7 +93,7 @@ public class EmberIreSwordItem extends UniqueSwordItem {
                 }
 
                 final float minAdditionalDamage = 0.0f;
-                final float maxAdditionalDamage = (float) (HelperMethods.getAttackDamage(stack) * 3);
+                final float maxAdditionalDamage = (float) (HelperMethods.getEntityAttackDamage(user) * 3);
                 float chargeRatio = 1.0f - ((float) remainingUseTicks / getMaxUseTime(stack));
                 float additionalDamage = minAdditionalDamage + (maxAdditionalDamage - minAdditionalDamage) * chargeRatio;
                 float finalDamage = (float) damageAmount + additionalDamage;

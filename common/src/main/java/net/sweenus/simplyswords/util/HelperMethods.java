@@ -6,7 +6,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Tameable;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
@@ -540,13 +539,13 @@ public class HelperMethods {
         return world.getEntitiesByClass(LivingEntity.class, searchBox, entity -> true);
     }
 
-    //Get Item attack damage
-    public static double getAttackDamage(ItemStack stack){
-        return stack.getItem().getAttributeModifiers(EquipmentSlot.MAINHAND)
-                .get(EntityAttributes.GENERIC_ATTACK_DAMAGE)
-                .stream()
-                .mapToDouble(EntityAttributeModifier::getValue)
-                .sum();
+    //Get entity attack damage
+    public static double getEntityAttackDamage(LivingEntity livingEntity){
+        EntityAttributeInstance attackDamageAttribute = livingEntity.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        if (attackDamageAttribute != null) {
+            return attackDamageAttribute.getValue();
+        }
+        return 0;
     }
 
     public static void applyDamageWithoutKnockback(LivingEntity target, DamageSource source, float amount) {

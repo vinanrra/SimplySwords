@@ -44,7 +44,7 @@ public class MagispearSwordItem extends UniqueSwordItem {
             float hitChance = Config.getFloat("magislamMagicChance", "UniqueEffects", ConfigDefaultValues.magislamMagicChance);
             int random = new Random().nextInt(100);
             if (random < hitChance) {
-                float damage = (float) (HelperMethods.getAttackDamage(stack) * Config.getFloat("magislamMagicModifier", "UniqueEffects", ConfigDefaultValues.magislamMagicModifier));
+                float damage = (float) (HelperMethods.getEntityAttackDamage(attacker) * Config.getFloat("magislamMagicModifier", "UniqueEffects", ConfigDefaultValues.magislamMagicModifier));
                 target.timeUntilRegen = 0;
                 target.damage(attacker.getDamageSources().indirectMagic(attacker, attacker), damage);
                 target.timeUntilRegen = 0;
